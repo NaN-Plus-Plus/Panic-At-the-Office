@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b4bgh77ofnm8m"]
+
+[ext_resource type="Script" uid="uid://dviv34nneo6x8" path="res://characters/MC/mc.gd" id="1_imnk3"]
+[ext_resource type="Texture2D" uid="uid://d4m5ckqte7wj5" path="res://assets/YuriPlaceHolder.png" id="2_lve1s"]
+[ext_resource type="Script" uid="uid://drb857tfbrbw" path="res://characters/MC/camera_2d.gd" id="3_m0y0c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(27, 20)
+
+[node name="Mc" type="CharacterBody2D" unique_id=978937542]
+motion_mode = 1
+script = ExtResource("1_imnk3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1688845578]
+texture_filter = 1
+texture = ExtResource("2_lve1s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328361254]
+position = Vector2(0.5, 28)
+shape = SubResource("RectangleShape2D_bhunq")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1391218887]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+script = ExtResource("3_m0y0c")
