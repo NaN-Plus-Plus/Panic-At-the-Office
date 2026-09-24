@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://ct74rp67mvud3"]
+
+[ext_resource type="Texture2D" uid="uid://55ljpl2rmra5" path="res://assets/MainMenu.png" id="1_6p30y"]
+[ext_resource type="Script" uid="uid://cxlbmotxcyeq1" path="res://scenes/Menus/main_menu.gd" id="1_faaac"]
+[ext_resource type="PackedScene" uid="uid://c75p4fry2607y" path="res://scenes/PopUpWindow/PopUpWindow.tscn" id="3_5crfs"]
+
+[node name="MainMenu" type="Control" unique_id=2013596162]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_faaac")
+
+[node name="Bg" type="ColorRect" parent="." unique_id=686441540]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pics" type="TextureRect" parent="." unique_id=637103722]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6p30y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Play" type="Button" parent="." unique_id=654894815]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 527.0
+offset_right = 492.0
+offset_bottom = 569.0
+theme_override_font_sizes/font_size = 24
+text = "PLAY"
+
+[node name="Quit" type="Button" parent="." unique_id=717696706]
+layout_mode = 0
+offset_left = 1438.0
+offset_top = 527.0
+offset_right = 1744.0
+offset_bottom = 569.0
+theme_override_font_sizes/font_size = 24
+text = "QUIT"
+
+[node name="PopUpWindow" parent="." unique_id=1818528751 instance=ExtResource("3_5crfs")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
