@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://2mrx4ulwqgfi"]
+
+[ext_resource type="Texture2D" uid="uid://b5prqakv5yrko" path="res://assets/wire_monster.png" id="1_gw2qr"]
+[ext_resource type="Script" uid="uid://cmhhws23u543d" path="res://characters/Wire Monster/wire_monster.gd" id="1_imf1u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r6qtj"]
+radius = 3.0
+height = 10.0
+
+[node name="WireMonster" type="CharacterBody2D" unique_id=1574792864 node_paths=PackedStringArray("nav_agent")]
+script = ExtResource("1_imf1u")
+nav_agent = NodePath("NavigationAgent2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=765152719]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_r6qtj")
+
+[node name="WireMonster" type="Sprite2D" parent="." unique_id=999277585]
+position = Vector2(0, -46)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_gw2qr")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=774385371]
+path_desired_distance = 50.0

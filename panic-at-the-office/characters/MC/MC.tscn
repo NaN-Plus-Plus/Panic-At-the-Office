@@ -10,6 +10,7 @@ size = Vector2(27, 20)
 [node name="Mc" type="CharacterBody2D" unique_id=978937542]
 motion_mode = 1
 script = ExtResource("1_imnk3")
+speed = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1688845578]
 texture_filter = 1
