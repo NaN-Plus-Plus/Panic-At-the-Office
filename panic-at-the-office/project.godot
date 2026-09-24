@@ -19,6 +19,7 @@ boot_splash/image="uid://i08gmwb7lsel"
 [autoload]
 
 Globals="*uid://3h0xag12jmyj"
+PopUpWindow="*uid://c75p4fry2607y"
 
 [display]
 
