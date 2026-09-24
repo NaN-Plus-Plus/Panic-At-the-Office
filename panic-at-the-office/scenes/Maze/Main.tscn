@@ -1,10 +1,20 @@
 [gd_scene format=3 uid="uid://ct4ia7byxn3tv"]
 
 [ext_resource type="PackedScene" uid="uid://bwkeh60b4q1ih" path="res://scenes/Maze/Biom.tscn" id="1_10rdu"]
+[ext_resource type="Script" uid="uid://t2lwibb76jpx" path="res://scenes/Maze/main.gd" id="1_mgnkh"]
 [ext_resource type="PackedScene" uid="uid://b4bgh77ofnm8m" path="res://characters/MC/MC.tscn" id="2_gsqt7"]
 [ext_resource type="PackedScene" uid="uid://2mrx4ulwqgfi" path="res://characters/Wire Monster/wire_monster.tscn" id="3_6ay71"]
+[ext_resource type="Shader" uid="uid://bthichoji131i" path="res://shaders/scary_shader.gdshader" id="4_0bjed"]
 
-[node name="Main" type="Node2D" unique_id=786101504]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mgnkh"]
+shader = ExtResource("4_0bjed")
+shader_parameter/strength = 0.0
+shader_parameter/radius = 1.0
+shader_parameter/softness = 0.35
+
+[node name="Main" type="Node2D" unique_id=786101504 node_paths=PackedStringArray("VignetteRect")]
+script = ExtResource("1_mgnkh")
+VignetteRect = NodePath("CanvasLayer/VignetteRect")
 
 [node name="Biom" parent="." unique_id=1919071673 instance=ExtResource("1_10rdu")]
 
@@ -13,3 +23,13 @@ position = Vector2(186, 158)
 
 [node name="WireMonster" parent="." unique_id=1574792864 instance=ExtResource("3_6ay71")]
 position = Vector2(292, 183)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=735453278]
+
+[node name="VignetteRect" type="ColorRect" parent="CanvasLayer" unique_id=636802589]
+material = SubResource("ShaderMaterial_mgnkh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

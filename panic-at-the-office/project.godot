@@ -40,7 +40,8 @@ folder_colors={
 "res://audio/": "yellow",
 "res://characters/": "green",
 "res://scenes/": "teal",
-"res://scripts/": "blue"
+"res://scripts/": "blue",
+"res://shaders/": "pink"
 }
 
 [input]

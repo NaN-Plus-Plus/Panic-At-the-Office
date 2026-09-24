@@ -7,20 +7,32 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(27, 20)
 
-[node name="Mc" type="CharacterBody2D" unique_id=978937542]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1rxyu"]
+radius = 200.0
+
+[node name="Mc" type="CharacterBody2D" unique_id=978937542 node_paths=PackedStringArray("monster_area")]
 motion_mode = 1
 script = ExtResource("1_imnk3")
-speed = null
+monster_area = NodePath("MonsterArea")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1688845578]
 texture_filter = 1
+position = Vector2(0, -28)
 texture = ExtResource("2_lve1s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328361254]
-position = Vector2(0.5, 28)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_bhunq")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1391218887]
+position = Vector2(0, -28)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("3_m0y0c")
+
+[node name="MonsterArea" type="Area2D" parent="." unique_id=638366843]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterArea" unique_id=446478552]
+shape = SubResource("CircleShape2D_1rxyu")

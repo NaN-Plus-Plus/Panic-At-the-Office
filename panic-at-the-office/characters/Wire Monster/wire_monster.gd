@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name WireMonster
 
 
 const SPEED = 100.0
