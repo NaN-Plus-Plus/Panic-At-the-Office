@@ -10,9 +10,10 @@ class_name Biom
 const TERRAIN_SET := 0
 const WALL_TERRAIN := 0
 const FLOOR_TERRAIN := 1
+const EXIT_TERRAIN := 2
 
 var maze := []
-
+var exit_cell: Vector2i
 
 func _ready() -> void:
 	generate_maze()
@@ -27,6 +28,7 @@ func generate_maze():
 	
 	carve_path(start_row, start_col)
 	#print(maze)
+	create_exit()
 	draw_maze()
 
 
@@ -83,15 +85,35 @@ func carve_path(start_row, start_col):
 			stack.pop_back()
 
 
+func create_exit():
+	var possible_exits: Array[Vector2i] = []
+	
+	for r in range(1, ROWS - 1):
+		if maze[r][COLS - 2] == 0:
+			possible_exits.append(Vector2i(COLS - 1, r))
+			
+	for c in range(1, COLS - 1):
+		if maze[ROWS - 2][c] == 0:
+			possible_exits.append(Vector2i(c, ROWS - 1))
+	
+	exit_cell = possible_exits.pick_random()
+
+
+
 func draw_maze():
 	tile_map_layer.clear()
 	
 	var floor_cells: Array[Vector2i]
 	var wall_cells: Array[Vector2i]
+	var exit_cells: Array[Vector2i]
 	
 	for r in range(ROWS):
 		for c in range(COLS):
-			if maze[r][c] == 0:
+			var cell := Vector2i(c, r)
+			
+			if cell == exit_cell:
+				exit_cells.append(cell)
+			elif maze[r][c] == 0:
 				floor_cells.append(Vector2i(c, r))
 			else:
 				wall_cells.append(Vector2i(c, r))
@@ -106,4 +128,10 @@ func draw_maze():
 		wall_cells,
 		TERRAIN_SET,
 		WALL_TERRAIN
+	)
+	
+	tile_map_layer.set_cells_terrain_connect(
+		exit_cells,
+		TERRAIN_SET,
+		EXIT_TERRAIN
 	)
