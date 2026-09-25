@@ -13,6 +13,7 @@ func _ready() -> void:
 
 
 func show_loading(scene_name: String) -> void:
+	get_tree().paused = true
 	visible = true
 	progress_bar.value = 0
 	set_status("Loading %s..." % (scene_name if not scene_name.is_empty() else "..."))
@@ -36,4 +37,5 @@ func hide_loading() -> void:
 	var tween := create_tween()
 	tween.tween_property(root, "modulate:a", 0.0, 0.3)
 	await tween.finished
+	get_tree().paused = false
 	visible = false
