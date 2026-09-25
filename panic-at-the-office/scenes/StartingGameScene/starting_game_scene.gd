@@ -4,24 +4,24 @@ extends Control
 
 
 func _on_easy_pressed() -> void:
-	Globals.cols = 25
-	Globals.rows = 25
+	Globals.cols = 20
+	Globals.rows = 20
 	popUpWindow.current_action = popUpWindow.ConfirmationAction.PLAY
 	popUpWindow.play.visible = true
 	popUpWindow.visible = true
 
 
 func _on_normal_pressed() -> void:
-	Globals.cols = 50
-	Globals.rows = 50
+	Globals.cols = 30
+	Globals.rows = 30
 	popUpWindow.current_action = popUpWindow.ConfirmationAction.PLAY
 	popUpWindow.play.visible = true
 	popUpWindow.visible = true
 
 
 func _on_hard_pressed() -> void:
-	Globals.cols = 100
-	Globals.rows = 100
+	Globals.cols = 40
+	Globals.rows = 40
 	popUpWindow.current_action = popUpWindow.ConfirmationAction.PLAY
 	popUpWindow.play.visible = true
 	popUpWindow.visible = true

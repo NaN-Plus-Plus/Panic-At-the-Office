@@ -33,12 +33,13 @@ func _on_ok_pressed() -> void:
 			
 		ConfirmationAction.QUIT:
 			get_tree().quit()
-	
+		
 		ConfirmationAction.NONE:
 			return
-			
+	
 	close_window()
 	current_action = ConfirmationAction.NONE
+
 
 func _on_cancer_pressed() -> void:
 	close_window()
