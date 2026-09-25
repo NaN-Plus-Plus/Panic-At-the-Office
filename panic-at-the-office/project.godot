@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PanicAtTheOffice"
-run/main_scene="uid://ct4ia7byxn3tv"
+run/main_scene="uid://ct74rp67mvud3"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/stretch_mode=0
 boot_splash/image="uid://i08gmwb7lsel"
