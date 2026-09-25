@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://55ljpl2rmra5" path="res://assets/MainMenu.png" id="1_6p30y"]
 [ext_resource type="Script" uid="uid://cxlbmotxcyeq1" path="res://scenes/Menus/main_menu.gd" id="1_faaac"]
 [ext_resource type="PackedScene" uid="uid://c75p4fry2607y" path="res://scenes/PopUpWindow/PopUpWindow.tscn" id="3_5crfs"]
+[ext_resource type="PackedScene" uid="uid://cjmr1ix08blf" path="res://scenes/StartingGameScene/StartingGameScene.tscn" id="4_pl1hl"]
 
 [node name="MainMenu" type="Control" unique_id=2013596162]
 layout_mode = 3
@@ -51,6 +52,10 @@ theme_override_font_sizes/font_size = 24
 text = "QUIT"
 
 [node name="PopUpWindow" parent="." unique_id=1818528751 instance=ExtResource("3_5crfs")]
+visible = false
+layout_mode = 1
+
+[node name="StartingGameScene" parent="." unique_id=1590376725 instance=ExtResource("4_pl1hl")]
 visible = false
 layout_mode = 1
 

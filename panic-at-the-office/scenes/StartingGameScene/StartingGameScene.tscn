@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://cjmr1ix08blf"]
+
+[ext_resource type="Script" uid="uid://dgpkx7egvc377" path="res://scenes/StartingGameScene/starting_game_scene.gd" id="1_ws8n3"]
+[ext_resource type="PackedScene" uid="uid://c75p4fry2607y" path="res://scenes/PopUpWindow/PopUpWindow.tscn" id="2_n5ry4"]
+
+[node name="StartingGameScene" type="Control" unique_id=1590376725]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ws8n3")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=679983371]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23693937, 0.17705932, 0.17705932, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1541957288]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=861215642]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=81589707]
+layout_mode = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Easy" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1027929277]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Easy"
+
+[node name="Normal" type="Button" parent="MarginContainer/HBoxContainer" unique_id=187653372]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Normal"
+
+[node name="Hard" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1160649507]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Hard"
+
+[node name="PopUpWindow" parent="." unique_id=1818528751 instance=ExtResource("2_n5ry4")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Easy" to="." method="_on_easy_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Normal" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Hard" to="." method="_on_hard_pressed"]

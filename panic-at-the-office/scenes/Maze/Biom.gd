@@ -1,9 +1,10 @@
 extends Node2D
+class_name Biom
 
 @onready var tileMap: TileMapLayer = $TileMapLayer
 
-const ROWS := 25
-const COLS := 25
+var ROWS := 25
+var COLS := 25
 const WALL := Vector2i(0, 0)
 const PATH := Vector2i(8, 0)
 
