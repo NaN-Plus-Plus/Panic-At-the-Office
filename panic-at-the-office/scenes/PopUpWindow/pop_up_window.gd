@@ -26,7 +26,9 @@ func _on_ok_pressed() -> void:
 	match current_action:
 		
 		ConfirmationAction.PLAY:
+			await LoadingScreen.show_loading("Main")
 			get_tree().change_scene_to_file("res://scenes/Maze/Main.tscn")
+			await LoadingScreen.hide_loading()
 			return
 			
 		ConfirmationAction.QUIT:

@@ -20,6 +20,7 @@ boot_splash/image="uid://i08gmwb7lsel"
 
 Globals="*uid://3h0xag12jmyj"
 PopUpWindow="*uid://c75p4fry2607y"
+LoadingScreen="*uid://b8lpsos7f6x0y"
 
 [display]
 
