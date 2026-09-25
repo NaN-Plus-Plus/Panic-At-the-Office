@@ -3,8 +3,9 @@ class_name Biom
 
 @onready var tileMap: TileMapLayer = $TileMapLayer
 
-var ROWS := 25
-var COLS := 25
+@onready var ROWS := Globals.rows
+@onready var COLS := Globals.cols
+
 const WALL := Vector2i(0, 0)
 const PATH := Vector2i(8, 0)
 
@@ -23,7 +24,7 @@ func generate_maze():
 	maze[start_row][start_col] = 0
 	
 	carve_path(start_row, start_col)
-	print(maze)
+	#print(maze)
 	draw_maze()
 	
 	
@@ -35,7 +36,7 @@ func reset_maze():
 		for c in range(COLS):
 			row.append(1)
 		maze.append(row)
-		print(maze)
+		#print(maze)
 
 
 func carve_path(row, col):
