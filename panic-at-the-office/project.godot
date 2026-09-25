@@ -30,9 +30,7 @@ directories/dch_directory={
 "MC": "res://characters/MC/MC.dch",
 "Narrator": "res://characters/Narrator/Narrator.dch"
 }
-directories/dtl_directory={
-"Prolog": "res://timelines/Prolog.dtl"
-}
+directories/dtl_directory={}
 layout/style_directory={}
 
 [display]

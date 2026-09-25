@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed: float = 200.0
 @export var monster_area: Area2D
 @export var foxy: AnimatedSprite2D
+@export var foxy_sound: AudioStreamPlayer
 
 var monster: WireMonster
 
@@ -56,6 +57,7 @@ func apply_vignette():
 		if global_position.distance_to(monster.global_position) < 5:
 			foxy.visible = true
 			foxy.play("Foxy")
+			foxy_sound.play(0.26)
 			Globals.vignette.set_shader_parameter("strength", 0)
 			monster.queue_free()
 	else:
