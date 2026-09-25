@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dc2axg4nj4q4g"]
+
+[ext_resource type="PackedScene" uid="uid://c75p4fry2607y" path="res://scenes/PopUpWindow/BasePopUpWindow.tscn" id="1_m4wyd"]
+[ext_resource type="Script" uid="uid://bkyvbhfjs757g" path="res://scenes/PopUpWindow/play_pop_up_window.gd" id="2_mjy04"]
+
+[node name="PlayPopUpWindow" unique_id=1818528751 instance=ExtResource("1_m4wyd")]
+script = ExtResource("2_mjy04")
+
+[node name="MarginContainer_VBoxContainer_Types#Play" type="Control" parent="." index="0" unique_id=1600954349]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Info" parent="MarginContainer/VBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(105624605) index="0" unique_id=1141652186]
+text = "Start"
+
+[node name="Text" parent="MarginContainer/VBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(105624605) index="2" unique_id=747866859]
+text = "Do You want to start game?"

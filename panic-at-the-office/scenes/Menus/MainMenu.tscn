@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://55ljpl2rmra5" path="res://assets/MainMenu.png" id="1_6p30y"]
 [ext_resource type="Script" uid="uid://cxlbmotxcyeq1" path="res://scenes/Menus/main_menu.gd" id="1_faaac"]
-[ext_resource type="PackedScene" uid="uid://c75p4fry2607y" path="res://scenes/PopUpWindow/PopUpWindow.tscn" id="3_5crfs"]
+[ext_resource type="PackedScene" uid="uid://pbdm53r44fri" path="res://scenes/PopUpWindow/QuitPopUpWindow.tscn" id="3_pl1hl"]
 [ext_resource type="PackedScene" uid="uid://cjmr1ix08blf" path="res://scenes/StartingGameScene/StartingGameScene.tscn" id="4_pl1hl"]
 
-[node name="MainMenu" type="Control" unique_id=2013596162]
+[node name="MainMenu" type="Control" unique_id=2013596162 node_paths=PackedStringArray("popUpWindow", "startingGameWindow")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_faaac")
+popUpWindow = NodePath("QuitPopUpWindow")
+startingGameWindow = NodePath("StartingGameScene")
 
 [node name="Bg" type="ColorRect" parent="." unique_id=686441540]
 layout_mode = 1
@@ -51,9 +53,13 @@ offset_bottom = 569.0
 theme_override_font_sizes/font_size = 24
 text = "QUIT"
 
-[node name="PopUpWindow" parent="." unique_id=1818528751 instance=ExtResource("3_5crfs")]
+[node name="QuitPopUpWindow" parent="." unique_id=1818528751 instance=ExtResource("3_pl1hl")]
 visible = false
 layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="StartingGameScene" parent="." unique_id=1590376725 instance=ExtResource("4_pl1hl")]
 visible = false

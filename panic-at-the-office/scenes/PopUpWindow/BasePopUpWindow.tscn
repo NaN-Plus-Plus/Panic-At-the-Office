@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://c75p4fry2607y"]
+
+[ext_resource type="Script" uid="uid://ctmcpgg010hr1" path="res://scenes/PopUpWindow/base_pop_up_window.gd" id="1_ajcpd"]
+[ext_resource type="Texture2D" uid="uid://ddtbbr4c3offh" path="res://assets/PlaceHolder3.jpg" id="2_4v27n"]
+[ext_resource type="Texture2D" uid="uid://bt6rq2pt0g86v" path="res://assets/PlaceHolder4.jpg" id="3_nximp"]
+
+[node name="BasePopUpWindow" type="Control" unique_id=1818528751]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 3
+anchor_left = 0.34375
+anchor_top = 0.3148148
+anchor_right = 0.65625
+anchor_bottom = 0.6851852
+offset_left = 300.0
+offset_top = 200.0
+offset_right = -300.0
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ajcpd")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2057018955]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.73333335, 0.6901961, 0.47843137, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=699588673]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=551876111]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=105624605]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Info" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1141652186]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Base Info"
+horizontal_alignment = 1
+
+[node name="Separator" type="ColorRect" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=354595880]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+color = Color(0.6862745, 0.6117647, 0.38039216, 1)
+
+[node name="Text" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=747866859]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Base Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=581501353]
+layout_mode = 2
+theme_override_constants/separation = 250
+alignment = 1
+
+[node name="Ok" type="TextureButton" parent="MarginContainer/VBoxContainer/Buttons" unique_id=2008072049]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("2_4v27n")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cancer" type="TextureButton" parent="MarginContainer/VBoxContainer/Buttons" unique_id=315837054]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("3_nximp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/Ok" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/Cancer" to="." method="_on_cancer_pressed"]

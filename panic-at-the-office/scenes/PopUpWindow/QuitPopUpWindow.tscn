@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://pbdm53r44fri"]
+
+[ext_resource type="PackedScene" uid="uid://c75p4fry2607y" path="res://scenes/PopUpWindow/BasePopUpWindow.tscn" id="1_3a3by"]
+[ext_resource type="Script" uid="uid://ptyw5j7achpg" path="res://scenes/PopUpWindow/quit_pop_up_window.gd" id="2_uavea"]
+
+[node name="QuitPopUpWindow" unique_id=1818528751 instance=ExtResource("1_3a3by")]
+script = ExtResource("2_uavea")
+
+[node name="Info" parent="MarginContainer/VBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(105624605) index="0" unique_id=1141652186]
+text = "Exit"
+
+[node name="Text" parent="MarginContainer/VBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(105624605) index="2" unique_id=747866859]
+text = "Do You want to quit the game?"

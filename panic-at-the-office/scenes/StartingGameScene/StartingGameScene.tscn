@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://cjmr1ix08blf"]
 
 [ext_resource type="Script" uid="uid://dgpkx7egvc377" path="res://scenes/StartingGameScene/starting_game_scene.gd" id="1_ws8n3"]
-[ext_resource type="PackedScene" uid="uid://c75p4fry2607y" path="res://scenes/PopUpWindow/PopUpWindow.tscn" id="2_n5ry4"]
+[ext_resource type="PackedScene" uid="uid://c75p4fry2607y" path="res://scenes/PopUpWindow/BasePopUpWindow.tscn" id="2_n5ry4"]
+[ext_resource type="PackedScene" uid="uid://dc2axg4nj4q4g" path="res://scenes/PopUpWindow/PlayPopUpWindow.tscn" id="3_n5ry4"]
 
-[node name="StartingGameScene" type="Control" unique_id=1590376725]
+[node name="StartingGameScene" type="Control" unique_id=1590376725 node_paths=PackedStringArray("popUpWindow")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ws8n3")
+popUpWindow = NodePath("PlayPopUpWindow")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=679983371]
 layout_mode = 1
@@ -64,6 +66,10 @@ theme_override_font_sizes/font_size = 36
 text = "Hard"
 
 [node name="PopUpWindow" parent="." unique_id=1818528751 instance=ExtResource("2_n5ry4")]
+visible = false
+layout_mode = 1
+
+[node name="PlayPopUpWindow" parent="." unique_id=1636213778 instance=ExtResource("3_n5ry4")]
 visible = false
 layout_mode = 1
 

@@ -1,8 +1,8 @@
 extends Control
 
 
-@onready var popUpWindow: Control = $PopUpWindow
-@onready var startingGameWindow: Control = $StartingGameScene
+@export var popUpWindow: BasePopUpWindow
+@export var startingGameWindow: Control
 
 
 func _on_play_pressed() -> void:
@@ -10,6 +10,4 @@ func _on_play_pressed() -> void:
 
 
 func _on_quit_pressed() -> void:
-	popUpWindow.current_action = popUpWindow.ConfirmationAction.QUIT
-	popUpWindow.quit.visible = true
 	popUpWindow.visible = true
