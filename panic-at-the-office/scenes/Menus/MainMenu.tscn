@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cxlbmotxcyeq1" path="res://scenes/Menus/main_menu.gd" id="1_faaac"]
 [ext_resource type="PackedScene" uid="uid://pbdm53r44fri" path="res://scenes/PopUpWindow/QuitPopUpWindow.tscn" id="3_pl1hl"]
 [ext_resource type="PackedScene" uid="uid://cjmr1ix08blf" path="res://scenes/StartingGameScene/StartingGameScene.tscn" id="4_pl1hl"]
+[ext_resource type="AudioStream" uid="uid://b8sredc7m7ck6" path="res://audio/Music/Panic!At The Disco- GirlsGirlsBoys (Official Instrumental).mp3" id="5_a24ew"]
 
 [node name="MainMenu" type="Control" unique_id=2013596162 node_paths=PackedStringArray("popUpWindow", "startingGameWindow")]
 layout_mode = 3
@@ -64,6 +65,10 @@ offset_bottom = 0.0
 [node name="StartingGameScene" parent="." unique_id=1590376725 instance=ExtResource("4_pl1hl")]
 visible = false
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=751558010]
+stream = ExtResource("5_a24ew")
+autoplay = true
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

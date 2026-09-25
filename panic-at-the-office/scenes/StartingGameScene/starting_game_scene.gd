@@ -4,18 +4,18 @@ extends Control
 
 
 func _on_easy_pressed() -> void:
-	Globals.cols = 20
-	Globals.rows = 20
+	Globals.cols = 21
+	Globals.rows = 21
 	popUpWindow.visible = true
 
 
 func _on_normal_pressed() -> void:
-	Globals.cols = 30
-	Globals.rows = 30
+	Globals.cols = 31
+	Globals.rows = 31
 	popUpWindow.visible = true
 
 
 func _on_hard_pressed() -> void:
-	Globals.cols = 40
-	Globals.rows = 40
+	Globals.cols = 51
+	Globals.rows = 51
 	popUpWindow.visible = true
