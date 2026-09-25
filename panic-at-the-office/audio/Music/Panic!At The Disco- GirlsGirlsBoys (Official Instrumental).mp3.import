@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b8sredc7m7ck6"
+path="res://.godot/imported/Panic!At The Disco- GirlsGirlsBoys (Official Instrumental).mp3-7fc0f96957a65c0df06c9fcc4785533b.mp3str"
+
+[deps]
+
+source_file="res://audio/Music/Panic!At The Disco- GirlsGirlsBoys (Official Instrumental).mp3"
+dest_files=["res://.godot/imported/Panic!At The Disco- GirlsGirlsBoys (Official Instrumental).mp3-7fc0f96957a65c0df06c9fcc4785533b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

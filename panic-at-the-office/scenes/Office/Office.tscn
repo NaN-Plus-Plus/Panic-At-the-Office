@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://miqrg86jt4nq"]
+
+[ext_resource type="PackedScene" uid="uid://b4bgh77ofnm8m" path="res://characters/MC/MC.tscn" id="1_8w6ou"]
+
+[node name="Office" type="Node2D" unique_id=697529588]
+
+[node name="Mc" parent="." unique_id=978937542 instance=ExtResource("1_8w6ou")]

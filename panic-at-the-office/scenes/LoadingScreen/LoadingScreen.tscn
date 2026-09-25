@@ -49,7 +49,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 36
 
 [node name="TextureRect" type="TextureRect" parent="root/ColorRect" unique_id=1041578980]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

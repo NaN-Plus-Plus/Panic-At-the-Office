@@ -41,34 +41,46 @@ func reset_maze():
 		#print(maze)
 
 
-func carve_path(row, col):
-	var directions = [
-		[-2, 0], # Up
-		[0, 2],  # Right
-		[2, 0],  # Down
-		[0, -2]  # Left
-	]
+func carve_path(start_row, start_col):
+	var stack = [Vector2i(start_row, start_col)]
 	
-	directions.shuffle()
-	
-	for dir in directions:
-		var dr = dir[0]
-		var dc = dir[1]
+	while not stack.is_empty():
+		var current: Vector2i = stack.back()
 		
-		var new_row = row + dr
-		var new_col = col + dc
+		var row = current.x
+		var col = current.y
 		
-		if (
-			new_row > 0 and 
-			new_row < ROWS - 1 and 
-			new_col > 0 and
-			new_col < COLS - 1 and 
-			maze[new_row][new_col] == 1
-		):
-			maze[new_row][new_col] = 0
-			maze[row + dr / 2][col + dc / 2] = 0
+		var directions = [
+			Vector2i(-2, 0), # Up
+			Vector2i(0, 2),  # Right
+			Vector2i(2, 0),  # Down
+			Vector2i(0, -2)  # Left
+		]
+		
+		directions.shuffle()
+		
+		var carved = false
+		
+		for dir in directions:
+			var new_row = row + dir.x
+			var new_col = col + dir.y
 			
-			carve_path(new_row, new_col)
+			if (
+				new_row > 0 and
+				new_row < ROWS - 1 and
+				new_col > 0 and
+				new_col < COLS - 1 and
+				maze[new_row][new_col] == 1
+			):
+				maze[new_row][new_col] = 0
+				maze[row + dir.x / 2][col + dir.y / 2] = 0
+				
+				stack.append(Vector2i(new_row, new_col))
+				carved = true
+				break
+		
+		if not carved:
+			stack.pop_back()
 
 
 func draw_maze():
