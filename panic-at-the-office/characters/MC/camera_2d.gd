@@ -25,10 +25,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not _is_ready_to_follow:
 		return
-
+	
 	if not is_instance_valid(target):
 		return
-
+	
 	update_look_offset(delta)
 	update_camera_position(delta)
 

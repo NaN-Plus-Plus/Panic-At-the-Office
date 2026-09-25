@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var speed: float = 200.0
 @export var monster_area: Area2D
+@export var foxy: AnimatedSprite2D
 
 var monster: WireMonster
 
@@ -16,6 +17,8 @@ func _ready():
 	
 	monster_area.body_entered.connect(monster_detected)
 	monster_area.body_exited.connect(monster_left)
+	
+	foxy.animation_finished.connect(foxy_crash)
 
 
 func _process(_delta):
@@ -49,6 +52,16 @@ func apply_vignette():
 	if monster:
 		Globals.vignette.set_shader_parameter("strength", clampf(1.0 - global_position.distance_to(monster.global_position) / 200, 0.0, 1.0))
 		Globals.vignette.set_shader_parameter("radius", clampf(global_position.distance_to(monster.global_position) / 200, 0.0, 1.0))
+		
+		if global_position.distance_to(monster.global_position) < 5:
+			foxy.visible = true
+			foxy.play("Foxy")
+			Globals.vignette.set_shader_parameter("strength", 0)
+			monster.queue_free()
 	else:
 		Globals.vignette.set_shader_parameter("strength", 0)
 		Globals.vignette.set_shader_parameter("radius", 1)
+
+
+func foxy_crash():
+	get_tree().quit()

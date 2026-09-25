@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dviv34nneo6x8" path="res://characters/MC/mc.gd" id="1_imnk3"]
 [ext_resource type="Texture2D" uid="uid://d4m5ckqte7wj5" path="res://assets/YuriPlaceHolder.png" id="2_lve1s"]
 [ext_resource type="Script" uid="uid://drb857tfbrbw" path="res://characters/MC/camera_2d.gd" id="3_m0y0c"]
+[ext_resource type="Texture2D" uid="uid://vfpdxj0ufgkb" path="res://assets/foxy-jump.png" id="4_haubp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1rxyu"]
 radius = 200.0
@@ -10,10 +11,117 @@ radius = 200.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_cc2ja"]
 radius = 8.0
 
-[node name="Mc" type="CharacterBody2D" unique_id=978937542 node_paths=PackedStringArray("monster_area")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_haubp"]
+atlas = ExtResource("4_haubp")
+region = Rect2(0, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fccbu"]
+atlas = ExtResource("4_haubp")
+region = Rect2(498, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwnv6"]
+atlas = ExtResource("4_haubp")
+region = Rect2(996, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejv0t"]
+atlas = ExtResource("4_haubp")
+region = Rect2(1494, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqg67"]
+atlas = ExtResource("4_haubp")
+region = Rect2(1992, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx2v8"]
+atlas = ExtResource("4_haubp")
+region = Rect2(2490, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecpu2"]
+atlas = ExtResource("4_haubp")
+region = Rect2(2988, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irjkm"]
+atlas = ExtResource("4_haubp")
+region = Rect2(3486, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gujpq"]
+atlas = ExtResource("4_haubp")
+region = Rect2(3984, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dv72"]
+atlas = ExtResource("4_haubp")
+region = Rect2(4482, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oy8o"]
+atlas = ExtResource("4_haubp")
+region = Rect2(4980, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8lsu"]
+atlas = ExtResource("4_haubp")
+region = Rect2(5478, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kxu7"]
+atlas = ExtResource("4_haubp")
+region = Rect2(5976, 0, 498, 373)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnolm"]
+atlas = ExtResource("4_haubp")
+region = Rect2(6474, 0, 498, 373)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rxyu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_haubp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fccbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwnv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejv0t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqg67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx2v8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecpu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irjkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gujpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dv72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oy8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8lsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kxu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnolm")
+}],
+"loop": 0,
+"name": &"Foxy",
+"speed": 30.0
+}]
+
+[node name="Mc" type="CharacterBody2D" unique_id=978937542 node_paths=PackedStringArray("monster_area", "foxy")]
 motion_mode = 1
 script = ExtResource("1_imnk3")
 monster_area = NodePath("MonsterArea")
+foxy = NodePath("FoxyJumpscare")
 
 [node name="MonsterArea" type="Area2D" parent="." unique_id=638366843]
 collision_layer = 0
@@ -32,7 +140,12 @@ position = Vector2(0, -34)
 texture = ExtResource("2_lve1s")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1391218887]
-position = Vector2(0, -28)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("3_m0y0c")
+
+[node name="FoxyJumpscare" type="AnimatedSprite2D" parent="." unique_id=1075076377]
+visible = false
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1rxyu")
+animation = &"Foxy"
