@@ -1,13 +1,15 @@
 extends Node2D
 class_name Biom
 
-@onready var tileMap: TileMapLayer = $TileMapLayer
+
+@export var tile_map_layer: TileMapLayer
 
 @onready var ROWS := Globals.rows
 @onready var COLS := Globals.cols
 
-const WALL := Vector2i(0, 0)
-const PATH := Vector2i(8, 0)
+const TERRAIN_SET := 0
+const WALL_TERRAIN := 0
+const FLOOR_TERRAIN := 1
 
 var maze := []
 
@@ -26,8 +28,8 @@ func generate_maze():
 	carve_path(start_row, start_col)
 	#print(maze)
 	draw_maze()
-	
-	
+
+
 func reset_maze():
 	maze = []
 	
@@ -67,12 +69,29 @@ func carve_path(row, col):
 			maze[row + dr / 2][col + dc / 2] = 0
 			
 			carve_path(new_row, new_col)
-			
+
 
 func draw_maze():
-	tileMap.clear()
-
+	tile_map_layer.clear()
+	
+	var floor_cells: Array[Vector2i]
+	var wall_cells: Array[Vector2i]
+	
 	for r in range(ROWS):
 		for c in range(COLS):
-			var tile_type = WALL if maze[r][c] == 1 else PATH
-			tileMap.set_cell(Vector2i(c, r), 0, tile_type)
+			if maze[r][c] == 0:
+				floor_cells.append(Vector2i(c, r))
+			else:
+				wall_cells.append(Vector2i(c, r))
+	
+	tile_map_layer.set_cells_terrain_connect(
+		floor_cells,
+		TERRAIN_SET,
+		FLOOR_TERRAIN
+	)
+	
+	tile_map_layer.set_cells_terrain_connect(
+		wall_cells,
+		TERRAIN_SET,
+		WALL_TERRAIN
+	)

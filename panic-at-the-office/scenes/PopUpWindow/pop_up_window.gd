@@ -15,12 +15,12 @@ enum ConfirmationAction {
 }
 
 var current_action: ConfirmationAction = ConfirmationAction.NONE
-	
-	
+
+
 func close_window() -> void:
 	visible = false
 	get_tree().paused = false
-	
+
 
 func _on_ok_pressed() -> void:
 	match current_action:
@@ -33,7 +33,7 @@ func _on_ok_pressed() -> void:
 			
 		ConfirmationAction.QUIT:
 			get_tree().quit()
-
+	
 		ConfirmationAction.NONE:
 			return
 			
