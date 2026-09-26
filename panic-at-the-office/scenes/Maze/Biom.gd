@@ -15,6 +15,7 @@ const EXIT_TERRAIN := 2
 
 var maze := []
 var exit_cell: Vector2i
+var spawn_cells: Array
 
 func _ready() -> void:
 	generate_maze()
@@ -31,6 +32,7 @@ func generate_maze():
 	#print(maze)
 	create_exit()
 	draw_maze()
+	spawn_monsters()
 
 
 func reset_maze():
@@ -100,7 +102,6 @@ func create_exit():
 	exit_cell = possible_exits.pick_random()
 
 
-
 func draw_maze():
 	tile_map_layer.clear()
 	
@@ -137,6 +138,28 @@ func draw_maze():
 		EXIT_TERRAIN
 	)
 	
-	var monster: WireMonster = monster_scene.instantiate()
-	get_parent().add_child.call_deferred(monster)
-	monster.global_position = tile_map_layer.tile_set.tile_size * exit_cells[0]
+	for cell in floor_cells:
+		if cell.x > 5 or cell.y > 5:
+			spawn_cells.append([cell, randf()])
+
+
+func spawn_monsters():
+	var monster_proportional_amount: float
+	var monster_amount: int
+	var tile_size: Vector2 = tile_map_layer.tile_set.tile_size
+	
+	match Globals.difficulty:
+		Globals.difficulty_enum.EASY:
+			monster_proportional_amount = 0.07
+		Globals.difficulty_enum.NORMAL:
+			monster_proportional_amount = 0.1
+		Globals.difficulty_enum.HARD:
+			monster_proportional_amount = 0.13
+	monster_amount = ceil(monster_proportional_amount * spawn_cells.size())
+	
+	spawn_cells.sort_custom(func (a, b): return a[1] < b[1])
+	spawn_cells = spawn_cells.slice(0, monster_amount)
+	for cell in spawn_cells:
+		var monster: WireMonster = monster_scene.instantiate()
+		get_parent().add_child.call_deferred(monster)
+		monster.global_position = tile_size * (cell[0] as Vector2) + tile_size * 0.5

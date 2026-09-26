@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 
 @export var speed: float = 200.0
@@ -57,7 +58,7 @@ func apply_vignette():
 		Globals.vignette.set_shader_parameter("strength", clampf(1.0 - global_position.distance_to(monster.global_position) / 200, 0.0, 1.0))
 		Globals.vignette.set_shader_parameter("radius", clampf(global_position.distance_to(monster.global_position) / 200, 0.0, 1.0))
 		
-		if global_position.distance_to(monster.global_position) < 40:
+		if global_position.distance_to(monster.global_position) < 20:
 			foxy.visible = true
 			foxy.play("Foxy")
 			foxy_sound.play(0.26)
