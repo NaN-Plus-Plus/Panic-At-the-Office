@@ -15,11 +15,11 @@ var is_chasing: bool = false
 func _ready() -> void:
 	match Globals.difficulty:
 		Globals.difficulty_enum.EASY:
-			speed = 80.0
-		Globals.difficulty_enum.NORMAL:
 			speed = 100.0
-		Globals.difficulty_enum.HARD:
+		Globals.difficulty_enum.NORMAL:
 			speed = 120.0
+		Globals.difficulty_enum.HARD:
+			speed = 140.0
 
 
 func _physics_process(_delta: float) -> void:

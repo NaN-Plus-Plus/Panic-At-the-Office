@@ -190,7 +190,6 @@ foxy_sound = NodePath("FoxyJumpscare/AudioStreamPlayer")
 sprite = NodePath("Sprite2D")
 
 [node name="MonsterArea" type="Area2D" parent="." unique_id=638366843]
-position = Vector2(0, 15)
 collision_layer = 0
 collision_mask = 2
 
@@ -198,12 +197,12 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_1rxyu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328361254]
-position = Vector2(0, 24)
+visibility_layer = 3
 shape = SubResource("RectangleShape2D_udni0")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1062908763]
 texture_filter = 1
-position = Vector2(0, 14)
+position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_haubp")
 animation = &"walk_f"
 

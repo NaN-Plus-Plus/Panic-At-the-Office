@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cmhhws23u543d" path="res://characters/Wire Monster/wire_monster.gd" id="1_imf1u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_imf1u"]
+radius = 7.0
 
 [node name="WireMonster" type="CharacterBody2D" unique_id=1574792864 node_paths=PackedStringArray("nav_agent")]
 collision_layer = 2
@@ -16,8 +17,8 @@ rotation = 1.5707964
 shape = SubResource("CircleShape2D_imf1u")
 
 [node name="WireMonster" type="Sprite2D" parent="." unique_id=999277585]
-position = Vector2(0, -46)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -27.000002)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_gw2qr")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=774385371]
