@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4bgh77ofnm8m"]
 
 [ext_resource type="Script" uid="uid://dviv34nneo6x8" path="res://characters/MC/mc.gd" id="1_imnk3"]
-[ext_resource type="Texture2D" uid="uid://d4m5ckqte7wj5" path="res://assets/YuriPlaceHolder.png" id="2_lve1s"]
+[ext_resource type="Texture2D" uid="uid://rx40jts4ojtf" path="res://assets/Characters/mc.png" id="2_fccbu"]
 [ext_resource type="Script" uid="uid://drb857tfbrbw" path="res://characters/MC/camera_2d.gd" id="3_m0y0c"]
 [ext_resource type="Texture2D" uid="uid://vfpdxj0ufgkb" path="res://assets/foxy-jump.png" id="4_haubp"]
 [ext_resource type="AudioStream" uid="uid://cl7u7pkpsukau" path="res://audio/sfx/fnaf-2-death-scream.mp3" id="5_fccbu"]
@@ -9,8 +9,71 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1rxyu"]
 radius = 200.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cc2ja"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_udni0"]
+size = Vector2(12, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hu3u"]
+atlas = ExtResource("2_fccbu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igg3m"]
+atlas = ExtResource("2_fccbu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an3fl"]
+atlas = ExtResource("2_fccbu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_220qg"]
+atlas = ExtResource("2_fccbu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t850v"]
+atlas = ExtResource("2_fccbu")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_haubp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hu3u")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igg3m")
+}],
+"loop": 1,
+"name": &"walk_b",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_an3fl")
+}],
+"loop": 1,
+"name": &"walk_f",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_220qg")
+}],
+"loop": 1,
+"name": &"walk_l",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t850v")
+}],
+"loop": 1,
+"name": &"walk_r",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_haubp"]
 atlas = ExtResource("4_haubp")
@@ -118,14 +181,16 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="Mc" type="CharacterBody2D" unique_id=978937542 node_paths=PackedStringArray("monster_area", "foxy", "foxy_sound")]
+[node name="Mc" type="CharacterBody2D" unique_id=978937542 node_paths=PackedStringArray("monster_area", "foxy", "foxy_sound", "sprite")]
 motion_mode = 1
 script = ExtResource("1_imnk3")
 monster_area = NodePath("MonsterArea")
 foxy = NodePath("FoxyJumpscare")
 foxy_sound = NodePath("FoxyJumpscare/AudioStreamPlayer")
+sprite = NodePath("Sprite2D")
 
 [node name="MonsterArea" type="Area2D" parent="." unique_id=638366843]
+position = Vector2(0, 15)
 collision_layer = 0
 collision_mask = 2
 
@@ -133,17 +198,17 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_1rxyu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328361254]
-position = Vector2(0.5, 0)
-shape = SubResource("CircleShape2D_cc2ja")
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_udni0")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1688845578]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1062908763]
 texture_filter = 1
-position = Vector2(0, -34)
-texture = ExtResource("2_lve1s")
+position = Vector2(0, 14)
+sprite_frames = SubResource("SpriteFrames_haubp")
+animation = &"walk_f"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1391218887]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
+zoom = Vector2(3, 3)
 script = ExtResource("3_m0y0c")
 
 [node name="FoxyJumpscare" type="AnimatedSprite2D" parent="." unique_id=1075076377]

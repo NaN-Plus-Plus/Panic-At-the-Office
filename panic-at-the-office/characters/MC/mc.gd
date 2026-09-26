@@ -1,13 +1,13 @@
+class_name Player
 extends CharacterBody2D
-
 
 @export var speed: float = 200.0
 @export var monster_area: Area2D
 @export var foxy: AnimatedSprite2D
 @export var foxy_sound: AudioStreamPlayer
+@export var sprite: AnimatedSprite2D
 
 var monster: WireMonster
-
 
 func _ready():
 	var camera := get_node_or_null("Camera2D") as Camera2D
@@ -21,10 +21,8 @@ func _ready():
 	
 	foxy.animation_finished.connect(foxy_crash)
 
-
 func _process(_delta):
 	apply_vignette()
-
 
 func _physics_process(_delta):
 	var direction := Input.get_vector(
@@ -37,19 +35,37 @@ func _physics_process(_delta):
 	velocity = direction * speed
 	
 	move_and_slide()
+	
+	update_animation(direction)
 
+func update_animation(direction: Vector2):
+	if direction == Vector2.ZERO:
+		sprite.play("idle")
+		return
+	
+	if abs(direction.x) > abs(direction.y):
+		if direction.x > 0:
+			sprite.play("walk_r")
+		else:
+			sprite.play("walk_l")
+	else:
+		if direction.y > 0:
+			sprite.play("walk_f")
+		else:
+			sprite.play("walk_b")
 
 func monster_detected(body: Node2D):
 	if body is WireMonster and !monster:
 		monster = body
 
-
 func monster_left(body: Node2D):
 	if body == monster:
 		monster = null
 
-
 func apply_vignette():
+	if not Globals.vignette:
+		return
+
 	if monster:
 		Globals.vignette.set_shader_parameter("strength", clampf(1.0 - global_position.distance_to(monster.global_position) / 200, 0.0, 1.0))
 		Globals.vignette.set_shader_parameter("radius", clampf(global_position.distance_to(monster.global_position) / 200, 0.0, 1.0))
@@ -63,7 +79,6 @@ func apply_vignette():
 	else:
 		Globals.vignette.set_shader_parameter("strength", 0)
 		Globals.vignette.set_shader_parameter("radius", 1)
-
 
 func foxy_crash():
 	get_tree().quit()

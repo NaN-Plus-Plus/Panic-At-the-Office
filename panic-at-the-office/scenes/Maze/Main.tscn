@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b4bgh77ofnm8m" path="res://characters/MC/MC.tscn" id="2_gsqt7"]
 [ext_resource type="PackedScene" uid="uid://2mrx4ulwqgfi" path="res://characters/Wire Monster/wire_monster.tscn" id="3_6ay71"]
 [ext_resource type="Shader" uid="uid://bthichoji131i" path="res://shaders/scary_shader.gdshader" id="4_0bjed"]
+[ext_resource type="Shader" uid="uid://c086iyqf7ufbp" path="res://shaders/crt.gdshader" id="6_maeye"]
 [ext_resource type="AudioStream" uid="uid://ct7svhod48dgb" path="res://audio/Music/backrooms level0 ambience for 1030 mins.mp3" id="6_milb3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mgnkh"]
@@ -12,6 +13,15 @@ shader = ExtResource("4_0bjed")
 shader_parameter/strength = 0.0
 shader_parameter/radius = 1.0
 shader_parameter/softness = 0.35
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+shader = ExtResource("6_maeye")
+shader_parameter/curvature = true
+shader_parameter/mask = true
+shader_parameter/scan_line = true
+shader_parameter/transparency = false
+shader_parameter/mode2 = false
+shader_parameter/trim_color = Vector4(1, 1, 1, 1)
 
 [node name="Main" type="Node2D" unique_id=786101504 node_paths=PackedStringArray("VignetteRect")]
 script = ExtResource("1_mgnkh")
@@ -26,9 +36,19 @@ position = Vector2(186, 158)
 position = Vector2(292, 183)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=735453278]
+layer = 10
 
 [node name="VignetteRect" type="ColorRect" parent="CanvasLayer" unique_id=636802589]
 material = SubResource("ShaderMaterial_mgnkh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CRT" type="ColorRect" parent="CanvasLayer" unique_id=996962646]
+material = SubResource("ShaderMaterial_g4v7s")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
