@@ -6,6 +6,7 @@ class_name Biom
 
 @onready var ROWS := Globals.rows
 @onready var COLS := Globals.cols
+@onready var monster_scene: PackedScene = preload("uid://2mrx4ulwqgfi")
 
 const TERRAIN_SET := 0
 const WALL_TERRAIN := 0
@@ -135,3 +136,7 @@ func draw_maze():
 		TERRAIN_SET,
 		EXIT_TERRAIN
 	)
+	
+	var monster: WireMonster = monster_scene.instantiate()
+	get_parent().add_child.call_deferred(monster)
+	monster.global_position = tile_map_layer.tile_set.tile_size * exit_cells[0]

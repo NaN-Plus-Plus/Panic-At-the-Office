@@ -50,11 +50,14 @@ func monster_left(body: Node2D):
 
 
 func apply_vignette():
+	if !Globals.vignette:
+		return
+	
 	if monster:
 		Globals.vignette.set_shader_parameter("strength", clampf(1.0 - global_position.distance_to(monster.global_position) / 200, 0.0, 1.0))
 		Globals.vignette.set_shader_parameter("radius", clampf(global_position.distance_to(monster.global_position) / 200, 0.0, 1.0))
 		
-		if global_position.distance_to(monster.global_position) < 5:
+		if global_position.distance_to(monster.global_position) < 40:
 			foxy.visible = true
 			foxy.play("Foxy")
 			foxy_sound.play(0.26)
