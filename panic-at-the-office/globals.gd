@@ -1,7 +1,6 @@
 extends Node
 
-
-var player: CharacterBody2D
+var player: Player
 var vignette: ShaderMaterial
 var difficulty: difficulty_enum
 var rows := 25

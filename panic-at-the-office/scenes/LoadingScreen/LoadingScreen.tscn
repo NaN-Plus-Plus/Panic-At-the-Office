@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://6ikiextjdp7o" path="res://assets/PlaceHolder1.jpg" id="2_p7k2i"]
 
 [node name="LoadingScreen" type="CanvasLayer" unique_id=196562957]
+layer = 20
 script = ExtResource("1_qwdnn")
 
 [node name="root" type="Control" parent="." unique_id=1166377988]

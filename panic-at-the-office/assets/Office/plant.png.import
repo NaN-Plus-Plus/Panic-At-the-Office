@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4m5ckqte7wj5"
-path="res://.godot/imported/YuriPlaceHolder.png-ff34da0ecb19781e886e53ed4ff8a3f3.ctex"
+uid="uid://bm4kwx1rj0rav"
+path="res://.godot/imported/plant.png-ba952c7f5f710a24da1ee403b250af11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/YuriPlaceHolder.png"
-dest_files=["res://.godot/imported/YuriPlaceHolder.png-ff34da0ecb19781e886e53ed4ff8a3f3.ctex"]
+source_file="res://assets/Office/plant.png"
+dest_files=["res://.godot/imported/plant.png-ba952c7f5f710a24da1ee403b250af11.ctex"]
 
 [params]
 
