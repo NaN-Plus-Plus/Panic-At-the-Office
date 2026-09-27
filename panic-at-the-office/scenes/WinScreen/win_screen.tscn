@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c2u608dnc50ry"]
+
+[ext_resource type="Script" uid="uid://dmqepli52xm5r" path="res://scenes/WinScreen/win_screen.gd" id="1_8st62"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
+bg_color = Color(0.45, 0.45, 0.45, 1)
+
+[node name="Win" type="Control" unique_id=342179851 node_paths=PackedStringArray("confetti_parent")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8st62")
+confetti_parent = NodePath("Confetti")
+confetti_folder = "res://assets/UI/Confetti"
+
+[node name="Panel" type="Panel" parent="." unique_id=1551041108]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="Label" type="Label" parent="." unique_id=1289196525]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -49.5
+offset_right = 169.0
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+text = "YOU WIN!"
+
+[node name="Confetti" type="Node2D" parent="." unique_id=217260146]

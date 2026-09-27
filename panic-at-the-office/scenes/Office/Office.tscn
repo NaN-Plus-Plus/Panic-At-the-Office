@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bu1n7v06d165j" path="res://scenes/Office/Plant.tscn" id="5_qlvbf"]
 [ext_resource type="Texture2D" uid="uid://d0wm5r7uftrfu" path="res://assets/Office/office_cubicles.png" id="5_sh7h7"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_by3cp"]
 size = Vector2(208, 48)
 

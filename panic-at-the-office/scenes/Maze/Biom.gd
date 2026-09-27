@@ -28,6 +28,7 @@ var deco_textures: Array[Texture2D] = []
 var occupied_cells: Dictionary = {}
 
 func _ready() -> void:
+	Globals.biom = self
 	generate_maze()
 
 func generate_maze():
@@ -185,25 +186,17 @@ func get_available_floor_cells() -> Array[Vector2i]:
 	cells.shuffle()
 	return cells
 
-
 func random_offset_in_tile(tile_size: Vector2) -> Vector2:
 	var margin := 0.15
 	var rx := randf_range(-0.5 + margin, 0.5 - margin)
 	var ry := randf_range(-0.5 + margin, 0.5 - margin)
 	return Vector2(rx * tile_size.x, ry * tile_size.y)
 
-
 func load_object_scenes():
 	object_scenes.clear()
 	
-	if objects_folder.is_empty():
-		return
-	
 	var dir := DirAccess.open(objects_folder)
-	if dir == null:
-		push_warning("Could not open objects folder: " + objects_folder)
-		return
-	
+
 	dir.list_dir_begin()
 	var file_name := dir.get_next()
 	while file_name != "":
@@ -214,7 +207,6 @@ func load_object_scenes():
 				object_scenes.append(scene)
 		file_name = dir.get_next()
 	dir.list_dir_end()
-
 
 func spawn_objects():
 
@@ -237,12 +229,8 @@ func spawn_objects():
 		if obj is Node2D:
 			obj.rotation = randf_range(0.0, TAU)
 
-
 func load_deco_textures():
 	deco_textures.clear()
-	
-	if deco_folder.is_empty():
-		return
 	
 	var dir := DirAccess.open(deco_folder)
 	
@@ -256,7 +244,6 @@ func load_deco_textures():
 				deco_textures.append(tex)
 		file_name = dir.get_next()
 	dir.list_dir_end()
-
 
 func spawn_deco():
 	load_deco_textures()
