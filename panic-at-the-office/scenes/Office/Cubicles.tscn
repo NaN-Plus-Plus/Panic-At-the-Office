@@ -3,15 +3,11 @@
 [ext_resource type="Script" uid="uid://bjryef2r2houp" path="res://scenes/Office/Cubicles.gd" id="1_4rodh"]
 [ext_resource type="Texture2D" uid="uid://d0wm5r7uftrfu" path="res://assets/Office/office_cubicles.png" id="1_puj0d"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rxyu"]
-size = Vector2(3, 48)
-
 [node name="Cubicles" type="StaticBody2D" unique_id=1072570857]
 script = ExtResource("1_4rodh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=976820381]
-position = Vector2(1.5, 0)
-shape = SubResource("RectangleShape2D_1rxyu")
+position = Vector2(22, 0)
 
 [node name="CubicleSprites" type="Node2D" parent="." unique_id=973676266]
 

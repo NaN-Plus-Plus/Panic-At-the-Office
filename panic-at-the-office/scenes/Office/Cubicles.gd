@@ -24,6 +24,9 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		return
 	
+	if collision_shape.shape:
+		return
+	
 	collision_shape.shape = RectangleShape2D.new()
 	collision_shape.shape.size.x = CUBICLE_WIDTH + 3
 	collision_shape.shape.size.y = 48
@@ -32,6 +35,9 @@ func _ready() -> void:
 
 func set_cubicle_amount(value) -> void:
 	if not Engine.is_editor_hint():
+		return
+	
+	if not collision_shape:
 		return
 	
 	collision_shape.shape.size.x = CUBICLE_WIDTH * value + 3
