@@ -2,13 +2,17 @@ extends CharacterBody2D
 class_name Player
 
 @export var speed: float = 200.0
-@export var push_force: float = 2.0
+@export var push_force: float = 80.0
+
 @export var monster_area: Area2D
 @export var foxy: AnimatedSprite2D
 @export var foxy_sound: AudioStreamPlayer
 @export var sprite: AnimatedSprite2D
 
+@export var win_scene_path: String = "res://scenes/WinScreen/win_screen.tscn"
+
 var monster: WireMonster
+var game_won: bool = false
 
 func _ready():
 	var camera := get_node_or_null("Camera2D") as Camera2D
@@ -38,8 +42,8 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 	push_rigid_bodies()
-	
 	update_animation(direction)
+	check_win_condition()
 
 func push_rigid_bodies():
 	for i in get_slide_collision_count():
@@ -47,7 +51,18 @@ func push_rigid_bodies():
 		var collider := collision.get_collider()
 		if collider is RigidBody2D:
 			var push_dir := -collision.get_normal()
-			collider.apply_central_impulse(push_dir * push_force)
+			if collider.linear_velocity.length() < 60.0:
+				collider.apply_central_impulse(push_dir * push_force * get_physics_process_delta_time())
+
+func check_win_condition():
+	if game_won or not Globals.biom:
+		return
+	
+	var player_cell = Globals.biom.tile_map_layer.local_to_map(Globals.biom.tile_map_layer.to_local(global_position))
+	
+	if player_cell == Globals.biom.exit_cell:
+		game_won = true
+		get_tree().change_scene_to_file(win_scene_path)
 
 func update_animation(direction: Vector2):
 	if direction == Vector2.ZERO:
