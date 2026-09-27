@@ -6,6 +6,8 @@ extends Control
 @export var fall_speed_min: float = 100.0
 @export var fall_speed_max: float = 300.0
 
+@export var main_scene_path: String = "res://scenes/Menus/MainMenu.tscn"
+
 var confetti_textures: Array[Texture2D] = []
 var confetti_sprites: Array[Sprite2D] = []
 var confetti_speeds: Array[float] = []
@@ -57,3 +59,6 @@ func spawn_confetti():
 		
 		confetti_sprites.append(sprite)
 		confetti_speeds.append(randf_range(fall_speed_min, fall_speed_max))
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file(main_scene_path)
