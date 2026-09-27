@@ -113,12 +113,11 @@ scale_amount_min = 0.25
 scale_amount_max = 0.5
 
 [node name="Office" type="Sprite2D" parent="." unique_id=395086642]
-y_sort_enabled = true
 texture = ExtResource("3_u582o")
 metadata/_edit_lock_ = true
 
 [node name="Cubicles" type="StaticBody2D" parent="Office" unique_id=1072570857]
-z_index = 5
+y_sort_enabled = true
 position = Vector2(-149, -105)
 script = ExtResource("4_by3cp")
 cubicle_amount = 5
@@ -130,39 +129,38 @@ shape = SubResource("RectangleShape2D_by3cp")
 
 [node name="CubicleSprites" type="Node2D" parent="Office/Cubicles" unique_id=973676266]
 
-[node name="CubicleSprite0" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=318090119]
+[node name="CubicleSprite0" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=48260880]
 position = Vector2(20.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+
+[node name="CubicleSprite1" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=1086947620]
+position = Vector2(61.5, -5)
 texture = ExtResource("5_sh7h7")
 hframes = 4
 vframes = 2
 frame = 2
 
-[node name="CubicleSprite1" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=237601134]
-position = Vector2(61.5, -5)
-texture = ExtResource("5_sh7h7")
-hframes = 4
-vframes = 2
-frame = 1
-
-[node name="CubicleSprite2" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=288491580]
+[node name="CubicleSprite2" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=1487835765]
 position = Vector2(102.5, -5)
 texture = ExtResource("5_sh7h7")
 hframes = 4
 vframes = 2
+frame = 2
 
-[node name="CubicleSprite3" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=280061962]
+[node name="CubicleSprite3" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=740093492]
 position = Vector2(143.5, -5)
 texture = ExtResource("5_sh7h7")
 hframes = 4
 vframes = 2
 frame = 2
 
-[node name="CubicleSprite4" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=1690783536]
+[node name="CubicleSprite4" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=861854321]
 position = Vector2(184.5, -5)
 texture = ExtResource("5_sh7h7")
 hframes = 4
 vframes = 2
-frame = 1
 
 [node name="CubicleEndWallSprite" type="Sprite2D" parent="Office/Cubicles" unique_id=1974516917]
 position = Vector2(225.5, -5)
@@ -173,43 +171,43 @@ frame = 3
 
 [node name="PostedNotesSprites" type="Node2D" parent="Office/Cubicles" unique_id=1015079588]
 
-[node name="PostedNotesSprite0" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=795795731]
+[node name="PostedNotesSprite0" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=53200786]
 position = Vector2(20.5, -5)
 texture = ExtResource("5_sh7h7")
 hframes = 4
 vframes = 2
 frame = 4
 
-[node name="PostedNotesSprite1" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=1581765348]
+[node name="PostedNotesSprite1" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=1348536943]
 position = Vector2(61.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 7
+
+[node name="PostedNotesSprite2" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=348144334]
+position = Vector2(102.5, -5)
 texture = ExtResource("5_sh7h7")
 hframes = 4
 vframes = 2
 frame = 6
 
-[node name="PostedNotesSprite2" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=234007801]
-position = Vector2(102.5, -5)
+[node name="PostedNotesSprite3" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=550641414]
+position = Vector2(143.5, -5)
 texture = ExtResource("5_sh7h7")
 hframes = 4
 vframes = 2
 frame = 5
 
-[node name="PostedNotesSprite3" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=207731525]
-position = Vector2(143.5, -5)
-texture = ExtResource("5_sh7h7")
-hframes = 4
-vframes = 2
-frame = 6
-
-[node name="PostedNotesSprite4" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=1606012169]
+[node name="PostedNotesSprite4" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=1026432895]
 position = Vector2(184.5, -5)
 texture = ExtResource("5_sh7h7")
 hframes = 4
 vframes = 2
-frame = 4
+frame = 7
 
 [node name="Cubicles2" type="StaticBody2D" parent="Office" unique_id=1525840244]
-z_index = 5
+y_sort_enabled = true
 position = Vector2(-149, -25)
 script = ExtResource("4_by3cp")
 cubicle_amount = 5
@@ -298,15 +296,13 @@ vframes = 2
 frame = 7
 
 [node name="Plant" parent="Office" unique_id=2080415511 instance=ExtResource("5_qlvbf")]
-z_index = 5
 position = Vector2(135, -34)
 
 [node name="Plant2" parent="Office" unique_id=2022549066 instance=ExtResource("5_qlvbf")]
-z_index = 5
 position = Vector2(-155, 201)
 
 [node name="MC" parent="Office" unique_id=978937542 instance=ExtResource("1_8w6ou")]
-z_index = 5
+y_sort_enabled = true
 position = Vector2(-91, 156)
 
 [node name="Collisions" type="StaticBody2D" parent="." unique_id=1803488803]
