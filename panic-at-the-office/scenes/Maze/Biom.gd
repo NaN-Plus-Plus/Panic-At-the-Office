@@ -1,8 +1,15 @@
 extends Node2D
 class_name Biom
 
-
 @export var tile_map_layer: TileMapLayer
+
+@export var object_parent: Node
+@export_dir var objects_folder: String
+@export var object_count: int = 100
+
+@export var deco_parent: Node
+@export_dir var deco_folder: String
+@export var deco_count: int = 200
 
 @onready var ROWS := Globals.rows
 @onready var COLS := Globals.cols
@@ -16,10 +23,12 @@ const EXIT_TERRAIN := 2
 var maze := []
 var exit_cell: Vector2i
 var spawn_cells: Array
+var object_scenes: Array[PackedScene] = []
+var deco_textures: Array[Texture2D] = []
+var occupied_cells: Dictionary = {}
 
 func _ready() -> void:
 	generate_maze()
-
 
 func generate_maze():
 	reset_maze()
@@ -33,7 +42,8 @@ func generate_maze():
 	create_exit()
 	draw_maze()
 	spawn_monsters()
-
+	spawn_objects()
+	spawn_deco()
 
 func reset_maze():
 	maze = []
@@ -44,7 +54,6 @@ func reset_maze():
 			row.append(1)
 		maze.append(row)
 		#print(maze)
-
 
 func carve_path(start_row, start_col):
 	var stack = [Vector2i(start_row, start_col)]
@@ -163,3 +172,108 @@ func spawn_monsters():
 		var monster: WireMonster = monster_scene.instantiate()
 		get_parent().add_child.call_deferred(monster)
 		monster.global_position = tile_size * (cell[0] as Vector2) + tile_size * 0.5
+		occupied_cells[cell[0]] = true
+
+
+func get_available_floor_cells() -> Array[Vector2i]:
+	var cells: Array[Vector2i] = []
+	for r in range(ROWS):
+		for c in range(COLS):
+			var cell := Vector2i(c, r)
+			if maze[r][c] == 0 and cell != exit_cell and not occupied_cells.has(cell):
+				cells.append(cell)
+	cells.shuffle()
+	return cells
+
+
+func random_offset_in_tile(tile_size: Vector2) -> Vector2:
+	var margin := 0.15
+	var rx := randf_range(-0.5 + margin, 0.5 - margin)
+	var ry := randf_range(-0.5 + margin, 0.5 - margin)
+	return Vector2(rx * tile_size.x, ry * tile_size.y)
+
+
+func load_object_scenes():
+	object_scenes.clear()
+	
+	if objects_folder.is_empty():
+		return
+	
+	var dir := DirAccess.open(objects_folder)
+	if dir == null:
+		push_warning("Could not open objects folder: " + objects_folder)
+		return
+	
+	dir.list_dir_begin()
+	var file_name := dir.get_next()
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.ends_with(".tscn"):
+			var path := objects_folder.path_join(file_name)
+			var scene: PackedScene = load(path)
+			if scene:
+				object_scenes.append(scene)
+		file_name = dir.get_next()
+	dir.list_dir_end()
+
+
+func spawn_objects():
+
+	load_object_scenes()
+	
+	var tile_size: Vector2 = tile_map_layer.tile_set.tile_size
+	var available_cells := get_available_floor_cells()
+	var amount = min(object_count, available_cells.size())
+	
+	for i in range(amount):
+		var cell = available_cells[i]
+		occupied_cells[cell] = true
+		
+		var scene: PackedScene = object_scenes.pick_random()
+		var obj = scene.instantiate()
+		object_parent.add_child.call_deferred(obj)
+		
+		var base_pos = tile_size * (Vector2(cell)) + tile_size * 0.5
+		obj.global_position = base_pos + random_offset_in_tile(tile_size)
+		if obj is Node2D:
+			obj.rotation = randf_range(0.0, TAU)
+
+
+func load_deco_textures():
+	deco_textures.clear()
+	
+	if deco_folder.is_empty():
+		return
+	
+	var dir := DirAccess.open(deco_folder)
+	
+	dir.list_dir_begin()
+	var file_name := dir.get_next()
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.get_extension().to_lower() == "png":
+			var path := deco_folder.path_join(file_name)
+			var tex: Texture2D = load(path)
+			if tex:
+				deco_textures.append(tex)
+		file_name = dir.get_next()
+	dir.list_dir_end()
+
+
+func spawn_deco():
+	load_deco_textures()
+	
+	var tile_size: Vector2 = tile_map_layer.tile_set.tile_size
+	var available_cells := get_available_floor_cells()
+	var amount = min(deco_count, available_cells.size())
+	
+	for i in range(amount):
+		var cell = available_cells[i]
+		occupied_cells[cell] = true
+		
+		var tex: Texture2D = deco_textures.pick_random()
+		var sprite := Sprite2D.new()
+		sprite.texture = tex
+		deco_parent.add_child.call_deferred(sprite)
+		
+		var base_pos = tile_size * (Vector2(cell)) + tile_size * 0.5
+		sprite.global_position = base_pos + random_offset_in_tile(tile_size)
+		sprite.rotation = randf_range(0.0, TAU)

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://csgnoogxlu6be"]
+
+[ext_resource type="Texture2D" uid="uid://l6i3b20erjrt" path="res://assets/Obj/Paper.png" id="1_1raqt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(11, 10)
+
+[node name="Paper" type="RigidBody2D" unique_id=615656205]
+gravity_scale = 0.0
+linear_damp = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=163118945]
+texture = ExtResource("1_1raqt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1081905388]
+shape = SubResource("RectangleShape2D_yf5fn")

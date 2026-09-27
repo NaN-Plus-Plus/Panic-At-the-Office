@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dwssknr8lypt2"]
+
+[ext_resource type="Texture2D" uid="uid://dedokgr1ybu4j" path="res://assets/Obj/Bin.png" id="1_dj82s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(14, 10)
+
+[node name="Bin" type="RigidBody2D" unique_id=615656205]
+gravity_scale = 0.0
+linear_damp = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=163118945]
+texture = ExtResource("1_dj82s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1135564212]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_g4v7s")
