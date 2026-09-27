@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var speed: float = 200.0
+@export var push_force: float = 2.0
 @export var monster_area: Area2D
 @export var foxy: AnimatedSprite2D
 @export var foxy_sound: AudioStreamPlayer
@@ -36,7 +37,17 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 	
+	push_rigid_bodies()
+	
 	update_animation(direction)
+
+func push_rigid_bodies():
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
+		if collider is RigidBody2D:
+			var push_dir := -collision.get_normal()
+			collider.apply_central_impulse(push_dir * push_force)
 
 func update_animation(direction: Vector2):
 	if direction == Vector2.ZERO:

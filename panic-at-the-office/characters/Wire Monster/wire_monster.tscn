@@ -3,18 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://b5prqakv5yrko" path="res://assets/wire_monster.png" id="1_gw2qr"]
 [ext_resource type="Script" uid="uid://cmhhws23u543d" path="res://characters/Wire Monster/wire_monster.gd" id="1_imf1u"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_imf1u"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imf1u"]
+size = Vector2(22, 15)
 
 [node name="WireMonster" type="CharacterBody2D" unique_id=1574792864 node_paths=PackedStringArray("nav_agent")]
-collision_layer = 2
+collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_imf1u")
 nav_agent = NodePath("NavigationAgent2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=765152719]
+position = Vector2(0.50000006, -11)
 rotation = 1.5707964
-shape = SubResource("CircleShape2D_imf1u")
+shape = SubResource("RectangleShape2D_imf1u")
 
 [node name="WireMonster" type="Sprite2D" parent="." unique_id=999277585]
 position = Vector2(0, -27.000002)
