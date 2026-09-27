@@ -6,9 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://b0sr03gmtaekx" path="res://assets/Office/crioffice_no_cubicles.png" id="3_u582o"]
 [ext_resource type="Script" uid="uid://bjryef2r2houp" path="res://scenes/Office/Cubicles.gd" id="4_by3cp"]
 [ext_resource type="Texture2D" uid="uid://2y3rcfotxc0j" path="res://assets/Office/px.png" id="4_udni0"]
-[ext_resource type="PackedScene" uid="uid://bu1n7v06d165j" path="res://scenes/Office/Plant.tscn" id="5_qlvbf"]
+[ext_resource type="PackedScene" uid="uid://bu1n7v06d165j" path="res://scenes/Obj/plant.tscn" id="5_qlvbf"]
 [ext_resource type="Texture2D" uid="uid://d0wm5r7uftrfu" path="res://assets/Office/office_cubicles.png" id="5_sh7h7"]
-
+[ext_resource type="Texture2D" uid="uid://dcok5esw8pqhr" path="res://assets/UI/Other/border.png" id="9_sh7h7"]
+[ext_resource type="Texture2D" uid="uid://srm4007smydn" path="res://assets/UI/Other/sign.png" id="10_ircco"]
+[ext_resource type="Script" uid="uid://d2uk31dhq0jcx" path="res://scenes/Office/sign.gd" id="11_okr3n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_by3cp"]
 size = Vector2(208, 48)
@@ -23,7 +25,7 @@ size = Vector2(191, 8)
 size = Vector2(305, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
-size = Vector2(8, 426)
+size = Vector2(8, 369)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
 size = Vector2(8, 106)
@@ -35,13 +37,13 @@ size = Vector2(60, 8)
 size = Vector2(8, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7numd"]
-size = Vector2(225, 8)
+size = Vector2(225, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1u0y"]
-size = Vector2(8, 192)
+size = Vector2(8, 186)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5s0fj"]
-size = Vector2(40, 8)
+size = Vector2(40, 65)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33x8s"]
 size = Vector2(68, 5)
@@ -78,6 +80,12 @@ scale_min = 0.25
 scale_max = 0.5
 alpha_curve = SubResource("CurveTexture_u582o")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yf5fn"]
+texture = ExtResource("10_ircco")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+texture = ExtResource("9_sh7h7")
+
 [node name="Office" type="Node2D" unique_id=481606353]
 script = ExtResource("1_u582o")
 
@@ -86,32 +94,6 @@ position = Vector2(21, -6)
 scale = Vector2(8.369792, 5.8593745)
 texture = ExtResource("1_yprdu")
 metadata/_edit_lock_ = true
-
-[node name="NOTES" type="Label" parent="." unique_id=1248882569]
-offset_left = -117.0
-offset_top = -320.0
-offset_right = 85.0
-offset_bottom = -232.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "I’ll fix all the collisions 
-and y-sort some 
-of the assets later dw :P"
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1504061200]
-visible = false
-position = Vector2(193, -23)
-amount = 100
-texture = ExtResource("4_udni0")
-emission_shape = 3
-emission_rect_extents = Vector2(10, 15)
-spread = 180.0
-gravity = Vector2(-30, -10)
-angular_velocity_min = 145.0
-angular_velocity_max = 720.0
-linear_accel_max = 86.51
-tangential_accel_max = 50.0
-scale_amount_min = 0.25
-scale_amount_max = 0.5
 
 [node name="Office" type="Sprite2D" parent="." unique_id=395086642]
 y_sort_enabled = true
@@ -316,7 +298,7 @@ position = Vector2(-91, 156)
 position = Vector2(0, 58)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1922929708]
-position = Vector2(-80.5, 214)
+position = Vector2(-80, 156)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1951861489]
@@ -324,7 +306,7 @@ position = Vector2(-23.5, -204)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions/Walls" unique_id=24507085]
-position = Vector2(-172, 5)
+position = Vector2(-172, -23.5)
 shape = SubResource("RectangleShape2D_57qmd")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1245620096]
@@ -336,27 +318,27 @@ position = Vector2(151, -98)
 shape = SubResource("RectangleShape2D_3gngh")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1441711724]
-position = Vector2(151, -4)
+position = Vector2(151.5, -62)
 shape = SubResource("RectangleShape2D_3gngh")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Collisions/Walls" unique_id=937773572]
-position = Vector2(125, 13)
+position = Vector2(125.5, -45)
 shape = SubResource("RectangleShape2D_fcnqv")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1312316696]
-position = Vector2(16.5, 30)
+position = Vector2(17, 1)
 shape = SubResource("RectangleShape2D_7numd")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1072231730]
-position = Vector2(11, 122)
+position = Vector2(11, 68)
 shape = SubResource("RectangleShape2D_p1u0y")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1411590843]
-position = Vector2(-148, 30)
+position = Vector2(-148, 1.5)
 shape = SubResource("RectangleShape2D_5s0fj")
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Collisions/Walls" unique_id=103867295]
-position = Vector2(87, 23.5)
+position = Vector2(87.5, -34.5)
 shape = SubResource("RectangleShape2D_33x8s")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Collisions" unique_id=1487864991]
@@ -372,3 +354,27 @@ position = Vector2(184, -23)
 amount = 100
 texture = ExtResource("4_udni0")
 process_material = SubResource("ParticleProcessMaterial_gmykp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1039870703]
+
+[node name="Sign" type="Panel" parent="CanvasLayer" unique_id=312320154]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 241.0
+offset_top = -21.0
+offset_right = -1583.0
+offset_bottom = -1037.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+theme_override_styles/panel = SubResource("StyleBoxTexture_yf5fn")
+script = ExtResource("11_okr3n")
+
+[node name="Border" type="Panel" parent="CanvasLayer" unique_id=963281657]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
