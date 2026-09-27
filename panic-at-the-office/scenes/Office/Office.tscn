@@ -3,48 +3,79 @@
 [ext_resource type="PackedScene" uid="uid://b4bgh77ofnm8m" path="res://characters/MC/MC.tscn" id="1_8w6ou"]
 [ext_resource type="Script" uid="uid://clxvnfvvjwg6d" path="res://scenes/Office/office.gd" id="1_u582o"]
 [ext_resource type="Texture2D" uid="uid://dtc4u36esgw0c" path="res://assets/Office/bg.png" id="1_yprdu"]
-[ext_resource type="Texture2D" uid="uid://bdybptgbhx27d" path="res://assets/Office/crioffice.png" id="2_udni0"]
+[ext_resource type="Texture2D" uid="uid://b0sr03gmtaekx" path="res://assets/Office/crioffice_no_cubicles.png" id="3_u582o"]
+[ext_resource type="Script" uid="uid://bjryef2r2houp" path="res://scenes/Office/Cubicles.gd" id="4_by3cp"]
 [ext_resource type="Texture2D" uid="uid://2y3rcfotxc0j" path="res://assets/Office/px.png" id="4_udni0"]
 [ext_resource type="PackedScene" uid="uid://bu1n7v06d165j" path="res://scenes/Office/Plant.tscn" id="5_qlvbf"]
+[ext_resource type="Texture2D" uid="uid://d0wm5r7uftrfu" path="res://assets/Office/office_cubicles.png" id="5_sh7h7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ircco"]
+size = Vector2(208, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okr3n"]
+size = Vector2(208, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(193, 9)
+size = Vector2(191, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
-size = Vector2(303.5, 77)
+size = Vector2(305, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
-size = Vector2(9, 428)
+size = Vector2(8, 426)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
-size = Vector2(9, 173)
+size = Vector2(8, 106)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gngh"]
-size = Vector2(60.5, 9)
+size = Vector2(60, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
-size = Vector2(9, 43)
+size = Vector2(8, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7numd"]
-size = Vector2(226, 66)
+size = Vector2(225, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1u0y"]
-size = Vector2(9, 132)
+size = Vector2(8, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5s0fj"]
-size = Vector2(41, 67)
+size = Vector2(40, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33x8s"]
-size = Vector2(70, 6)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgxnn"]
-size = Vector2(249, 62)
+size = Vector2(68, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11l65"]
 size = Vector2(18, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dgpn"]
 size = Vector2(63, 19)
+
+[sub_resource type="Curve" id="Curve_gmykp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="CurveTexture" id="CurveTexture_u582o"]
+curve = SubResource("Curve_gmykp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gmykp"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 15, 1)
+direction = Vector3(-1, 0, 0)
+spread = 70.0
+initial_velocity_min = 20.0
+initial_velocity_max = 85.0
+angular_velocity_min = 144.99998
+angular_velocity_max = 719.99994
+gravity = Vector3(-10, -30, 0)
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = 49.999996
+scale_min = 0.25
+scale_max = 0.5
+alpha_curve = SubResource("CurveTexture_u582o")
 
 [node name="Office" type="Node2D" unique_id=481606353]
 script = ExtResource("1_u582o")
@@ -53,6 +84,7 @@ script = ExtResource("1_u582o")
 position = Vector2(21, -6)
 scale = Vector2(8.369792, 5.8593745)
 texture = ExtResource("1_yprdu")
+metadata/_edit_lock_ = true
 
 [node name="NOTES" type="Label" parent="." unique_id=1248882569]
 offset_left = -117.0
@@ -64,10 +96,8 @@ text = "I’ll fix all the collisions
 and y-sort some 
 of the assets later dw :P"
 
-[node name="Office" type="Sprite2D" parent="." unique_id=395086642]
-texture = ExtResource("2_udni0")
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1504061200]
+visible = false
 position = Vector2(193, -23)
 amount = 100
 texture = ExtResource("4_udni0")
@@ -82,61 +112,250 @@ tangential_accel_max = 50.0
 scale_amount_min = 0.25
 scale_amount_max = 0.5
 
+[node name="Office" type="Sprite2D" parent="." unique_id=395086642]
+y_sort_enabled = true
+texture = ExtResource("3_u582o")
+metadata/_edit_lock_ = true
+
+[node name="Cubicles" type="StaticBody2D" parent="Office" unique_id=1072570857]
+z_index = 5
+position = Vector2(-149, -105)
+script = ExtResource("4_by3cp")
+cubicle_amount = 5
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Office/Cubicles" unique_id=976820381]
+position = Vector2(104, 0)
+shape = SubResource("RectangleShape2D_ircco")
+
+[node name="CubicleSprites" type="Node2D" parent="Office/Cubicles" unique_id=973676266]
+
+[node name="CubicleSprite0" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=318090119]
+position = Vector2(20.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 2
+
+[node name="CubicleSprite1" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=237601134]
+position = Vector2(61.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 1
+
+[node name="CubicleSprite2" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=288491580]
+position = Vector2(102.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+
+[node name="CubicleSprite3" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=280061962]
+position = Vector2(143.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 2
+
+[node name="CubicleSprite4" type="Sprite2D" parent="Office/Cubicles/CubicleSprites" unique_id=475156305]
+position = Vector2(184.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 1
+
+[node name="CubicleEndWallSprite" type="Sprite2D" parent="Office/Cubicles" unique_id=1974516917]
+position = Vector2(225.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 3
+
+[node name="PostedNotesSprites" type="Node2D" parent="Office/Cubicles" unique_id=1015079588]
+
+[node name="PostedNotesSprite0" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=795795731]
+position = Vector2(20.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 4
+
+[node name="PostedNotesSprite1" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=1581765348]
+position = Vector2(61.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 6
+
+[node name="PostedNotesSprite2" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=234007801]
+position = Vector2(102.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 5
+
+[node name="PostedNotesSprite3" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=207731525]
+position = Vector2(143.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 6
+
+[node name="PostedNotesSprite4" type="Sprite2D" parent="Office/Cubicles/PostedNotesSprites" unique_id=364129395]
+position = Vector2(184.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 4
+
+[node name="Cubicles2" type="StaticBody2D" parent="Office" unique_id=1525840244]
+z_index = 5
+position = Vector2(-149, -25)
+script = ExtResource("4_by3cp")
+cubicle_amount = 5
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Office/Cubicles2" unique_id=1897148936]
+position = Vector2(104, 0)
+shape = SubResource("RectangleShape2D_okr3n")
+
+[node name="CubicleSprites" type="Node2D" parent="Office/Cubicles2" unique_id=1177855083]
+
+[node name="CubicleSprite0" type="Sprite2D" parent="Office/Cubicles2/CubicleSprites" unique_id=1985046336]
+position = Vector2(20.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+
+[node name="CubicleSprite1" type="Sprite2D" parent="Office/Cubicles2/CubicleSprites" unique_id=1746007272]
+position = Vector2(61.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+
+[node name="CubicleSprite2" type="Sprite2D" parent="Office/Cubicles2/CubicleSprites" unique_id=1443566001]
+position = Vector2(102.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+
+[node name="CubicleSprite3" type="Sprite2D" parent="Office/Cubicles2/CubicleSprites" unique_id=2090338693]
+position = Vector2(143.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 1
+
+[node name="CubicleSprite4" type="Sprite2D" parent="Office/Cubicles2/CubicleSprites" unique_id=761528402]
+position = Vector2(184.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+
+[node name="CubicleEndWallSprite" type="Sprite2D" parent="Office/Cubicles2" unique_id=1025983568]
+position = Vector2(225.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 3
+
+[node name="PostedNotesSprites" type="Node2D" parent="Office/Cubicles2" unique_id=580946513]
+
+[node name="PostedNotesSprite0" type="Sprite2D" parent="Office/Cubicles2/PostedNotesSprites" unique_id=1846801228]
+position = Vector2(20.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 6
+
+[node name="PostedNotesSprite1" type="Sprite2D" parent="Office/Cubicles2/PostedNotesSprites" unique_id=1602615121]
+position = Vector2(61.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 7
+
+[node name="PostedNotesSprite2" type="Sprite2D" parent="Office/Cubicles2/PostedNotesSprites" unique_id=1990350072]
+position = Vector2(102.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 7
+
+[node name="PostedNotesSprite3" type="Sprite2D" parent="Office/Cubicles2/PostedNotesSprites" unique_id=1075257216]
+position = Vector2(143.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 6
+
+[node name="PostedNotesSprite4" type="Sprite2D" parent="Office/Cubicles2/PostedNotesSprites" unique_id=620903580]
+position = Vector2(184.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 4
+vframes = 2
+frame = 4
+
+[node name="Plant" parent="Office" unique_id=2080415511 instance=ExtResource("5_qlvbf")]
+z_index = 5
+position = Vector2(135, -34)
+
+[node name="Plant2" parent="Office" unique_id=2022549066 instance=ExtResource("5_qlvbf")]
+z_index = 5
+position = Vector2(-155, 201)
+
+[node name="MC" parent="Office" unique_id=978937542 instance=ExtResource("1_8w6ou")]
+z_index = 5
+position = Vector2(-91, 156)
+
 [node name="Collisions" type="StaticBody2D" parent="." unique_id=1803488803]
 
 [node name="Walls" type="StaticBody2D" parent="Collisions" unique_id=2107563835]
+position = Vector2(0, 58)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1922929708]
-position = Vector2(-80.5, 214.5)
+position = Vector2(-80.5, 214)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1951861489]
-position = Vector2(-22.75, -171.5)
+position = Vector2(-23.5, -204)
 shape = SubResource("RectangleShape2D_yf5fn")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions/Walls" unique_id=24507085]
-position = Vector2(-172.5, 5)
+position = Vector2(-172, 5)
 shape = SubResource("RectangleShape2D_57qmd")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1245620096]
-position = Vector2(125.5, -122.5)
+position = Vector2(125, -155)
 shape = SubResource("RectangleShape2D_d0u6y")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Collisions/Walls" unique_id=2004323283]
-position = Vector2(152.25, -41)
+position = Vector2(151, -98)
 shape = SubResource("RectangleShape2D_3gngh")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1441711724]
-position = Vector2(152, -3.5)
+position = Vector2(151, -4)
 shape = SubResource("RectangleShape2D_3gngh")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Collisions/Walls" unique_id=937773572]
-position = Vector2(125.5, 13.5)
+position = Vector2(125, 13)
 shape = SubResource("RectangleShape2D_fcnqv")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1312316696]
-position = Vector2(17, 59)
+position = Vector2(16.5, 30)
 shape = SubResource("RectangleShape2D_7numd")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1072231730]
-position = Vector2(11.5, 153)
+position = Vector2(11, 122)
 shape = SubResource("RectangleShape2D_p1u0y")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Collisions/Walls" unique_id=1411590843]
-position = Vector2(-149, 59.5)
+position = Vector2(-148, 30)
 shape = SubResource("RectangleShape2D_5s0fj")
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Collisions/Walls" unique_id=103867295]
-position = Vector2(88, 24)
+position = Vector2(87, 23.5)
 shape = SubResource("RectangleShape2D_33x8s")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions" unique_id=498352393]
-position = Vector2(-24.5, -30)
-shape = SubResource("RectangleShape2D_wgxnn")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions" unique_id=80969086]
-position = Vector2(-24, -110)
-shape = SubResource("RectangleShape2D_wgxnn")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Collisions" unique_id=1487864991]
 position = Vector2(-56, 170)
@@ -146,14 +365,8 @@ shape = SubResource("RectangleShape2D_11l65")
 position = Vector2(-33.5, 148.5)
 shape = SubResource("RectangleShape2D_4dgpn")
 
-[node name="YSort" type="Node2D" parent="." unique_id=248740735]
-y_sort_enabled = true
-
-[node name="MC" parent="YSort" unique_id=978937542 instance=ExtResource("1_8w6ou")]
-y_sort_enabled = true
-position = Vector2(-91, 156)
-
-[node name="Plant" parent="YSort" unique_id=2080415511 instance=ExtResource("5_qlvbf")]
-
-[node name="Plant2" parent="YSort" unique_id=2022549066 instance=ExtResource("5_qlvbf")]
-position = Vector2(288, -234)
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1075256439]
+position = Vector2(184, -23)
+amount = 100
+texture = ExtResource("4_udni0")
+process_material = SubResource("ParticleProcessMaterial_gmykp")

@@ -10,16 +10,16 @@ shader_parameter/speed = 2.999999932944
 shader_parameter/bend_curve = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2j2di"]
-size = Vector2(12, 9)
+size = Vector2(12, 6)
 
 [node name="Plant" type="StaticBody2D" unique_id=2080415511]
 y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=594304524]
 material = SubResource("ShaderMaterial_qlvbf")
-position = Vector2(-153, 186)
+position = Vector2(1, -16.5)
 texture = ExtResource("2_bql05")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1336929004]
-position = Vector2(-154, 200.5)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_2j2di")

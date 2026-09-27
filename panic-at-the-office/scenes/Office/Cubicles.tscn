@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ccjncat4osu0s"]
+
+[ext_resource type="Script" uid="uid://bjryef2r2houp" path="res://scenes/Office/Cubicles.gd" id="1_4rodh"]
+[ext_resource type="Texture2D" uid="uid://d0wm5r7uftrfu" path="res://assets/Office/office_cubicles.png" id="1_puj0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rxyu"]
+size = Vector2(3, 48)
+
+[node name="Cubicles" type="StaticBody2D" unique_id=1072570857]
+script = ExtResource("1_4rodh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=976820381]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_1rxyu")
+
+[node name="CubicleSprites" type="Node2D" parent="." unique_id=973676266]
+
+[node name="CubicleEndWallSprite" type="Sprite2D" parent="." unique_id=1974516917]
+position = Vector2(20.5, -5)
+texture = ExtResource("1_puj0d")
+hframes = 4
+vframes = 2
+frame = 3
+
+[node name="PostedNotesSprites" type="Node2D" parent="." unique_id=1015079588]
