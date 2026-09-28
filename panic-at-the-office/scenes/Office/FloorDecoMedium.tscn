@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://coxmey50ms0hb"]
+
+[ext_resource type="Texture2D" uid="uid://bnl6axrq4gtil" path="res://assets/Office/floor_deco_medium.png" id="1_wetmh"]
+
+[node name="FloorDeckoMedium" type="Sprite2D" unique_id=1940277150]
+texture = ExtResource("1_wetmh")
+hframes = 4

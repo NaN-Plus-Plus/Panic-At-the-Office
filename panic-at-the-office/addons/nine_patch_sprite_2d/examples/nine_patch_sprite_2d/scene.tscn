@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlvpd8crpq04g"]
+[gd_scene format=3 uid="uid://dlvpd8crpq04g"]
 
 [ext_resource type="Script" uid="uid://c2j1qdkvd1cjs" path="res://addons/nine_patch_sprite_2d/nine_patch_sprite_2d.gd" id="1_hdqo7"]
-[ext_resource type="Texture2D" uid="uid://bgqnar2tyivo1" path="res://examples/nine_patch_sprite_2d/panels.svg" id="2_ht6g7"]
+[ext_resource type="Texture2D" uid="uid://bgqnar2tyivo1" path="res://addons/nine_patch_sprite_2d/examples/nine_patch_sprite_2d/panels.svg" id="2_ht6g7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6i4f"]
 content_margin_left = 16.0
@@ -13,6 +13,45 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="Animation" id="Animation_iblvd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stretch:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tile:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TileFit:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_4jmqe"]
 resource_name = "default"
@@ -56,52 +95,13 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_iblvd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Stretch:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Tile:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TileFit:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_efs4g"]
 _data = {
 &"RESET": SubResource("Animation_iblvd"),
 &"default": SubResource("Animation_4jmqe")
 }
 
-[node name="Example" type="Control"]
+[node name="Example" type="Control" unique_id=1870019345]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -111,7 +111,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Box" type="HBoxContainer" parent="."]
+[node name="Box" type="HBoxContainer" parent="." unique_id=1135568964]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 0
 offset_left = -480.0
@@ -122,7 +122,7 @@ theme_override_constants/separation = 96
 alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Stretch" type="Label" parent="Box"]
+[node name="Stretch" type="Label" parent="Box" unique_id=372378908]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -133,7 +133,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Tile" type="Label" parent="Box"]
+[node name="Tile" type="Label" parent="Box" unique_id=1829904662]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -144,7 +144,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="TileFit" type="Label" parent="Box"]
+[node name="TileFit" type="Label" parent="Box" unique_id=41549180]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -155,7 +155,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="Stretch" type="Node2D" parent="."]
+[node name="Stretch" type="Node2D" parent="." unique_id=1211222437]
 texture_filter = 1
 position = Vector2(-352, 60)
 script = ExtResource("1_hdqo7")
@@ -168,7 +168,7 @@ patch_margin_bottom = 32
 hframes = 3
 vframes = 3
 
-[node name="Tile" type="Node2D" parent="."]
+[node name="Tile" type="Node2D" parent="." unique_id=968384437]
 texture_filter = 1
 position = Vector2(0, 60)
 script = ExtResource("1_hdqo7")
@@ -183,7 +183,7 @@ axis_stretch_vertical = 1
 hframes = 3
 vframes = 3
 
-[node name="TileFit" type="Node2D" parent="."]
+[node name="TileFit" type="Node2D" parent="." unique_id=1385398406]
 texture_filter = 1
 position = Vector2(352, 60)
 script = ExtResource("1_hdqo7")
@@ -198,9 +198,7 @@ axis_stretch_vertical = 2
 hframes = 3
 vframes = 3
 
-[node name="Animation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_efs4g")
-}
-autoplay = "default"
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=214367155]
+libraries/ = SubResource("AnimationLibrary_efs4g")
+autoplay = &"default"
 speed_scale = 1.5

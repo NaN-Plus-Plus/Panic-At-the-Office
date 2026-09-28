@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cg8k2rck2hi4t"]
+
+[ext_resource type="Texture2D" uid="uid://clawed3pj434w" path="res://assets/Office/floor_deco_small.png" id="1_77nrg"]
+
+[node name="FloorDecoSmall" type="Sprite2D" unique_id=1966818627]
+texture = ExtResource("1_77nrg")
+hframes = 5
+vframes = 2

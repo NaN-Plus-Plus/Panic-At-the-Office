@@ -1,5 +1,5 @@
 @tool
-@icon("nine_patch_sprite_2d.svg")
+@icon("res://addons/nine_patch_sprite_2d/nine_patch_sprite_2d.svg")
 
 class_name NinePatchSprite2D extends Node2D
 
