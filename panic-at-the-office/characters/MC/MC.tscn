@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b4bgh77ofnm8m"]
 
+[ext_resource type="Shader" uid="uid://bpb3u8bc4wt5d" path="res://shaders/silhouette.gdshader" id="1_cwnv6"]
 [ext_resource type="Script" uid="uid://dviv34nneo6x8" path="res://characters/MC/mc.gd" id="1_imnk3"]
 [ext_resource type="Texture2D" uid="uid://rx40jts4ojtf" path="res://assets/Characters/mc.png" id="2_fccbu"]
 [ext_resource type="Script" uid="uid://drb857tfbrbw" path="res://characters/MC/camera_2d.gd" id="3_m0y0c"]
@@ -74,6 +75,10 @@ animations = [{
 "name": &"walk_r",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tqg67"]
+shader = ExtResource("1_cwnv6")
+shader_parameter/silhouette_color = Color(1, 0.75, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_haubp"]
 atlas = ExtResource("4_haubp")
@@ -181,13 +186,14 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="Mc" type="CharacterBody2D" unique_id=978937542 node_paths=PackedStringArray("monster_area", "foxy", "foxy_sound", "sprite")]
+[node name="Mc" type="CharacterBody2D" unique_id=978937542 node_paths=PackedStringArray("monster_area", "foxy", "foxy_sound", "sprite", "silhouette")]
 motion_mode = 1
 script = ExtResource("1_imnk3")
 monster_area = NodePath("MonsterArea")
 foxy = NodePath("FoxyJumpscare")
 foxy_sound = NodePath("FoxyJumpscare/AudioStreamPlayer")
 sprite = NodePath("Sprite2D")
+silhouette = NodePath("Sprite2D/Silhouette")
 
 [node name="MonsterArea" type="Area2D" parent="." unique_id=638366843]
 collision_layer = 0
@@ -205,7 +211,11 @@ shape = SubResource("RectangleShape2D_udni0")
 texture_filter = 1
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_haubp")
-animation = &"walk_f"
+animation = &"idle"
+
+[node name="Silhouette" type="Sprite2D" parent="Sprite2D" unique_id=940852070]
+z_index = 100
+material = SubResource("ShaderMaterial_tqg67")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1391218887]
 zoom = Vector2(3, 3)
