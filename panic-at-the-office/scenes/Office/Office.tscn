@@ -440,95 +440,95 @@ shape = SubResource("RectangleShape2D_by3cp")
 
 [node name="CubicleSprites" type="Node2D" parent="YSort/Cubicles" unique_id=973676266]
 
-[node name="CubicleSprite0" type="Sprite2D" parent="YSort/Cubicles/CubicleSprites" unique_id=48260880]
+[node name="CubicleSprite0" type="Sprite2D" parent="YSort/Cubicles/CubicleSprites" unique_id=697512690]
 position = Vector2(20.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
 
-[node name="CubicleSprite1" type="Sprite2D" parent="YSort/Cubicles/CubicleSprites" unique_id=1086947620]
+[node name="CubicleSprite1" type="Sprite2D" parent="YSort/Cubicles/CubicleSprites" unique_id=851028548]
 position = Vector2(61.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
-frame = 2
+frame = 1
 
-[node name="CubicleSprite2" type="Sprite2D" parent="YSort/Cubicles/CubicleSprites" unique_id=1487835765]
+[node name="CubicleSprite2" type="Sprite2D" parent="YSort/Cubicles/CubicleSprites" unique_id=652162368]
 position = Vector2(102.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
-frame = 2
+frame = 1
 
-[node name="CubicleSprite3" type="Sprite2D" parent="YSort/Cubicles/CubicleSprites" unique_id=740093492]
+[node name="CubicleSprite3" type="Sprite2D" parent="YSort/Cubicles/CubicleSprites" unique_id=467226106]
 position = Vector2(143.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
+vframes = 2
+
+[node name="CubicleSprite4" type="Sprite2D" parent="YSort/Cubicles/CubicleSprites" unique_id=714913656]
+position = Vector2(184.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 5
 vframes = 2
 frame = 2
 
-[node name="CubicleSprite4" type="Sprite2D" parent="YSort/Cubicles/CubicleSprites" unique_id=861854321]
-position = Vector2(184.5, -5)
-texture = ExtResource("5_sh7h7")
-hframes = 4
-vframes = 2
-
-[node name="CubicleSprite5" type="Sprite2D" parent="YSort/Cubicles/CubicleSprites" unique_id=941274886]
+[node name="CubicleSprite5" type="Sprite2D" parent="YSort/Cubicles/CubicleSprites" unique_id=1430088930]
 position = Vector2(225.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
 
 [node name="CubicleEndWallSprite" type="Sprite2D" parent="YSort/Cubicles" unique_id=1974516917]
 position = Vector2(266.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
 frame = 3
 
 [node name="PostedNotesSprites" type="Node2D" parent="YSort/Cubicles" unique_id=1015079588]
 
-[node name="PostedNotesSprite0" type="Sprite2D" parent="YSort/Cubicles/PostedNotesSprites" unique_id=53200786]
+[node name="PostedNotesSprite0" type="Sprite2D" parent="YSort/Cubicles/PostedNotesSprites" unique_id=1877550331]
 position = Vector2(20.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
-vframes = 2
-frame = 4
-
-[node name="PostedNotesSprite1" type="Sprite2D" parent="YSort/Cubicles/PostedNotesSprites" unique_id=1348536943]
-position = Vector2(61.5, -5)
-texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
 frame = 7
 
-[node name="PostedNotesSprite2" type="Sprite2D" parent="YSort/Cubicles/PostedNotesSprites" unique_id=348144334]
+[node name="PostedNotesSprite1" type="Sprite2D" parent="YSort/Cubicles/PostedNotesSprites" unique_id=306145636]
+position = Vector2(61.5, -5)
+texture = ExtResource("5_sh7h7")
+hframes = 5
+vframes = 2
+frame = 8
+
+[node name="PostedNotesSprite2" type="Sprite2D" parent="YSort/Cubicles/PostedNotesSprites" unique_id=994172576]
 position = Vector2(102.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
-frame = 6
+frame = 7
 
-[node name="PostedNotesSprite3" type="Sprite2D" parent="YSort/Cubicles/PostedNotesSprites" unique_id=550641414]
+[node name="PostedNotesSprite3" type="Sprite2D" parent="YSort/Cubicles/PostedNotesSprites" unique_id=375283243]
 position = Vector2(143.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
 frame = 5
 
-[node name="PostedNotesSprite4" type="Sprite2D" parent="YSort/Cubicles/PostedNotesSprites" unique_id=1026432895]
+[node name="PostedNotesSprite4" type="Sprite2D" parent="YSort/Cubicles/PostedNotesSprites" unique_id=1812593589]
 position = Vector2(184.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
-frame = 7
+frame = 9
 
-[node name="PostedNotesSprite5" type="Sprite2D" parent="YSort/Cubicles/PostedNotesSprites" unique_id=325585441]
+[node name="PostedNotesSprite5" type="Sprite2D" parent="YSort/Cubicles/PostedNotesSprites" unique_id=173818417]
 position = Vector2(225.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
-frame = 6
+frame = 5
 
 [node name="Cubicles2" type="StaticBody2D" parent="YSort" unique_id=1525840244]
 position = Vector2(-152, -58)
@@ -542,95 +542,97 @@ shape = SubResource("RectangleShape2D_sh7h7")
 
 [node name="CubicleSprites" type="Node2D" parent="YSort/Cubicles2" unique_id=1177855083]
 
-[node name="CubicleSprite0" type="Sprite2D" parent="YSort/Cubicles2/CubicleSprites" unique_id=1985046336]
+[node name="CubicleSprite0" type="Sprite2D" parent="YSort/Cubicles2/CubicleSprites" unique_id=1644251309]
 position = Vector2(20.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
+frame = 1
 
-[node name="CubicleSprite1" type="Sprite2D" parent="YSort/Cubicles2/CubicleSprites" unique_id=1746007272]
+[node name="CubicleSprite1" type="Sprite2D" parent="YSort/Cubicles2/CubicleSprites" unique_id=379452056]
 position = Vector2(61.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
 
-[node name="CubicleSprite2" type="Sprite2D" parent="YSort/Cubicles2/CubicleSprites" unique_id=1443566001]
+[node name="CubicleSprite2" type="Sprite2D" parent="YSort/Cubicles2/CubicleSprites" unique_id=465573494]
 position = Vector2(102.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
+frame = 2
 
-[node name="CubicleSprite3" type="Sprite2D" parent="YSort/Cubicles2/CubicleSprites" unique_id=2090338693]
+[node name="CubicleSprite3" type="Sprite2D" parent="YSort/Cubicles2/CubicleSprites" unique_id=196139444]
 position = Vector2(143.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
 frame = 1
 
-[node name="CubicleSprite4" type="Sprite2D" parent="YSort/Cubicles2/CubicleSprites" unique_id=971353637]
+[node name="CubicleSprite4" type="Sprite2D" parent="YSort/Cubicles2/CubicleSprites" unique_id=403306803]
 position = Vector2(184.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
 frame = 1
 
-[node name="CubicleSprite5" type="Sprite2D" parent="YSort/Cubicles2/CubicleSprites" unique_id=1114040085]
+[node name="CubicleSprite5" type="Sprite2D" parent="YSort/Cubicles2/CubicleSprites" unique_id=294784475]
 position = Vector2(225.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
 frame = 1
 
 [node name="CubicleEndWallSprite" type="Sprite2D" parent="YSort/Cubicles2" unique_id=1025983568]
 position = Vector2(266.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
 frame = 3
 
 [node name="PostedNotesSprites" type="Node2D" parent="YSort/Cubicles2" unique_id=580946513]
 
-[node name="PostedNotesSprite0" type="Sprite2D" parent="YSort/Cubicles2/PostedNotesSprites" unique_id=1846801228]
+[node name="PostedNotesSprite0" type="Sprite2D" parent="YSort/Cubicles2/PostedNotesSprites" unique_id=831287401]
 position = Vector2(20.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
-frame = 6
+frame = 8
 
-[node name="PostedNotesSprite1" type="Sprite2D" parent="YSort/Cubicles2/PostedNotesSprites" unique_id=1602615121]
+[node name="PostedNotesSprite1" type="Sprite2D" parent="YSort/Cubicles2/PostedNotesSprites" unique_id=1881929840]
 position = Vector2(61.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
-frame = 7
+frame = 5
 
-[node name="PostedNotesSprite2" type="Sprite2D" parent="YSort/Cubicles2/PostedNotesSprites" unique_id=1990350072]
+[node name="PostedNotesSprite2" type="Sprite2D" parent="YSort/Cubicles2/PostedNotesSprites" unique_id=1253564246]
 position = Vector2(102.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
-frame = 7
+frame = 9
 
-[node name="PostedNotesSprite3" type="Sprite2D" parent="YSort/Cubicles2/PostedNotesSprites" unique_id=1075257216]
+[node name="PostedNotesSprite3" type="Sprite2D" parent="YSort/Cubicles2/PostedNotesSprites" unique_id=1458304054]
 position = Vector2(143.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
-frame = 6
+frame = 9
 
-[node name="PostedNotesSprite4" type="Sprite2D" parent="YSort/Cubicles2/PostedNotesSprites" unique_id=1410071387]
+[node name="PostedNotesSprite4" type="Sprite2D" parent="YSort/Cubicles2/PostedNotesSprites" unique_id=907194362]
 position = Vector2(184.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
 frame = 7
 
-[node name="PostedNotesSprite5" type="Sprite2D" parent="YSort/Cubicles2/PostedNotesSprites" unique_id=488354666]
+[node name="PostedNotesSprite5" type="Sprite2D" parent="YSort/Cubicles2/PostedNotesSprites" unique_id=34243501]
 position = Vector2(225.5, -5)
 texture = ExtResource("5_sh7h7")
-hframes = 4
+hframes = 5
 vframes = 2
-frame = 4
+frame = 9
 
 [node name="Plant" parent="YSort" unique_id=2080415511 instance=ExtResource("5_qlvbf")]
 position = Vector2(132, -67)

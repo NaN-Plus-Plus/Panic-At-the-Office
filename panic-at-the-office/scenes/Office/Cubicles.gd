@@ -57,12 +57,18 @@ func set_cubicle_amount(value) -> void:
 			posted_notes_sprite.name = "PostedNotesSprite" + str(i)
 			cubicle_sprite.texture = cubicles_sprite_sheet
 			posted_notes_sprite.texture = cubicles_sprite_sheet
-			cubicle_sprite.hframes = 4
-			posted_notes_sprite.hframes = 4
+			cubicle_sprite.hframes = 5
+			posted_notes_sprite.hframes = 5
 			cubicle_sprite.vframes = 2
 			posted_notes_sprite.vframes = 2
 			cubicle_sprite.frame_coords = Vector2i(randi_range(0, 2), 0)
-			posted_notes_sprite.frame_coords = Vector2i(randi_range(0, 3), 1)
+			match cubicle_sprite.frame_coords.x:
+				0:
+					posted_notes_sprite.frame_coords = Vector2i(randi_range(0, 4), 1)
+				1:
+					posted_notes_sprite.frame_coords = Vector2i(randi_range(1, 4), 1)
+				2:
+					posted_notes_sprite.frame_coords = Vector2i(4, 1)
 			cubicle_sprite.position = Vector2(CUBICLE_WIDTH * (i + 0.5), -5)
 			posted_notes_sprite.position = Vector2(CUBICLE_WIDTH * (i + 0.5), -5)
 	elif value < cubicle_amount:
