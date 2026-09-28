@@ -18,6 +18,11 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbr7x"]
 size = Vector2(291, 8)
+[ext_resource type="PackedScene" uid="uid://bu1n7v06d165j" path="res://scenes/Obj/plant.tscn" id="5_qlvbf"]
+[ext_resource type="Texture2D" uid="uid://d0wm5r7uftrfu" path="res://assets/Office/office_cubicles.png" id="5_sh7h7"]
+[ext_resource type="Texture2D" uid="uid://dcok5esw8pqhr" path="res://assets/UI/Other/border.png" id="9_sh7h7"]
+[ext_resource type="Texture2D" uid="uid://srm4007smydn" path="res://assets/UI/Other/sign.png" id="10_ircco"]
+[ext_resource type="Script" uid="uid://d2uk31dhq0jcx" path="res://scenes/Office/sign.gd" id="11_okr3n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4bpu"]
 size = Vector2(8, 423)
@@ -30,6 +35,32 @@ size = Vector2(8, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rtk5"]
 size = Vector2(108, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(191, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(305, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(8, 369)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
+size = Vector2(8, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gngh"]
+size = Vector2(60, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
+size = Vector2(8, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7numd"]
+size = Vector2(225, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1u0y"]
+size = Vector2(8, 186)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5s0fj"]
+size = Vector2(40, 65)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yo726"]
 size = Vector2(8, 42)
@@ -83,6 +114,13 @@ alpha_curve = SubResource("CurveTexture_u582o")
 
 [node name="Office" type="Sprite2D" unique_id=1351877308]
 texture = ExtResource("4_sh7h7")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yf5fn"]
+texture = ExtResource("10_ircco")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+texture = ExtResource("9_sh7h7")
+
+[node name="Office" type="Node2D" unique_id=481606353]
 script = ExtResource("1_u582o")
 metadata/_edit_lock_ = true
 
@@ -651,3 +689,27 @@ position = Vector2(181, -56)
 amount = 100
 texture = ExtResource("4_udni0")
 process_material = SubResource("ParticleProcessMaterial_gmykp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1039870703]
+
+[node name="Sign" type="Panel" parent="CanvasLayer" unique_id=312320154]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 241.0
+offset_top = -21.0
+offset_right = -1583.0
+offset_bottom = -1037.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+theme_override_styles/panel = SubResource("StyleBoxTexture_yf5fn")
+script = ExtResource("11_okr3n")
+
+[node name="Border" type="Panel" parent="CanvasLayer" unique_id=963281657]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
