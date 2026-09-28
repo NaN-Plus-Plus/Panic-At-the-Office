@@ -18,6 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://srm4007smydn" path="res://assets/UI/Other/sign.png" id="10_ircco"]
 [ext_resource type="Script" uid="uid://d2uk31dhq0jcx" path="res://scenes/Office/sign.gd" id="11_okr3n"]
 [ext_resource type="Texture2D" uid="uid://cwyd7qune4try" path="res://assets/Office/mc_desk.png" id="14_cbr7x"]
+[ext_resource type="Texture2D" uid="uid://b7bb2hi6bxvvh" path="res://assets/Office/wall_deco_temp_1.png" id="16_stsmr"]
+[ext_resource type="Texture2D" uid="uid://bu28hkerqcc1b" path="res://assets/Office/wall_deco_temp_2.png" id="17_ml6uk"]
+[ext_resource type="Texture2D" uid="uid://dgw7tibc0srcm" path="res://assets/Office/wall_deco_temp_3.png" id="18_dfgk7"]
+[ext_resource type="Texture2D" uid="uid://vy6nnrwuca74" path="res://assets/Office/wall_deco_temp_4.png" id="19_dnde4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbr7x"]
 size = Vector2(291, 8)
@@ -661,6 +665,24 @@ position = Vector2(181, -56)
 amount = 100
 texture = ExtResource("4_udni0")
 process_material = SubResource("ParticleProcessMaterial_gmykp")
+
+[node name="WallDecors" type="Node2D" parent="." unique_id=1440882675]
+
+[node name="WallDecoTemp1" type="Sprite2D" parent="WallDecors" unique_id=1665642788]
+position = Vector2(-34, -207)
+texture = ExtResource("16_stsmr")
+
+[node name="WallDecoTemp2" type="Sprite2D" parent="WallDecors" unique_id=366753399]
+position = Vector2(153, -119)
+texture = ExtResource("17_ml6uk")
+
+[node name="WallDecoTemp3" type="Sprite2D" parent="WallDecors" unique_id=2056754240]
+position = Vector2(-154, 15)
+texture = ExtResource("18_dfgk7")
+
+[node name="WallDecoTemp4" type="Sprite2D" parent="WallDecors" unique_id=434101301]
+position = Vector2(-26, 15)
+texture = ExtResource("19_dnde4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1039870703]
 
