@@ -22,6 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://bu28hkerqcc1b" path="res://assets/Office/wall_deco_temp_2.png" id="17_ml6uk"]
 [ext_resource type="Texture2D" uid="uid://dgw7tibc0srcm" path="res://assets/Office/wall_deco_temp_3.png" id="18_dfgk7"]
 [ext_resource type="Texture2D" uid="uid://vy6nnrwuca74" path="res://assets/Office/wall_deco_temp_4.png" id="19_dnde4"]
+[ext_resource type="Texture2D" uid="uid://da26msomsxvr0" path="res://assets/Office/bookshelfs_temp.png" id="19_ml6uk"]
+[ext_resource type="Texture2D" uid="uid://b2adx52qi7d2n" path="res://assets/Office/copy_machine.png" id="20_dfgk7"]
+[ext_resource type="Texture2D" uid="uid://ctupxd1ah2q87" path="res://assets/Office/trashcan.png" id="21_dnde4"]
+[ext_resource type="Texture2D" uid="uid://sug0nsn06u6e" path="res://assets/Office/shelf.png" id="22_8u4u7"]
+[ext_resource type="Texture2D" uid="uid://hpaj5rxj8qu0" path="res://assets/Office/office_overlay.png" id="23_is2gq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbr7x"]
 size = Vector2(291, 8)
@@ -61,6 +66,15 @@ size = Vector2(249, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh7h7"]
 size = Vector2(249, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rxyu"]
+size = Vector2(70, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnde4"]
+size = Vector2(30, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_is2gq"]
+size = Vector2(68, 6)
 
 [sub_resource type="Curve" id="Curve_gmykp"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -427,10 +441,33 @@ hframes = 4
 frame = 1
 
 [node name="FloorDeckoMedium3" type="Sprite2D" parent="YSort/MediumFloorDecors" unique_id=601988114]
-position = Vector2(-6, 65)
+position = Vector2(-7, 76)
 texture = ExtResource("9_rt15m")
 hframes = 4
 frame = 2
+
+[node name="WallDecors" type="Node2D" parent="YSort" unique_id=1440882675]
+y_sort_enabled = true
+
+[node name="WallDecoTemp1" type="Sprite2D" parent="YSort/WallDecors" unique_id=1665642788]
+position = Vector2(-34, -174)
+texture = ExtResource("16_stsmr")
+offset = Vector2(0, -33)
+
+[node name="WallDecoTemp2" type="Sprite2D" parent="YSort/WallDecors" unique_id=366753399]
+position = Vector2(153, -71)
+texture = ExtResource("17_ml6uk")
+offset = Vector2(0, -48)
+
+[node name="WallDecoTemp3" type="Sprite2D" parent="YSort/WallDecors" unique_id=2056754240]
+position = Vector2(-154, 57)
+texture = ExtResource("18_dfgk7")
+offset = Vector2(0, -42)
+
+[node name="WallDecoTemp4" type="Sprite2D" parent="YSort/WallDecors" unique_id=434101301]
+position = Vector2(-26, 57)
+texture = ExtResource("19_dnde4")
+offset = Vector2(0, -42)
 
 [node name="Cubicles" type="StaticBody2D" parent="YSort" unique_id=1072570857]
 position = Vector2(-152, -138)
@@ -657,6 +694,56 @@ offset = Vector2(0, 11)
 position = Vector2(0, 11)
 polygon = PackedVector2Array(-32, -20, 32, -20, 32, -4, 13, -4, 13, 5, 3, 5, 3, -4, -14, -4, -14, 39, -32, 39)
 
+[node name="Bookshelfs" type="StaticBody2D" parent="YSort" unique_id=1414029467]
+position = Vector2(-32, 65)
+metadata/_edit_group_ = true
+
+[node name="BookshelfsTemp" type="Sprite2D" parent="YSort/Bookshelfs" unique_id=1943322081]
+texture = ExtResource("19_ml6uk")
+offset = Vector2(0, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bookshelfs" unique_id=218659451]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_1rxyu")
+
+[node name="CopyMachine" type="StaticBody2D" parent="YSort" unique_id=806888223]
+position = Vector2(-151, 65)
+metadata/_edit_group_ = true
+
+[node name="BookshelfsTemp" type="Sprite2D" parent="YSort/CopyMachine" unique_id=607183387]
+position = Vector2(-1, 1)
+texture = ExtResource("20_dfgk7")
+offset = Vector2(0, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/CopyMachine" unique_id=102295972]
+position = Vector2(-1, -4)
+shape = SubResource("RectangleShape2D_dnde4")
+
+[node name="Trashcan" type="StaticBody2D" parent="YSort" unique_id=264769555]
+position = Vector2(109, -168)
+metadata/_edit_group_ = true
+
+[node name="BookshelfsTemp" type="Sprite2D" parent="YSort/Trashcan" unique_id=8749603]
+texture = ExtResource("21_dnde4")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Trashcan" unique_id=1837368902]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_is2gq")
+
+[node name="Shelf" type="StaticBody2D" parent="YSort" unique_id=1763542454]
+position = Vector2(84, 50)
+metadata/_edit_group_ = true
+
+[node name="BookshelfsTemp" type="Sprite2D" parent="YSort/Shelf" unique_id=1548479728]
+position = Vector2(0, -9)
+texture = ExtResource("22_8u4u7")
+offset = Vector2(0, -53)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Shelf" unique_id=66917653]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_is2gq")
+
 [node name="MC" parent="YSort" unique_id=978937542 instance=ExtResource("1_8w6ou")]
 position = Vector2(-91, 156)
 
@@ -666,23 +753,8 @@ amount = 100
 texture = ExtResource("4_udni0")
 process_material = SubResource("ParticleProcessMaterial_gmykp")
 
-[node name="WallDecors" type="Node2D" parent="." unique_id=1440882675]
-
-[node name="WallDecoTemp1" type="Sprite2D" parent="WallDecors" unique_id=1665642788]
-position = Vector2(-34, -207)
-texture = ExtResource("16_stsmr")
-
-[node name="WallDecoTemp2" type="Sprite2D" parent="WallDecors" unique_id=366753399]
-position = Vector2(153, -119)
-texture = ExtResource("17_ml6uk")
-
-[node name="WallDecoTemp3" type="Sprite2D" parent="WallDecors" unique_id=2056754240]
-position = Vector2(-154, 15)
-texture = ExtResource("18_dfgk7")
-
-[node name="WallDecoTemp4" type="Sprite2D" parent="WallDecors" unique_id=434101301]
-position = Vector2(-26, 15)
-texture = ExtResource("19_dnde4")
+[node name="Overlay" type="Sprite2D" parent="." unique_id=1120848613]
+texture = ExtResource("23_is2gq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1039870703]
 

@@ -7,7 +7,7 @@ void fragment() {
 	vec4 screen_color = texture(SCREEN_TEXTURE, SCREEN_UV);
 	vec4 sprite_color = texture(TEXTURE, UV);
 	
-	if(all(lessThan(abs(sprite_color - screen_color), vec4(0.01)))) {
+	if(sprite_color == vec4(0, 0, 0, 1) || all(lessThan(abs(sprite_color - screen_color), vec4(0.01)))) {
 		COLOR = sprite_color;
 	} else {
 		COLOR = vec4(silhouette_color.rgb, silhouette_color.a * sprite_color.a);
