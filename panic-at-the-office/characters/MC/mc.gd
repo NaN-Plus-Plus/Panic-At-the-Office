@@ -6,12 +6,11 @@ class_name Player
 @export var push_force: float = 80.0
 
 @export var monster_area: Area2D
-@export var foxy: AnimatedSprite2D
-@export var foxy_sound: AudioStreamPlayer
 @export var sprite: AnimatedSprite2D
 @export var silhouette: Sprite2D
 
-@export var win_scene_path: String = "res://scenes/WinScreen/win_screen.tscn"
+@onready var win_scene_path: String = "res://scenes/WinScreen/win_screen.tscn"
+@onready var foxy_jumpscare_uid: String = "uid://bngoq4xbhsr7s"
 
 var monster: WireMonster
 var game_won: bool = false
@@ -26,7 +25,6 @@ func _ready():
 	
 	monster_area.body_entered.connect(monster_detected)
 	monster_area.body_exited.connect(monster_left)
-	foxy.animation_finished.connect(foxy_crash)
 	sprite.frame_changed.connect(set_silhouette_texture)
 	sprite.animation_changed.connect(set_silhouette_texture)
 
@@ -109,18 +107,10 @@ func apply_vignette():
 		Globals.vignette.set_shader_parameter("radius", clampf(global_position.distance_to(monster.global_position) / 200, 0.0, 1.0))
 		
 		if global_position.distance_to(monster.global_position) < 20:
-			foxy.visible = true
-			foxy.play("Foxy")
-			foxy_sound.play(0.26)
-			Globals.vignette.set_shader_parameter("strength", 0)
-			monster.queue_free()
+			get_tree().change_scene_to_file(foxy_jumpscare_uid)
 	else:
 		Globals.vignette.set_shader_parameter("strength", 0)
 		Globals.vignette.set_shader_parameter("radius", 1)
-
-
-func foxy_crash():
-	get_tree().quit()
 
 
 func set_silhouette_texture():

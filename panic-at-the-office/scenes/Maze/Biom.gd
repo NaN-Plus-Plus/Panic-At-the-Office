@@ -172,7 +172,7 @@ func spawn_monsters():
 	for cell in spawn_cells:
 		var monster: WireMonster = monster_scene.instantiate()
 		get_parent().add_child.call_deferred(monster)
-		monster.global_position = tile_size * (cell[0] as Vector2) + tile_size * 0.5
+		monster.global_position = tile_size * (cell[0] as Vector2) + tile_size * Vector2(randf_range(0.1, 0.9), randf_range(0.1, 0.9))
 		occupied_cells[cell[0]] = true
 
 
