@@ -4,9 +4,6 @@
 [ext_resource type="Script" uid="uid://hwin6p0rdgms" path="res://scenes/Office/OfficeWall.gd" id="1_qskqy"]
 [ext_resource type="Texture2D" uid="uid://cblvetiuts0ki" path="res://assets/Office/OfficeWall.png" id="2_wrfph"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qskqy"]
-size = Vector2(8, 8)
-
 [node name="OfficeWall" type="StaticBody2D" unique_id=782349477]
 script = ExtResource("1_qskqy")
 metadata/_edit_group_ = true
@@ -22,4 +19,3 @@ patch_margin_right = 4
 patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=923619057]
-shape = SubResource("RectangleShape2D_qskqy")

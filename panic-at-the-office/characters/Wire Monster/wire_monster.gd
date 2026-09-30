@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name WireMonster
 
 const DETECTION_LENGTH = 200.0
-const LOST_DETECTION_LENGTH = 800.0
+const LOST_DETECTION_LENGTH = 500.0
 
 @export var nav_agent: NavigationAgent2D
 @export var push_force: float = 1.0
@@ -35,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 	var player_position = Globals.player.global_position
 	var distance_to_player = global_position.distance_to(player_position)
 	
-	if distance_to_player > 400 and !is_chasing:
+	if distance_to_player > DETECTION_LENGTH and !is_chasing:
 		return
 	
 	if distance_to_player <= 20:

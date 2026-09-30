@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cwyil1lxinv1y"]
+
+[ext_resource type="Texture2D" uid="uid://rdxq2v863trh" path="res://assets/Office/wall_deco.png" id="1_ng0mm"]
+
+[node name="WallDeco" type="Sprite2D" unique_id=1202675252]
+texture = ExtResource("1_ng0mm")
+hframes = 7

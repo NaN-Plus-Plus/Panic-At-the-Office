@@ -24,6 +24,13 @@ class_name OfficeWall
 func _ready() -> void:
 	collision_shape.shape = RectangleShape2D.new()
 	collision_shape.shape.size = Vector2(8, 8)
+	
+	if axis == "Horizontal":
+		collision_shape.shape.size = Vector2(length, 8)
+		collision_shape.position = Vector2(float(length) / 2 - 4, 0)
+	elif axis == "Vertical":
+		collision_shape.shape.size = Vector2(8, length)
+		collision_shape.position = Vector2(0, -float(length) / 2 + 4)
 
 
 func set_axis(value):
@@ -38,7 +45,7 @@ func set_axis(value):
 		
 		collision_shape.shape.size = Vector2(length, 8)
 		collision_shape.position = Vector2(float(length) / 2 - 4, 0)
-	if value == "Vertical":
+	elif value == "Vertical":
 		office_wall_sprite.patch_margin_top = 2
 		office_wall_sprite.patch_margin_bottom = 64
 		office_wall_sprite.size = Vector2(8, length + 58)

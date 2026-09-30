@@ -28,37 +28,37 @@
 [ext_resource type="Texture2D" uid="uid://sug0nsn06u6e" path="res://assets/Office/shelf.png" id="22_8u4u7"]
 [ext_resource type="Texture2D" uid="uid://hpaj5rxj8qu0" path="res://assets/Office/office_overlay.png" id="23_is2gq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbr7x"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u4u7"]
 size = Vector2(291, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4bpu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hb17i"]
 size = Vector2(8, 423)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6y2t"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fy77b"]
 size = Vector2(177, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ul1kl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enwj8"]
 size = Vector2(8, 192)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rtk5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ciwrq"]
 size = Vector2(108, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo726"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u165g"]
 size = Vector2(8, 42)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2k2h"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gmco"]
 size = Vector2(53, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_stsmr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixpye"]
 size = Vector2(8, 111)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_okr3n"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmuxq"]
 size = Vector2(53, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lhnd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxkgm"]
 size = Vector2(41, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt15m"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ts6dp"]
 size = Vector2(104, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_by3cp"]
@@ -72,6 +72,9 @@ size = Vector2(70, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dnde4"]
 size = Vector2(30, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dt3gn"]
+size = Vector2(14, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_is2gq"]
 size = Vector2(68, 6)
@@ -128,22 +131,6 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "I’ll fix all the collisions 
 and y-sort some 
 of the assets later dw :P"
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1504061200]
-visible = false
-position = Vector2(193, -23)
-amount = 100
-texture = ExtResource("4_udni0")
-emission_shape = 3
-emission_rect_extents = Vector2(10, 15)
-spread = 180.0
-gravity = Vector2(-30, -10)
-angular_velocity_min = 145.0
-angular_velocity_max = 720.0
-linear_accel_max = 86.51
-tangential_accel_max = 50.0
-scale_amount_min = 0.25
-scale_amount_max = 0.5
 
 [node name="SmallFloorDecors" type="Node2D" parent="." unique_id=1443757449]
 
@@ -219,7 +206,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall" unique_id=923619057]
 position = Vector2(141.5, 0)
-shape = SubResource("RectangleShape2D_cbr7x")
+shape = SubResource("RectangleShape2D_8u4u7")
 
 [node name="OfficeWall2" type="StaticBody2D" parent="YSort/Walls" unique_id=1805583572]
 position = Vector2(-175, 237)
@@ -240,7 +227,7 @@ patch_margin_bottom = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall2" unique_id=2067379841]
 position = Vector2(0, -207.5)
-shape = SubResource("RectangleShape2D_p4bpu")
+shape = SubResource("RectangleShape2D_hb17i")
 
 [node name="OfficeWall3" type="StaticBody2D" parent="YSort/Walls" unique_id=296246660]
 position = Vector2(-168, 237)
@@ -260,7 +247,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall3" unique_id=801955513]
 position = Vector2(84.5, 0)
-shape = SubResource("RectangleShape2D_d6y2t")
+shape = SubResource("RectangleShape2D_fy77b")
 
 [node name="OfficeWall4" type="StaticBody2D" parent="YSort/Walls" unique_id=789893881]
 position = Vector2(8, 237)
@@ -281,7 +268,7 @@ patch_margin_bottom = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall4" unique_id=1365650239]
 position = Vector2(0, -92)
-shape = SubResource("RectangleShape2D_ul1kl")
+shape = SubResource("RectangleShape2D_enwj8")
 
 [node name="OfficeWall5" type="StaticBody2D" parent="YSort/Walls" unique_id=2146004864]
 position = Vector2(15, 53)
@@ -301,7 +288,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall5" unique_id=368494504]
 position = Vector2(50, 0)
-shape = SubResource("RectangleShape2D_6rtk5")
+shape = SubResource("RectangleShape2D_ciwrq")
 
 [node name="OfficeWall6" type="StaticBody2D" parent="YSort/Walls" unique_id=847250548]
 position = Vector2(122, 53)
@@ -322,7 +309,7 @@ patch_margin_bottom = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall6" unique_id=389825597]
 position = Vector2(0, -17)
-shape = SubResource("RectangleShape2D_yo726")
+shape = SubResource("RectangleShape2D_u165g")
 
 [node name="OfficeWall7" type="StaticBody2D" parent="YSort/Walls" unique_id=480804344]
 position = Vector2(129, 19)
@@ -342,7 +329,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall7" unique_id=1725731131]
 position = Vector2(22.5, 0)
-shape = SubResource("RectangleShape2D_k2k2h")
+shape = SubResource("RectangleShape2D_5gmco")
 
 [node name="OfficeWall8" type="StaticBody2D" parent="YSort/Walls" unique_id=565815732]
 position = Vector2(122, -75)
@@ -363,7 +350,7 @@ patch_margin_bottom = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall8" unique_id=536502487]
 position = Vector2(0, -51.5)
-shape = SubResource("RectangleShape2D_stsmr")
+shape = SubResource("RectangleShape2D_ixpye")
 
 [node name="OfficeWall9" type="StaticBody2D" parent="YSort/Walls" unique_id=922971992]
 position = Vector2(129, -75)
@@ -383,7 +370,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall9" unique_id=2062159731]
 position = Vector2(22.5, 0)
-shape = SubResource("RectangleShape2D_okr3n")
+shape = SubResource("RectangleShape2D_fmuxq")
 
 [node name="OfficeWall10" type="StaticBody2D" parent="YSort/Walls" unique_id=1088176947]
 position = Vector2(-168, 53)
@@ -403,7 +390,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall10" unique_id=1126920242]
 position = Vector2(16.5, 0)
-shape = SubResource("RectangleShape2D_2lhnd")
+shape = SubResource("RectangleShape2D_pxkgm")
 
 [node name="OfficeWall11" type="StaticBody2D" parent="YSort/Walls" unique_id=1020960053]
 position = Vector2(-95, 53)
@@ -423,7 +410,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall11" unique_id=1202339227]
 position = Vector2(48, 0)
-shape = SubResource("RectangleShape2D_rt15m")
+shape = SubResource("RectangleShape2D_ts6dp")
 
 [node name="MediumFloorDecors" type="Node2D" parent="YSort" unique_id=1100078553]
 y_sort_enabled = true
@@ -729,7 +716,7 @@ offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Trashcan" unique_id=1837368902]
 position = Vector2(0, -3)
-shape = SubResource("RectangleShape2D_is2gq")
+shape = SubResource("RectangleShape2D_dt3gn")
 
 [node name="Shelf" type="StaticBody2D" parent="YSort" unique_id=1763542454]
 position = Vector2(84, 50)
