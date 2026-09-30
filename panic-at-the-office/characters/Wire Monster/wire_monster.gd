@@ -6,6 +6,8 @@ const LOST_DETECTION_LENGTH = 800.0
 
 @export var nav_agent: NavigationAgent2D
 @export var push_force: float = 1.0
+@export var sprite: Sprite2D
+@export var silhouette: Sprite2D
 
 var speed: float = 100.0
 var is_chasing: bool = false
@@ -21,6 +23,8 @@ func _ready() -> void:
 			speed = 140.0
 	
 	nav_agent.velocity_computed.connect(_on_velocity_computed)
+	sprite.texture_changed.connect(set_silhouette_texture)
+	sprite.frame_changed.connect(set_silhouette_texture)
 
 func _physics_process(delta: float) -> void:
 	var player_position = Globals.player.global_position
@@ -58,3 +62,7 @@ func push_rigid_bodies():
 func _on_velocity_computed(safe_velocity: Vector2):
 	global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
 	move_and_slide()
+
+
+func set_silhouette_texture():
+	silhouette.texture = sprite.texture

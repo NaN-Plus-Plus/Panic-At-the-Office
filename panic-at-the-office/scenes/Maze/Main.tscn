@@ -22,12 +22,13 @@ shader_parameter/transparency = false
 shader_parameter/mode2 = false
 shader_parameter/trim_color = Vector4(1, 1, 1, 1)
 
-[node name="Main" type="Node2D" unique_id=786101504 node_paths=PackedStringArray("VignetteRect")]
+[node name="Main" type="Node2D" unique_id=786101504 node_paths=PackedStringArray("VignetteRect", "y_sort")]
 script = ExtResource("1_mgnkh")
 VignetteRect = NodePath("CanvasLayer/VignetteRect")
+y_sort = NodePath("YSort")
 
 [node name="Biom" parent="." unique_id=1919071673 node_paths=PackedStringArray("object_parent", "deco_parent") instance=ExtResource("1_10rdu")]
-object_parent = NodePath("../Y Sort Obj")
+object_parent = NodePath("../YSort")
 objects_folder = "res://scenes/Obj"
 deco_parent = NodePath("../Deco")
 deco_folder = "res://assets/Obj/Deco"
@@ -60,8 +61,8 @@ autoplay = true
 
 [node name="Deco" type="Node2D" parent="." unique_id=128848512]
 
-[node name="Y Sort Obj" type="Node2D" parent="." unique_id=1964537511]
+[node name="YSort" type="Node2D" parent="." unique_id=1964537511]
 y_sort_enabled = true
 
-[node name="Mc" parent="Y Sort Obj" unique_id=978937542 instance=ExtResource("2_gsqt7")]
+[node name="Mc" parent="YSort" unique_id=978937542 instance=ExtResource("2_gsqt7")]
 position = Vector2(186, 158)

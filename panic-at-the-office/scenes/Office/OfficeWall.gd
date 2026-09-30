@@ -1,5 +1,6 @@
 @tool
 extends StaticBody2D
+class_name OfficeWall
 
 
 @export_enum("Horizontal", "Vertical") var axis: String = "Horizontal":
@@ -21,20 +22,11 @@ extends StaticBody2D
 
 
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		return
-	
-	if collision_shape.shape:
-		return
-	
 	collision_shape.shape = RectangleShape2D.new()
 	collision_shape.shape.size = Vector2(8, 8)
 
 
 func set_axis(value):
-	if not Engine.is_editor_hint():
-		return
-	
 	if not collision_shape:
 		return
 	
@@ -57,9 +49,6 @@ func set_axis(value):
 
 
 func set_length(value):
-	if not Engine.is_editor_hint():
-		return
-	
 	if not collision_shape:
 		return
 	

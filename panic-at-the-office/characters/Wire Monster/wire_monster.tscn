@@ -1,16 +1,23 @@
 [gd_scene format=3 uid="uid://2mrx4ulwqgfi"]
 
-[ext_resource type="Texture2D" uid="uid://b5prqakv5yrko" path="res://assets/wire_monster.png" id="1_gw2qr"]
+[ext_resource type="Texture2D" uid="uid://b5prqakv5yrko" path="res://assets/Characters/wire_monster.png" id="1_gw2qr"]
 [ext_resource type="Script" uid="uid://cmhhws23u543d" path="res://characters/Wire Monster/wire_monster.gd" id="1_imf1u"]
+[ext_resource type="Shader" uid="uid://bpb3u8bc4wt5d" path="res://shaders/silhouette.gdshader" id="3_uqe0a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imf1u"]
 size = Vector2(6, 14)
 
-[node name="WireMonster" type="CharacterBody2D" unique_id=1574792864 node_paths=PackedStringArray("nav_agent")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqe0a"]
+shader = ExtResource("3_uqe0a")
+shader_parameter/silhouette_color = Color(1, 0, 0.09803922, 0.5019608)
+
+[node name="WireMonster" type="CharacterBody2D" unique_id=1574792864 node_paths=PackedStringArray("nav_agent", "sprite", "silhouette")]
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_imf1u")
 nav_agent = NodePath("NavigationAgent2D")
+sprite = NodePath("WireMonsterSprite")
+silhouette = NodePath("WireMonsterSprite/Silhouette")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=765152719]
 position = Vector2(-5.9604645e-08, -2.1855683e-08)
@@ -20,6 +27,11 @@ shape = SubResource("RectangleShape2D_imf1u")
 [node name="WireMonsterSprite" type="Sprite2D" parent="." unique_id=999277585]
 position = Vector2(0, -27.000002)
 scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_gw2qr")
+
+[node name="Silhouette" type="Sprite2D" parent="WireMonsterSprite" unique_id=1593863855]
+z_index = 100
+material = SubResource("ShaderMaterial_uqe0a")
 texture = ExtResource("1_gw2qr")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=774385371]
