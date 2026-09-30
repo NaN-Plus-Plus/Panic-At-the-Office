@@ -10,7 +10,6 @@ class_name Player
 @export var silhouette: Sprite2D
 
 @onready var win_scene_path: String = "res://scenes/WinScreen/win_screen.tscn"
-@onready var foxy_jumpscare_uid: String = "uid://bngoq4xbhsr7s"
 
 var monster: WireMonster
 var game_won: bool = false
@@ -105,9 +104,6 @@ func apply_vignette():
 	if monster:
 		Globals.vignette.set_shader_parameter("strength", clampf(1.0 - global_position.distance_to(monster.global_position) / 200, 0.0, 1.0))
 		Globals.vignette.set_shader_parameter("radius", clampf(global_position.distance_to(monster.global_position) / 200, 0.0, 1.0))
-		
-		if global_position.distance_to(monster.global_position) < 20:
-			get_tree().change_scene_to_file(foxy_jumpscare_uid)
 	else:
 		Globals.vignette.set_shader_parameter("strength", 0)
 		Globals.vignette.set_shader_parameter("radius", 1)

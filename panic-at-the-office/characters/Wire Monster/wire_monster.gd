@@ -8,10 +8,14 @@ const LOST_DETECTION_LENGTH = 800.0
 @export var push_force: float = 1.0
 @export var sprite: Sprite2D
 @export var silhouette: Sprite2D
+@export var random_vector_timer: Timer
+
+@onready var foxy_jumpscare_uid: String = "uid://bngoq4xbhsr7s"
 
 var speed: float = 100.0
 var is_chasing: bool = false
 var movement_delta: float
+var random_vector: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	match Globals.difficulty:
@@ -22,30 +26,33 @@ func _ready() -> void:
 		Globals.difficulty_enum.HARD:
 			speed = 140.0
 	
-	nav_agent.velocity_computed.connect(_on_velocity_computed)
 	sprite.texture_changed.connect(set_silhouette_texture)
 	sprite.frame_changed.connect(set_silhouette_texture)
+	random_vector_timer.wait_time = randf_range(1.0, 1.5)
+	random_vector_timer.timeout.connect(change_random_vector)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var player_position = Globals.player.global_position
-	if global_position.distance_to(player_position) > 400 and !is_chasing:
+	var distance_to_player = global_position.distance_to(player_position)
+	
+	if distance_to_player > 400 and !is_chasing:
 		return
 	
-	nav_agent.target_position = player_position
-	movement_delta = speed * delta
-	var next_path_position: Vector2 = nav_agent.get_next_path_position()
-	var current_agent_position: Vector2 = global_position
-	var new_velocity: Vector2 = (next_path_position - current_agent_position).normalized() * movement_delta
+	if distance_to_player <= 20:
+		get_tree().change_scene_to_file(foxy_jumpscare_uid)
+		return
 	
+	nav_agent.target_position = player_position + random_vector if distance_to_player > 50 else nav_agent.get_next_path_position()
+	var target_pos = nav_agent.get_next_path_position()
 	var path_length: float = nav_agent.get_path_length()
 	is_chasing = path_length < DETECTION_LENGTH or (path_length < LOST_DETECTION_LENGTH and is_chasing)
-	if !is_chasing:
-		return
 	
-	if nav_agent.avoidance_enabled:
-		nav_agent.set_velocity(new_velocity)
+	if is_chasing:
+		velocity = (target_pos - global_position).normalized() * speed
 	else:
-		_on_velocity_computed(new_velocity)
+		velocity = Vector2.ZERO
+	
+	move_and_slide()
 	
 	push_rigid_bodies()
 
@@ -59,10 +66,9 @@ func push_rigid_bodies():
 				collider.apply_central_impulse(push_dir * push_force * get_physics_process_delta_time())
 
 
-func _on_velocity_computed(safe_velocity: Vector2):
-	global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
-	move_and_slide()
-
-
 func set_silhouette_texture():
 	silhouette.texture = sprite.texture
+
+
+func change_random_vector():
+	random_vector = Vector2.RIGHT.rotated(randf_range(0, TAU)) * randf_range(30, 50)
