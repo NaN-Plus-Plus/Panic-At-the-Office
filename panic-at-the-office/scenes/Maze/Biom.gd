@@ -26,7 +26,8 @@ const EXIT_TERRAIN := 2
 var maze := []
 var exit_cell: Vector2i
 var floor_cells: Array[Vector2i]
-var spawn_cells: Array
+var wall_cells: Array[Vector2i]
+var exit_cells: Array[Vector2i]
 var object_scenes: Array[PackedScene] = []
 var deco_textures: Array[Texture2D] = []
 var occupied_cells: Dictionary = {}
@@ -121,14 +122,14 @@ func draw_maze():
 	tile_map_layer.clear()
 	
 	floor_cells.clear()
-	var wall_cells: Array[Vector2i]
-	var exit_cells: Array[Vector2i]
+	wall_cells.clear()
+	exit_cells.clear()
 	
 	for r in range(ROWS):
 		for c in range(COLS):
 			var cell := Vector2i(c, r)
 			
-			if cell == exit_cell:
+			if cell == exit_cell || cell == Vector2i(0, 1):
 				exit_cells.append(cell)
 			elif maze[r][c] == 0:
 				floor_cells.append(Vector2i(c, r))
@@ -152,10 +153,6 @@ func draw_maze():
 		TERRAIN_SET,
 		EXIT_TERRAIN
 	)
-	
-	for cell in floor_cells:
-		if cell.x > 5 or cell.y > 5:
-			spawn_cells.append([cell, randf()])
 
 
 func spawn_walls():
@@ -166,16 +163,16 @@ func spawn_walls():
 	
 	
 	for cell in floor_cells:
-		if not (cell + Vector2i(0, -1)) in floor_cells:
+		if not (cell + Vector2i(0, -1)) in floor_cells and not (cell + Vector2i(0, -1)) in exit_cells:
 			top_wall_cells.append([cell, 0])
 		
-		if not (cell + Vector2i(0, 1)) in floor_cells:
+		if not (cell + Vector2i(0, 1)) in floor_cells and not (cell + Vector2i(0, 1)) in exit_cells:
 			bottom_wall_cells.append([cell, 0])
 		
-		if not (cell + Vector2i(-1, 0)) in floor_cells:
+		if not (cell + Vector2i(-1, 0)) in floor_cells and not (cell + Vector2i(-1, 0)) in exit_cells:
 			left_wall_cells.append([cell, 0])
 		
-		if not (cell + Vector2i(1, 0)) in floor_cells:
+		if not (cell + Vector2i(1, 0)) in floor_cells and not (cell + Vector2i(1, 0)) in exit_cells:
 			right_wall_cells.append([cell, 0])
 	
 	for cell in top_wall_cells:
@@ -208,6 +205,11 @@ func spawn_walls():
 func spawn_monsters():
 	var monster_proportional_amount: float
 	var monster_amount: int
+	var spawn_cells: Array[Vector2i]
+	
+	for cell in floor_cells:
+		if cell.x > 5 or cell.y > 5:
+			spawn_cells.append(cell)
 	
 	match Globals.difficulty:
 		Globals.difficulty_enum.EASY:
@@ -218,13 +220,13 @@ func spawn_monsters():
 			monster_proportional_amount = 0.13
 	monster_amount = ceil(monster_proportional_amount * spawn_cells.size())
 	
-	spawn_cells.sort_custom(func (a, b): return a[1] < b[1])
+	spawn_cells.shuffle()
 	spawn_cells = spawn_cells.slice(0, monster_amount)
 	for cell in spawn_cells:
 		var monster: WireMonster = monster_scene.instantiate()
 		get_parent().y_sort.add_child.call_deferred(monster)
-		monster.global_position = tile_size * (cell[0] as Vector2) + tile_size * Vector2(randf_range(0.1, 0.9), randf_range(0.1, 0.9))
-		occupied_cells[cell[0]] = true
+		monster.global_position = tile_size * (cell as Vector2) + tile_size * Vector2(randf_range(0.1, 0.9), randf_range(0.1, 0.9))
+		occupied_cells[cell] = true
 
 
 func get_available_floor_cells() -> Array[Vector2i]:

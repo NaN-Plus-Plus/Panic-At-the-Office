@@ -42,7 +42,7 @@ func _physics_process(_delta: float) -> void:
 		get_tree().change_scene_to_file(foxy_jumpscare_uid)
 		return
 	
-	nav_agent.target_position = player_position + random_vector if distance_to_player > 50 else nav_agent.get_next_path_position()
+	nav_agent.target_position = player_position + random_vector if distance_to_player > 50 else player_position
 	var target_pos = nav_agent.get_next_path_position()
 	var path_length: float = nav_agent.get_path_length()
 	is_chasing = path_length < DETECTION_LENGTH or (path_length < LOST_DETECTION_LENGTH and is_chasing)
