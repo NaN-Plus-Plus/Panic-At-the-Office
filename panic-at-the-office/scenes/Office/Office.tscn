@@ -114,16 +114,6 @@ scale = Vector2(8.369792, 5.8593745)
 texture = ExtResource("1_yprdu")
 metadata/_edit_lock_ = true
 
-[node name="NOTES" type="Label" parent="." unique_id=1248882569]
-offset_left = -111.0
-offset_top = -374.0
-offset_right = 91.0
-offset_bottom = -247.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "I’ll fix all the collisions 
-and y-sort some 
-of the assets later dw :P"
-
 [node name="SmallFloorDecors" type="Node2D" parent="." unique_id=1443757449]
 metadata/_edit_lock_ = true
 
