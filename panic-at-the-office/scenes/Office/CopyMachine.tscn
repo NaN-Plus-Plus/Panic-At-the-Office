@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://buwc46jhcnnvw"]
+
+[ext_resource type="Texture2D" uid="uid://b2adx52qi7d2n" path="res://assets/Office/copy_machine.png" id="1_q8mas"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnde4"]
+size = Vector2(30, 8)
+
+[node name="CopyMachine" type="StaticBody2D" unique_id=1348682599]
+metadata/_edit_group_ = true
+
+[node name="BookshelfsTemp" type="Sprite2D" parent="." unique_id=1601217248]
+texture = ExtResource("1_q8mas")
+offset = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=783755500]
+shape = SubResource("RectangleShape2D_dnde4")

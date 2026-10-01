@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b8qaxsxjqw8bj"]
+
+[ext_resource type="Script" uid="uid://bsb5o1yke7aia" path="res://scenes/Office/bookshelf.gd" id="1_qglnv"]
+[ext_resource type="Texture2D" uid="uid://d2bfu5fducixa" path="res://assets/Office/bookshelf.png" id="2_qglnv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rxyu"]
+size = Vector2(34, 8)
+
+[node name="Bookshelf" type="StaticBody2D" unique_id=740134068 node_paths=PackedStringArray("books_node")]
+script = ExtResource("1_qglnv")
+books_node = NodePath("Books")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=14573881]
+shape = SubResource("RectangleShape2D_1rxyu")
+
+[node name="BookshelfSprite" type="Sprite2D" parent="." unique_id=763844447]
+texture = ExtResource("2_qglnv")
+offset = Vector2(0, -13)
+hframes = 5
+vframes = 4
+
+[node name="Books" type="Node2D" parent="." unique_id=706442746]

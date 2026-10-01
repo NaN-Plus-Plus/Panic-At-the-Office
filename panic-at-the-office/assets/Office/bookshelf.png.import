@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da26msomsxvr0"
-path="res://.godot/imported/bookshelfs_temp.png-0716d7a2ab2c062684011738355bc1c4.ctex"
+uid="uid://d2bfu5fducixa"
+path="res://.godot/imported/bookshelf.png-162c67f142e95ce6f642ddf33d1eb1be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Office/bookshelfs_temp.png"
-dest_files=["res://.godot/imported/bookshelfs_temp.png-0716d7a2ab2c062684011738355bc1c4.ctex"]
+source_file="res://assets/Office/bookshelf.png"
+dest_files=["res://.godot/imported/bookshelf.png-162c67f142e95ce6f642ddf33d1eb1be.ctex"]
 
 [params]
 

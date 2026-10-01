@@ -19,6 +19,11 @@ class_name Biom
 @onready var tile_size: Vector2 = tile_map_layer.tile_set.tile_size
 @onready var wall_deco: PackedScene = preload("uid://cwyil1lxinv1y")
 
+@onready var plant: PackedScene = preload("uid://bu1n7v06d165j")
+@onready var trashcan: PackedScene = preload("uid://dotf6lq4xxgjb")
+@onready var copy_machine: PackedScene = preload("uid://buwc46jhcnnvw")
+@onready var bookshelf: PackedScene = preload("uid://b8qaxsxjqw8bj")
+
 const TERRAIN_SET := 0
 const WALL_TERRAIN := 3
 const FLOOR_TERRAIN := 1
@@ -33,9 +38,11 @@ var top_wall_cells: Array[Vector2i]
 var object_scenes: Array[PackedScene] = []
 var deco_textures: Array[Texture2D] = []
 var occupied_cells: Dictionary = {}
+var wall_objects: Array[PackedScene]
 
 func _ready() -> void:
 	Globals.biom = self
+	wall_objects = [plant, trashcan, copy_machine, bookshelf]
 	generate_maze()
 
 func generate_maze():
@@ -51,6 +58,7 @@ func generate_maze():
 	draw_maze()
 	spawn_walls()
 	spawn_wall_deco()
+	spawn_wall_objects()
 	spawn_monsters()
 	spawn_objects()
 	spawn_deco()
@@ -180,26 +188,26 @@ func spawn_walls():
 	
 	for cell in top_wall_cells:
 		var wall: OfficeWall = office_wall.instantiate()
-		get_parent().y_sort.add_child.call_deferred(wall)
+		object_parent.add_child.call_deferred(wall)
 		wall.global_position = tile_size * Vector2(cell)
 		wall.set_deferred("length", int(tile_size.x) + 1)
 	
 	for cell in bottom_wall_cells:
 		var wall: OfficeWall = office_wall.instantiate()
-		get_parent().y_sort.add_child.call_deferred(wall)
+		object_parent.add_child.call_deferred(wall)
 		wall.global_position = tile_size * Vector2(cell) + Vector2(7, tile_size.y)
 		wall.set_deferred("length", int(tile_size.x) + 1)
 	
 	for cell in left_wall_cells:
 		var wall: OfficeWall = office_wall.instantiate()
-		get_parent().y_sort.add_child.call_deferred(wall)
+		object_parent.add_child.call_deferred(wall)
 		wall.global_position = tile_size * Vector2(cell) + Vector2(0, tile_size.y)
 		wall.set_deferred("length", int(tile_size.x) + 1)
 		wall.set_deferred("axis", "Vertical")
 	
 	for cell in right_wall_cells:
 		var wall: OfficeWall = office_wall.instantiate()
-		get_parent().y_sort.add_child.call_deferred(wall)
+		object_parent.add_child.call_deferred(wall)
 		wall.global_position = tile_size * Vector2(cell) + Vector2(tile_size.x, tile_size.y - 7)
 		wall.set_deferred("length", int(tile_size.x) + 1)
 		wall.set_deferred("axis", "Vertical")
@@ -209,10 +217,20 @@ func spawn_wall_deco():
 	for cell in top_wall_cells:
 		if randf() < 0.3:
 			var deco = wall_deco.instantiate() as Sprite2D
-			get_parent().y_sort.add_child.call_deferred(deco)
+			object_parent.add_child.call_deferred(deco)
 			deco.global_position = tile_size * Vector2(cell) + Vector2(tile_size.x / 2, 4)
 			deco.frame = randi_range(0, 6)
-			deco.offset = Vector2(randf_range(-tile_size.x * 0.35, tile_size.x * 0.35), randf_range(-32, -44))
+			deco.offset = Vector2(randf_range(-tile_size.x * 0.33, tile_size.x * 0.33), randf_range(-32, -44))
+			deco.flip_h = [true, false].pick_random()
+
+
+
+func spawn_wall_objects():
+	for cell in top_wall_cells:
+		if randf() < 0.2:
+			var obj = wall_objects.pick_random().instantiate()
+			object_parent.add_child.call_deferred(obj)
+			obj.global_position = tile_size * Vector2(cell) + Vector2(randi_range(22, int(tile_size.x) - 22), 8)
 
 
 func spawn_monsters():
@@ -237,7 +255,7 @@ func spawn_monsters():
 	spawn_cells = spawn_cells.slice(0, monster_amount)
 	for cell in spawn_cells:
 		var monster: WireMonster = monster_scene.instantiate()
-		get_parent().y_sort.add_child.call_deferred(monster)
+		object_parent.add_child.call_deferred(monster)
 		monster.global_position = tile_size * (cell as Vector2) + tile_size * Vector2(randf_range(0.1, 0.9), randf_range(0.1, 0.9))
 		occupied_cells[cell] = true
 
@@ -275,7 +293,6 @@ func load_object_scenes():
 	dir.list_dir_end()
 
 func spawn_objects():
-
 	load_object_scenes()
 	
 	var available_cells := get_available_floor_cells()

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dotf6lq4xxgjb"]
+
+[ext_resource type="Texture2D" uid="uid://ctupxd1ah2q87" path="res://assets/Office/trashcan.png" id="1_xufcv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dt3gn"]
+size = Vector2(14, 6)
+
+[node name="Trashcan" type="StaticBody2D" unique_id=925727993]
+metadata/_edit_group_ = true
+
+[node name="BookshelfsTemp" type="Sprite2D" parent="." unique_id=2068141465]
+texture = ExtResource("1_xufcv")
+offset = Vector2(0, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=384457891]
+shape = SubResource("RectangleShape2D_dt3gn")
