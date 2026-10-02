@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://srm4007smydn" path="res://assets/UI/Other/sign.png" id="10_ircco"]
 [ext_resource type="Script" uid="uid://d2uk31dhq0jcx" path="res://scenes/Office/sign.gd" id="11_okr3n"]
 [ext_resource type="Texture2D" uid="uid://cwyd7qune4try" path="res://assets/Office/mc_desk.png" id="14_cbr7x"]
+[ext_resource type="Texture2D" uid="uid://d2b0psr3dhp4" path="res://assets/Office/Exit.png" id="15_hb17i"]
+[ext_resource type="Shader" uid="uid://bup8rvgsd133w" path="res://shaders/glow.gdshader" id="16_fy77b"]
 [ext_resource type="Texture2D" uid="uid://b7bb2hi6bxvvh" path="res://assets/Office/wall_deco_temp_1.png" id="16_stsmr"]
 [ext_resource type="Texture2D" uid="uid://bu28hkerqcc1b" path="res://assets/Office/wall_deco_temp_2.png" id="17_ml6uk"]
 [ext_resource type="Texture2D" uid="uid://dgw7tibc0srcm" path="res://assets/Office/wall_deco_temp_3.png" id="18_dfgk7"]
@@ -27,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://ctupxd1ah2q87" path="res://assets/Office/trashcan.png" id="21_dnde4"]
 [ext_resource type="Texture2D" uid="uid://sug0nsn06u6e" path="res://assets/Office/shelf.png" id="22_8u4u7"]
 [ext_resource type="Texture2D" uid="uid://hpaj5rxj8qu0" path="res://assets/Office/office_overlay.png" id="23_is2gq"]
+[ext_resource type="PackedScene" uid="uid://l5877e1o7y3g" path="res://scenes/Office/telephone.tscn" id="30_enwj8"]
+[ext_resource type="AudioStream" uid="uid://ctt5gy7woexw2" path="res://audio/Music/𝙲𝚛𝚘𝚘𝚔𝚎𝚍  𝚆𝚘𝚛𝚕𝚍. - 𝙾𝚍𝚍  𝙱𝚎𝚑𝚊𝚟𝚒𝚘𝚛.mp3" id="31_ciwrq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbr7x"]
 size = Vector2(291, 8)
@@ -60,6 +64,13 @@ size = Vector2(41, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rt15m"]
 size = Vector2(104, 8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_enwj8"]
+shader = ExtResource("16_fy77b")
+shader_parameter/glow_color = Color(0.38039216, 0.60784316, 0.3882353, 1)
+shader_parameter/intensity = 0.786000037335
+shader_parameter/spread = 1.0
+shader_parameter/pulse_speed = 3.4790001652525
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_by3cp"]
 size = Vector2(249, 48)
@@ -107,6 +118,12 @@ texture = ExtResource("10_ircco")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
 texture = ExtResource("9_sh7h7")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(32, 23)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_riqys"]
+radius = 33.01515
 
 [node name="Office" type="Sprite2D" unique_id=1351877308]
 texture = ExtResource("4_sh7h7")
@@ -455,6 +472,7 @@ texture = ExtResource("16_stsmr")
 offset = Vector2(0, -33)
 
 [node name="WallDecoTemp2" type="Sprite2D" parent="YSort/WallDecors" unique_id=366753399]
+visible = false
 position = Vector2(153, -71)
 texture = ExtResource("17_ml6uk")
 offset = Vector2(0, -48)
@@ -468,6 +486,19 @@ offset = Vector2(0, -42)
 position = Vector2(-26, 57)
 texture = ExtResource("19_dnde4")
 offset = Vector2(0, -42)
+
+[node name="WallDecoTemp5" type="Sprite2D" parent="YSort/WallDecors" unique_id=1031463383]
+position = Vector2(152, -66.00001)
+scale = Vector2(0.9444445, 0.9444444)
+texture = ExtResource("15_hb17i")
+offset = Vector2(0, -48)
+
+[node name="WallDecoTemp6" type="Sprite2D" parent="YSort/WallDecors" unique_id=12479614]
+material = SubResource("ShaderMaterial_enwj8")
+position = Vector2(152, -66.00001)
+scale = Vector2(0.9444445, 0.9444444)
+texture = ExtResource("15_hb17i")
+offset = Vector2(0, -48)
 
 [node name="Cubicles" type="StaticBody2D" parent="YSort" unique_id=1072570857]
 position = Vector2(-152, -138)
@@ -779,3 +810,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
+
+[node name="Story" type="Node" parent="." unique_id=723599376]
+
+[node name="Start" type="Area2D" parent="Story" unique_id=311298100]
+
+[node name="Start" type="CollisionShape2D" parent="Story/Start" unique_id=1921409176]
+position = Vector2(-115, 37.5)
+shape = SubResource("RectangleShape2D_bhunq")
+
+[node name="Telephone" type="Area2D" parent="Story" unique_id=1115128107]
+
+[node name="Telephone" parent="Story/Telephone" unique_id=916355677 instance=ExtResource("30_enwj8")]
+position = Vector2(-64, 107)
+
+[node name="Backrooms" type="Area2D" parent="Story" unique_id=1206864170]
+
+[node name="Backrooms" type="CollisionShape2D" parent="Story/Backrooms" unique_id=1585062861]
+position = Vector2(180, -59)
+shape = SubResource("CircleShape2D_riqys")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1846779365]
+stream = ExtResource("31_ciwrq")
+autoplay = true
+parameters/looping = true
+
+[connection signal="body_entered" from="Story/Start" to="." method="_on_start_body_entered"]
+[connection signal="body_entered" from="Story/Backrooms" to="." method="_on_backrooms_body_entered"]

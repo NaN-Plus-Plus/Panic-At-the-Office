@@ -2,11 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://b5prqakv5yrko" path="res://assets/wire_monster.png" id="1_gw2qr"]
 [ext_resource type="Script" uid="uid://cmhhws23u543d" path="res://characters/Wire Monster/wire_monster.gd" id="1_imf1u"]
+[ext_resource type="AudioStream" uid="uid://jeiux2h14k" path="res://audio/sfx/Backrooms monster sound.mp3" id="3_uqe0a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imf1u"]
 size = Vector2(22, 15)
 
-[node name="WireMonster" type="CharacterBody2D" unique_id=1574792864 node_paths=PackedStringArray("nav_agent")]
+[node name="WireMonster" type="CharacterBody2D" unique_id=1574792864 node_paths=PackedStringArray("nav_agent") groups=["pause_during_interaction"]]
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_imf1u")
@@ -23,3 +24,10 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_gw2qr")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=774385371]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=2112370149]
+stream = ExtResource("3_uqe0a")
+volume_db = 10.0
+autoplay = true
+max_distance = 500.0
+parameters/looping = false

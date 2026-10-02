@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://clvey7d5hnutt"]
+
+[ext_resource type="Script" uid="uid://cat2whant5oug" path="res://scripts/Interactions/interactions_manager.gd" id="1_8kgmb"]
+
+[node name="InteractionsManager" type="Node2D" unique_id=1125665844]
+script = ExtResource("1_8kgmb")
+
+[node name="Label" type="Label" parent="." unique_id=1315307511]
+z_index = 2
+offset_left = -42.5
+offset_right = 42.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "[F] Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

@@ -1,7 +1,7 @@
 extends Control
 
 @export var popUpWindow: BasePopUpWindow
-
+@onready var StoryPopUp: BasePopUpWindow = $BasePopUpWindow
 
 func _on_easy_pressed() -> void:
 	Globals.cols = 21
@@ -22,3 +22,11 @@ func _on_hard_pressed() -> void:
 	Globals.rows = 51
 	Globals.difficulty = Globals.difficulty_enum.HARD
 	popUpWindow.visible = true
+
+
+func _on_story_mode_pressed() -> void:
+	Globals.cols = 21
+	Globals.rows = 21
+	Globals.difficulty = Globals.difficulty_enum.EASY
+	StoryPopUp.visible = true
+	Globals.is_story = true

@@ -78,7 +78,7 @@ animations = [{
 shader = ExtResource("1_cwnv6")
 shader_parameter/silhouette_color = Color(1, 0.75, 0, 1)
 
-[node name="Mc" type="CharacterBody2D" unique_id=978937542 node_paths=PackedStringArray("monster_area", "sprite", "silhouette")]
+[node name="Mc" type="CharacterBody2D" unique_id=978937542 node_paths=PackedStringArray("monster_area", "sprite", "silhouette") groups=["player", "pause_during_interaction"]]
 motion_mode = 1
 script = ExtResource("1_imnk3")
 monster_area = NodePath("MonsterArea")

@@ -69,6 +69,7 @@ layout_mode = 1
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=751558010]
 stream = ExtResource("5_a24ew")
 autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

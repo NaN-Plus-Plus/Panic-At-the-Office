@@ -13,6 +13,8 @@ var confetti_sprites: Array[Sprite2D] = []
 var confetti_speeds: Array[float] = []
 
 func _ready():
+	if Globals.is_story:
+		await Globals.start_dialogue("Ending")
 	spawn_confetti()
 
 func _process(delta: float) -> void:

@@ -1,8 +1,18 @@
 [gd_scene format=3 uid="uid://cjmr1ix08blf"]
 
 [ext_resource type="Script" uid="uid://dgpkx7egvc377" path="res://scenes/StartingGameScene/starting_game_scene.gd" id="1_ws8n3"]
+[ext_resource type="Texture2D" uid="uid://bt6rq2pt0g86v" path="res://assets/PlaceHolder4.jpg" id="2_11stp"]
 [ext_resource type="PackedScene" uid="uid://c75p4fry2607y" path="res://scenes/PopUpWindow/BasePopUpWindow.tscn" id="2_n5ry4"]
+[ext_resource type="Shader" uid="uid://bty55qsbduxxf" path="res://shaders/Retrooo.gdshader" id="3_11stp"]
 [ext_resource type="PackedScene" uid="uid://dc2axg4nj4q4g" path="res://scenes/PopUpWindow/PlayPopUpWindow.tscn" id="3_n5ry4"]
+[ext_resource type="PackedScene" uid="uid://ds0nghphhjocs" path="res://scenes/PopUpWindow/StoryPopUpWindow.tscn" id="5_2lw16"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fo2j8"]
+shader = ExtResource("3_11stp")
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 0.4790000227525
+shader_parameter/blur_samples = 3
 
 [node name="StartingGameScene" type="Control" unique_id=1590376725 node_paths=PackedStringArray("popUpWindow")]
 layout_mode = 3
@@ -24,12 +34,14 @@ grow_vertical = 2
 color = Color(0.23693937, 0.17705932, 0.17705932, 1)
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1541957288]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_11stp")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=861215642]
 layout_mode = 1
@@ -65,6 +77,13 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 36
 text = "Hard"
 
+[node name="StoryMode" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1961312547]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+text = "Story"
+
 [node name="PopUpWindow" parent="." unique_id=1818528751 instance=ExtResource("2_n5ry4")]
 visible = false
 layout_mode = 1
@@ -73,6 +92,22 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="BasePopUpWindow" parent="." unique_id=1869443993 instance=ExtResource("5_2lw16")]
+visible = false
+layout_mode = 1
+
+[node name="Shader" type="ColorRect" parent="." unique_id=1459777614]
+visible = false
+material = SubResource("ShaderMaterial_fo2j8")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Easy" to="." method="_on_easy_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Normal" to="." method="_on_normal_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/Hard" to="." method="_on_hard_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/StoryMode" to="." method="_on_story_mode_pressed"]

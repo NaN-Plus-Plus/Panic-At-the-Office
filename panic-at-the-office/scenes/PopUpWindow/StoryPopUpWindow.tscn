@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ds0nghphhjocs"]
+
+[ext_resource type="PackedScene" uid="uid://c75p4fry2607y" path="res://scenes/PopUpWindow/BasePopUpWindow.tscn" id="1_1j56t"]
+[ext_resource type="Script" uid="uid://bjouhtljbm2dd" path="res://scenes/PopUpWindow/story_pop_up_window.gd" id="2_cvl81"]
+
+[node name="BasePopUpWindow" unique_id=1818528751 instance=ExtResource("1_1j56t")]
+script = ExtResource("2_cvl81")
+
+[node name="Info" parent="MarginContainer/VBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(105624605) index="0" unique_id=1141652186]
+text = "Story Mode"
+
+[node name="Text" parent="MarginContainer/VBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(105624605) index="2" unique_id=747866859]
+text = "Do You want to enter Story Mode?"

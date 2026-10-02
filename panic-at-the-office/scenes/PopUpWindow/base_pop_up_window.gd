@@ -1,7 +1,6 @@
 extends Control
 class_name BasePopUpWindow
 
-
 func close_window() -> void:
 	visible = false
 	get_tree().paused = false

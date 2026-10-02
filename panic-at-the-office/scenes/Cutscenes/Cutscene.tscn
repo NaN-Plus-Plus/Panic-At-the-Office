@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dk8f3mrrq87f"]
+
+[ext_resource type="Texture2D" uid="uid://dx3kw6bavevn2" path="res://assets/Cutscenki/Cutscenka1.png" id="1_qgc4t"]
+[ext_resource type="Script" uid="uid://c0r5u7n21v7xm" path="res://scenes/Cutscenes/cutscene.gd" id="1_qt38w"]
+[ext_resource type="Shader" uid="uid://brrk3pt0ma017" path="res://shaders/ChineseGlitch.gdshader" id="2_qt38w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nkbmn"]
+shader = ExtResource("2_qt38w")
+shader_parameter/intensity = 0.33200001577
+shader_parameter/glitch_frequency = 2.99800013914512
+shader_parameter/glitch_duration = 0.07300000276898
+shader_parameter/red_displacement = 0.02
+shader_parameter/green_displacement = 0.02
+shader_parameter/blue_displacement = 0.02
+shader_parameter/scanline_intensity = 0.3
+shader_parameter/noise_intensity = 0.2
+shader_parameter/slice_intensity = 0.4
+shader_parameter/ghost_intensity = 0.1
+shader_parameter/negative_intensity = 0.0
+
+[node name="Cutscene" type="Control" unique_id=321216686]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qt38w")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=973087421]
+material = SubResource("ShaderMaterial_nkbmn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qgc4t")

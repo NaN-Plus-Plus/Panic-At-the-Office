@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://l5877e1o7y3g"]
+
+[ext_resource type="Texture2D" uid="uid://cp4ob2x8k4xxu" path="res://assets/Office/telephone.png" id="1_r4hqq"]
+[ext_resource type="Script" uid="uid://ckgcesxxdnyf0" path="res://scenes/Office/telephone.gd" id="2_hb265"]
+[ext_resource type="PackedScene" uid="uid://dqmuu5hs5khjl" path="res://scripts/Interactions/InteractionArea.tscn" id="3_2u5ks"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhunq"]
+radius = 16.03122
+
+[node name="Telephone" type="Sprite2D" unique_id=916355677]
+z_index = 1
+texture = ExtResource("1_r4hqq")
+script = ExtResource("2_hb265")
+
+[node name="InteractionArea" parent="." unique_id=1549464501 instance=ExtResource("3_2u5ks")]
+position = Vector2(64, -107)
+action_name = "Pick Up Phone"
+
+[node name="Telephone" type="CollisionShape2D" parent="InteractionArea" unique_id=296504589]
+position = Vector2(-62, 110)
+shape = SubResource("CircleShape2D_bhunq")
