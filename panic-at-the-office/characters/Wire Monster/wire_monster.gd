@@ -4,6 +4,7 @@ class_name WireMonster
 const DETECTION_LENGTH = 400.0
 const LOST_DETECTION_LENGTH = 800.0
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var nav_agent: NavigationAgent2D
 @export var player_detection_area: Area2D
 @export var push_force: float = 1.0
@@ -19,10 +20,13 @@ func _ready() -> void:
 			speed = 120.0
 		Globals.difficulty_enum.HARD:
 			speed = 140.0
+	
+	animated_sprite.play("idle")
 
 func _physics_process(_delta: float) -> void:
 	var player_position = Globals.player.global_position
 	if global_position.distance_to(player_position) > 400 and !is_chasing:
+		_update_animation()
 		return
 	
 	nav_agent.target_position = player_position
@@ -37,8 +41,16 @@ func _physics_process(_delta: float) -> void:
 		velocity = Vector2.ZERO
 	
 	move_and_slide()
-	
+	_update_animation()
 	push_rigid_bodies()
+
+func _update_animation() -> void:
+	if velocity.length() > 1.0:
+		animated_sprite.play("walk")
+		if abs(velocity.x) > 1.0:
+			animated_sprite.flip_h = velocity.x < 0.0
+	else:
+		animated_sprite.play("idle")
 
 func push_rigid_bodies():
 	for i in get_slide_collision_count():

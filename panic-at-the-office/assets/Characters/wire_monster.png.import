@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5prqakv5yrko"
-path="res://.godot/imported/wire_monster.png-9fcc86cfc7f743f52691bb33e756b08b.ctex"
+uid="uid://nh3xfyg4h2vu"
+path="res://.godot/imported/wire_monster.png-95c774e87b0b52009edcef00c6ca98ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/wire_monster.png"
-dest_files=["res://.godot/imported/wire_monster.png-9fcc86cfc7f743f52691bb33e756b08b.ctex"]
+source_file="res://assets/Characters/wire_monster.png"
+dest_files=["res://.godot/imported/wire_monster.png-95c774e87b0b52009edcef00c6ca98ea.ctex"]
 
 [params]
 
