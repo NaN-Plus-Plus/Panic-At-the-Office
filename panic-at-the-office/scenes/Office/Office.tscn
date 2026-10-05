@@ -29,40 +29,42 @@
 [ext_resource type="Texture2D" uid="uid://ctupxd1ah2q87" path="res://assets/Office/trashcan.png" id="21_dnde4"]
 [ext_resource type="Texture2D" uid="uid://sug0nsn06u6e" path="res://assets/Office/shelf.png" id="22_8u4u7"]
 [ext_resource type="Texture2D" uid="uid://hpaj5rxj8qu0" path="res://assets/Office/office_overlay.png" id="23_is2gq"]
+[ext_resource type="Texture2D" uid="uid://du5jl7nomhw53" path="res://assets/Office/sonicmeal.png" id="26_5gmco"]
+[ext_resource type="Script" uid="uid://bw3h381vumgt" path="res://scenes/Office/sonicmeal.gd" id="27_ixpye"]
 [ext_resource type="PackedScene" uid="uid://l5877e1o7y3g" path="res://scenes/Office/telephone.tscn" id="30_enwj8"]
 [ext_resource type="AudioStream" uid="uid://ctt5gy7woexw2" path="res://audio/Music/𝙲𝚛𝚘𝚘𝚔𝚎𝚍  𝚆𝚘𝚛𝚕𝚍. - 𝙾𝚍𝚍  𝙱𝚎𝚑𝚊𝚟𝚒𝚘𝚛.mp3" id="31_ciwrq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbr7x"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ciwrq"]
 size = Vector2(291, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4bpu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u165g"]
 size = Vector2(8, 423)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6y2t"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gmco"]
 size = Vector2(177, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ul1kl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixpye"]
 size = Vector2(8, 192)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rtk5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmuxq"]
 size = Vector2(108, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo726"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxkgm"]
 size = Vector2(8, 42)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2k2h"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ts6dp"]
 size = Vector2(53, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_stsmr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dt3gn"]
 size = Vector2(8, 111)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_okr3n"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgqwj"]
 size = Vector2(53, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lhnd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8qlv"]
 size = Vector2(41, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt15m"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0tu7"]
 size = Vector2(104, 8)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_enwj8"]
@@ -113,6 +115,12 @@ scale_min = 0.25
 scale_max = 0.5
 alpha_curve = SubResource("CurveTexture_u582o")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(10, 11)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 11.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yf5fn"]
 texture = ExtResource("10_ircco")
 
@@ -135,32 +143,6 @@ position = Vector2(21, -6)
 scale = Vector2(8.369792, 5.8593745)
 texture = ExtResource("1_yprdu")
 metadata/_edit_lock_ = true
-
-[node name="NOTES" type="Label" parent="." unique_id=1248882569]
-offset_left = -111.0
-offset_top = -374.0
-offset_right = 91.0
-offset_bottom = -247.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "I’ll fix all the collisions 
-and y-sort some 
-of the assets later dw :P"
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1504061200]
-visible = false
-position = Vector2(193, -23)
-amount = 100
-texture = ExtResource("4_udni0")
-emission_shape = 3
-emission_rect_extents = Vector2(10, 15)
-spread = 180.0
-gravity = Vector2(-30, -10)
-angular_velocity_min = 145.0
-angular_velocity_max = 720.0
-linear_accel_max = 86.51
-tangential_accel_max = 50.0
-scale_amount_min = 0.25
-scale_amount_max = 0.5
 
 [node name="SmallFloorDecors" type="Node2D" parent="." unique_id=1443757449]
 
@@ -236,7 +218,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall" unique_id=923619057]
 position = Vector2(141.5, 0)
-shape = SubResource("RectangleShape2D_cbr7x")
+shape = SubResource("RectangleShape2D_ciwrq")
 
 [node name="OfficeWall2" type="StaticBody2D" parent="YSort/Walls" unique_id=1805583572]
 position = Vector2(-175, 237)
@@ -257,7 +239,7 @@ patch_margin_bottom = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall2" unique_id=2067379841]
 position = Vector2(0, -207.5)
-shape = SubResource("RectangleShape2D_p4bpu")
+shape = SubResource("RectangleShape2D_u165g")
 
 [node name="OfficeWall3" type="StaticBody2D" parent="YSort/Walls" unique_id=296246660]
 position = Vector2(-168, 237)
@@ -277,7 +259,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall3" unique_id=801955513]
 position = Vector2(84.5, 0)
-shape = SubResource("RectangleShape2D_d6y2t")
+shape = SubResource("RectangleShape2D_5gmco")
 
 [node name="OfficeWall4" type="StaticBody2D" parent="YSort/Walls" unique_id=789893881]
 position = Vector2(8, 237)
@@ -298,7 +280,7 @@ patch_margin_bottom = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall4" unique_id=1365650239]
 position = Vector2(0, -92)
-shape = SubResource("RectangleShape2D_ul1kl")
+shape = SubResource("RectangleShape2D_ixpye")
 
 [node name="OfficeWall5" type="StaticBody2D" parent="YSort/Walls" unique_id=2146004864]
 position = Vector2(15, 53)
@@ -318,7 +300,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall5" unique_id=368494504]
 position = Vector2(50, 0)
-shape = SubResource("RectangleShape2D_6rtk5")
+shape = SubResource("RectangleShape2D_fmuxq")
 
 [node name="OfficeWall6" type="StaticBody2D" parent="YSort/Walls" unique_id=847250548]
 position = Vector2(122, 53)
@@ -339,7 +321,7 @@ patch_margin_bottom = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall6" unique_id=389825597]
 position = Vector2(0, -17)
-shape = SubResource("RectangleShape2D_yo726")
+shape = SubResource("RectangleShape2D_pxkgm")
 
 [node name="OfficeWall7" type="StaticBody2D" parent="YSort/Walls" unique_id=480804344]
 position = Vector2(129, 19)
@@ -359,7 +341,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall7" unique_id=1725731131]
 position = Vector2(22.5, 0)
-shape = SubResource("RectangleShape2D_k2k2h")
+shape = SubResource("RectangleShape2D_ts6dp")
 
 [node name="OfficeWall8" type="StaticBody2D" parent="YSort/Walls" unique_id=565815732]
 position = Vector2(122, -75)
@@ -380,7 +362,7 @@ patch_margin_bottom = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall8" unique_id=536502487]
 position = Vector2(0, -51.5)
-shape = SubResource("RectangleShape2D_stsmr")
+shape = SubResource("RectangleShape2D_dt3gn")
 
 [node name="OfficeWall9" type="StaticBody2D" parent="YSort/Walls" unique_id=922971992]
 position = Vector2(129, -75)
@@ -400,7 +382,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall9" unique_id=2062159731]
 position = Vector2(22.5, 0)
-shape = SubResource("RectangleShape2D_okr3n")
+shape = SubResource("RectangleShape2D_tgqwj")
 
 [node name="OfficeWall10" type="StaticBody2D" parent="YSort/Walls" unique_id=1088176947]
 position = Vector2(-168, 53)
@@ -420,7 +402,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall10" unique_id=1126920242]
 position = Vector2(16.5, 0)
-shape = SubResource("RectangleShape2D_2lhnd")
+shape = SubResource("RectangleShape2D_d8qlv")
 
 [node name="OfficeWall11" type="StaticBody2D" parent="YSort/Walls" unique_id=1020960053]
 position = Vector2(-95, 53)
@@ -440,7 +422,7 @@ patch_margin_bottom = 57
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall11" unique_id=1202339227]
 position = Vector2(48, 0)
-shape = SubResource("RectangleShape2D_rt15m")
+shape = SubResource("RectangleShape2D_c0tu7")
 
 [node name="MediumFloorDecors" type="Node2D" parent="YSort" unique_id=1100078553]
 y_sort_enabled = true
@@ -784,6 +766,23 @@ amount = 100
 texture = ExtResource("4_udni0")
 process_material = SubResource("ParticleProcessMaterial_gmykp")
 
+[node name="SonicMeal (japidi pojebie mnie)" type="StaticBody2D" parent="YSort" unique_id=1935395269]
+
+[node name="Sprite2D" type="Sprite2D" parent="YSort/SonicMeal (japidi pojebie mnie)" unique_id=1131195609]
+position = Vector2(-24, 72)
+texture = ExtResource("26_5gmco")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/SonicMeal (japidi pojebie mnie)" unique_id=129106071]
+position = Vector2(-24, 72.5)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Area2D" type="Area2D" parent="YSort/SonicMeal (japidi pojebie mnie)" unique_id=852170305]
+script = ExtResource("27_ixpye")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/SonicMeal (japidi pojebie mnie)/Area2D" unique_id=306366458]
+position = Vector2(-24, 73)
+shape = SubResource("CircleShape2D_g4v7s")
+
 [node name="Overlay" type="Sprite2D" parent="." unique_id=1120848613]
 texture = ExtResource("23_is2gq")
 
@@ -832,8 +831,11 @@ shape = SubResource("CircleShape2D_riqys")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1846779365]
 stream = ExtResource("31_ciwrq")
+volume_db = 10.0
 autoplay = true
 parameters/looping = true
 
+[connection signal="body_entered" from="YSort/SonicMeal (japidi pojebie mnie)/Area2D" to="YSort/SonicMeal (japidi pojebie mnie)/Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="YSort/SonicMeal (japidi pojebie mnie)/Area2D" to="YSort/SonicMeal (japidi pojebie mnie)/Area2D" method="_on_body_exited"]
 [connection signal="body_entered" from="Story/Start" to="." method="_on_start_body_entered"]
 [connection signal="body_entered" from="Story/Backrooms" to="." method="_on_backrooms_body_entered"]

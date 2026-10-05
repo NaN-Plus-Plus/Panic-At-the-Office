@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://2n4bpfkmjh1s"]
+
+[ext_resource type="Texture2D" uid="uid://bclrhjfw6uuja" path="res://assets/sonic meal.png" id="1_2eye2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+texture = ExtResource("1_2eye2")
+
+[node name="Sonic Meal" type="CanvasLayer" unique_id=2146805951]
+layer = 69
+
+[node name="Bg" type="Panel" parent="." unique_id=1539254298]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sonic" type="Panel" parent="." unique_id=191538183]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 600.0
+offset_top = 197.0
+offset_right = -667.0
+offset_bottom = -208.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
