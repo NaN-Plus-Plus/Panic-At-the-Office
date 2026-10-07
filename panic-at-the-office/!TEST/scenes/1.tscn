@@ -1,0 +1,249 @@
+[gd_scene format=3 uid="uid://d2isvn01qwnhg"]
+
+[ext_resource type="Texture2D" uid="uid://dtc4u36esgw0c" path="res://assets/Office/bg.png" id="1_at1rh"]
+[ext_resource type="Script" uid="uid://0q8q5hea6tyv" path="res://!TEST/scripts/speed.gd" id="1_yycqj"]
+[ext_resource type="Texture2D" uid="uid://cwauytkly1208" path="res://!TEST/assets/officenone.png" id="2_yycqj"]
+[ext_resource type="PackedScene" uid="uid://b4bgh77ofnm8m" path="res://characters/MC/MC.tscn" id="3_rve1h"]
+[ext_resource type="Texture2D" uid="uid://2y3rcfotxc0j" path="res://assets/Office/px.png" id="4_5he1k"]
+[ext_resource type="Script" uid="uid://cub6dwqytao2w" path="res://!TEST/scripts/exit.gd" id="5_at1rh"]
+[ext_resource type="Texture2D" uid="uid://c8r2w4yq0rbhh" path="res://!TEST/assets/cm.png" id="6_0sy6h"]
+[ext_resource type="AudioStream" uid="uid://bp362jcoscanw" path="res://audio/Music/The Lobotomy.mp3" id="7_6auqv"]
+[ext_resource type="Shader" uid="uid://tjlwx54030md" path="res://!TEST/shaders/shake.gdshader" id="8_4qf7j"]
+[ext_resource type="Texture2D" uid="uid://bkk1k8rpqhkr1" path="res://!TEST/assets/box.png" id="9_llgep"]
+
+[sub_resource type="Curve" id="Curve_f2wcm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="CurveTexture" id="CurveTexture_u582o"]
+curve = SubResource("Curve_f2wcm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l5sol"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(5, 200, 1)
+direction = Vector3(-1, 0, 0)
+spread = 70.0
+initial_velocity_min = 20.0
+initial_velocity_max = 85.0
+angular_velocity_min = 144.99998
+angular_velocity_max = 719.99994
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = 49.999996
+scale_min = 0.25
+scale_max = 2.0
+alpha_curve = SubResource("CurveTexture_u582o")
+
+[sub_resource type="Gradient" id="Gradient_mpdjg"]
+offsets = PackedFloat32Array(0.16733871, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
+gradient = SubResource("Gradient_mpdjg")
+use_hdr = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 39.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(318, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(8, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpdjg"]
+size = Vector2(20, 458.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(205, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
+size = Vector2(137, 831)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_57qmd"]
+shader = ExtResource("8_4qf7j")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 5.0
+shader_parameter/noise_scale = 20.0
+shader_parameter/noise_speed = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+texture = ExtResource("9_llgep")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yf5fn"]
+shader = ExtResource("8_4qf7j")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 5.0
+shader_parameter/noise_scale = 20.0
+shader_parameter/noise_speed = 20.0
+
+[node name="1" type="Node2D" unique_id=573575962]
+script = ExtResource("1_yycqj")
+
+[node name="BLACK" type="Sprite2D" parent="." unique_id=2036825272]
+z_index = -3
+position = Vector2(21, -6)
+scale = Vector2(8.369792, 5.8593745)
+texture = ExtResource("1_at1rh")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1896335832]
+z_index = -2
+position = Vector2(2, 0)
+texture = ExtResource("2_yycqj")
+
+[node name="Panel" type="Panel" parent="." unique_id=1338424619]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -545.0
+offset_top = -1041.0
+offset_right = 805.0
+offset_bottom = 515.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mc" parent="." unique_id=978937542 instance=ExtResource("3_rve1h")]
+position = Vector2(-111, 174)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=160702970]
+z_index = 10
+position = Vector2(-16, -250)
+rotation = -1.5707964
+amount = 1000
+texture = ExtResource("4_5he1k")
+lifetime = 5.0
+speed_scale = 2.0
+visibility_rect = Rect2(-500, -500, 500, 1000)
+process_material = SubResource("ParticleProcessMaterial_l5sol")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1416869933]
+position = Vector2(-20.384138, -133.1399)
+rotation = 1.5707964
+scale = Vector2(2.0418766, 0.6460147)
+energy = 5.0
+shadow_color = Color(0, 0, 0, 0.5529412)
+texture = SubResource("GradientTexture2D_g4v7s")
+
+[node name="EXIT" type="Area2D" parent="." unique_id=992763881]
+script = ExtResource("5_at1rh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EXIT" unique_id=689321953]
+position = Vector2(-21, -926)
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Node" type="StaticBody2D" parent="." unique_id=1725517819]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node" unique_id=56132696]
+position = Vector2(-15, 218)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node" unique_id=920726782]
+position = Vector2(14, 219.5)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node" unique_id=1623984424]
+position = Vector2(-176, 2.25)
+shape = SubResource("RectangleShape2D_mpdjg")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node" unique_id=1285012578]
+position = Vector2(134, -2)
+shape = SubResource("RectangleShape2D_mpdjg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node" unique_id=491143772]
+position = Vector2(-83.5, 56)
+shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node" unique_id=1197905263]
+position = Vector2(-111.5, -559.5)
+shape = SubResource("RectangleShape2D_d0u6y")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Node" unique_id=1138180821]
+position = Vector2(69, -559)
+shape = SubResource("RectangleShape2D_d0u6y")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=309611557]
+position = Vector2(-21, -955)
+texture = ExtResource("6_0sy6h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=387511203]
+stream = ExtResource("7_6auqv")
+volume_db = 5.0
+pitch_scale = 0.3
+autoplay = true
+parameters/looping = true
+
+[node name="Control" type="Control" parent="." unique_id=1249864811]
+z_index = -1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Box" type="Panel" parent="Control" unique_id=2101612836]
+material = SubResource("ShaderMaterial_57qmd")
+layout_mode = 0
+offset_left = -58.0
+offset_top = 50.0
+offset_right = -23.0
+offset_bottom = 66.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
+
+[node name="Text" type="Label" parent="Control/Box" unique_id=658261728]
+material = SubResource("ShaderMaterial_yf5fn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Box2" type="Panel" parent="Control" unique_id=1877801824]
+material = SubResource("ShaderMaterial_57qmd")
+layout_mode = 0
+offset_left = -38.0
+offset_top = -138.0
+offset_right = -3.0
+offset_bottom = -122.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
+
+[node name="Text" type="Label" parent="Control/Box2" unique_id=846785404]
+material = SubResource("ShaderMaterial_yf5fn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Box3" type="Panel" parent="Control" unique_id=55535768]
+material = SubResource("ShaderMaterial_57qmd")
+layout_mode = 0
+offset_left = -39.0
+offset_top = -932.0
+offset_right = -4.0
+offset_bottom = -916.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
+
+[node name="Text" type="Label" parent="Control/Box3" unique_id=137410637]
+material = SubResource("ShaderMaterial_yf5fn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "???"
+horizontal_alignment = 1
+vertical_alignment = 1

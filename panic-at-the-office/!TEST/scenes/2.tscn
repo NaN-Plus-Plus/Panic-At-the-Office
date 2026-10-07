@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://dqgldyi704htv"]
+
+[ext_resource type="Texture2D" uid="uid://dtc4u36esgw0c" path="res://assets/Office/bg.png" id="1_4a530"]
+[ext_resource type="Script" uid="uid://0q8q5hea6tyv" path="res://!TEST/scripts/speed.gd" id="1_8vrin"]
+[ext_resource type="Texture2D" uid="uid://d1nlfyff1jqs5" path="res://!TEST/assets/kfc.png" id="2_w2e34"]
+[ext_resource type="Texture2D" uid="uid://bclrhjfw6uuja" path="res://assets/sonic meal.png" id="3_4a530"]
+[ext_resource type="PackedScene" uid="uid://b4bgh77ofnm8m" path="res://characters/MC/MC.tscn" id="3_pod3h"]
+[ext_resource type="Script" uid="uid://cub6dwqytao2w" path="res://!TEST/scripts/exit.gd" id="5_byxsq"]
+[ext_resource type="AudioStream" uid="uid://coc1dkxfc1ixg" path="res://audio/Music/POV You're at KFC's.mp3" id="5_h5u1y"]
+[ext_resource type="Script" uid="uid://ccf46film3gry" path="res://audio/audio_stream_player.gd" id="6_7ql1c"]
+[ext_resource type="Shader" uid="uid://tjlwx54030md" path="res://!TEST/shaders/shake.gdshader" id="8_8ivsq"]
+[ext_resource type="Texture2D" uid="uid://bkk1k8rpqhkr1" path="res://!TEST/assets/box.png" id="9_1fkjm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyt7g"]
+size = Vector2(615, 41.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0u6y"]
+size = Vector2(137, 994.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fsax"]
+size = Vector2(45.5, 316.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_57qmd"]
+shader = ExtResource("8_8ivsq")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 5.0
+shader_parameter/noise_scale = 20.0
+shader_parameter/noise_speed = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+texture = ExtResource("9_1fkjm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yf5fn"]
+shader = ExtResource("8_8ivsq")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 5.0
+shader_parameter/noise_scale = 20.0
+shader_parameter/noise_speed = 20.0
+
+[node name="2" type="Node2D" unique_id=573575962]
+script = ExtResource("1_8vrin")
+
+[node name="BLACK" type="Sprite2D" parent="." unique_id=2036825272]
+z_index = -3
+position = Vector2(21, -6)
+scale = Vector2(8.369792, 5.8593745)
+texture = ExtResource("1_4a530")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1896335832]
+z_index = -2
+position = Vector2(-11, -735)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_w2e34")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1833830100]
+position = Vector2(-40, -1077.0001)
+scale = Vector2(0.13250001, 0.11750009)
+texture = ExtResource("3_4a530")
+
+[node name="Mc" parent="." unique_id=978937542 instance=ExtResource("3_pod3h")]
+position = Vector2(-4, -278)
+
+[node name="EXIT" type="Area2D" parent="." unique_id=992763881]
+position = Vector2(-2, -896)
+script = ExtResource("5_byxsq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EXIT" unique_id=689321953]
+position = Vector2(-9, -141.75)
+shape = SubResource("RectangleShape2D_iyt7g")
+
+[node name="Node" type="StaticBody2D" parent="." unique_id=1725517819]
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node" unique_id=1197905263]
+position = Vector2(-229, -702)
+shape = SubResource("RectangleShape2D_d0u6y")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Node" unique_id=1138180821]
+position = Vector2(202, -702)
+shape = SubResource("RectangleShape2D_d0u6y")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Node" unique_id=1328382833]
+position = Vector2(-16, -244)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_6fsax")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Node" unique_id=963641518]
+position = Vector2(-7.0000005, -1074)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_6fsax")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=387511203 node_paths=PackedStringArray("target")]
+stream = ExtResource("5_h5u1y")
+volume_db = 10.0
+autoplay = true
+parameters/looping = true
+script = ExtResource("6_7ql1c")
+target = NodePath("../Marker2D")
+max_distance = 2000.0
+loud_db = 20.0
+
+[node name="Box" type="Panel" parent="." unique_id=878657993]
+material = SubResource("ShaderMaterial_57qmd")
+offset_left = -23.0
+offset_top = -353.0
+offset_right = 12.0
+offset_bottom = -337.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
+
+[node name="Text" type="Label" parent="Box" unique_id=708499502]
+material = SubResource("ShaderMaterial_yf5fn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+text = "^"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=2058971079]
+position = Vector2(-3, -1034)

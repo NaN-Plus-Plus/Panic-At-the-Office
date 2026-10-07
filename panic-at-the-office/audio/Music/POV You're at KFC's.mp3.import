@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://coc1dkxfc1ixg"
+path="res://.godot/imported/POV You're at KFC's.mp3-a2e01e4b1c5a2d6dcc7c9319a8d1512d.mp3str"
+
+[deps]
+
+source_file="res://audio/Music/POV You're at KFC's.mp3"
+dest_files=["res://.godot/imported/POV You're at KFC's.mp3-a2e01e4b1c5a2d6dcc7c9319a8d1512d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

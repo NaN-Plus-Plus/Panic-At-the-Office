@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dviv34nneo6x8" path="res://characters/MC/mc.gd" id="1_imnk3"]
 [ext_resource type="Texture2D" uid="uid://rx40jts4ojtf" path="res://assets/Characters/mc.png" id="2_fccbu"]
 [ext_resource type="Script" uid="uid://drb857tfbrbw" path="res://characters/MC/camera_2d.gd" id="3_m0y0c"]
+[ext_resource type="Shader" uid="uid://my5oh4jpw6ky" path="res://!TEST/shaders/sortpx.gdshader" id="5_fccbu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1rxyu"]
 radius = 200.0
@@ -78,19 +79,26 @@ animations = [{
 shader = ExtResource("1_cwnv6")
 shader_parameter/silhouette_color = Color(1, 0.75, 0, 1)
 
-[node name="Mc" type="CharacterBody2D" unique_id=978937542 node_paths=PackedStringArray("monster_area", "sprite", "silhouette") groups=["player", "pause_during_interaction"]]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwnv6"]
+shader = ExtResource("5_fccbu")
+shader_parameter/mask_softness = 1.4
+shader_parameter/mask_threshold = 0.6
+shader_parameter/sort = 0.0
+
+[node name="Mc" type="CharacterBody2D" unique_id=978937542 node_paths=PackedStringArray("monster_area", "sprite", "silhouette", "glitch_rect") groups=["pause_during_interaction", "player"]]
 motion_mode = 1
 script = ExtResource("1_imnk3")
 monster_area = NodePath("MonsterArea")
 sprite = NodePath("Sprite2D")
 silhouette = NodePath("Sprite2D/Silhouette")
+glitch_rect = NodePath("CanvasLayer/Panel")
+jumpscare_folder = "res://!TEST/scenes"
 
 [node name="MonsterArea" type="Area2D" parent="." unique_id=638366843]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterArea" unique_id=446478552]
-visible = false
 shape = SubResource("CircleShape2D_1rxyu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328361254]
@@ -110,3 +118,13 @@ material = SubResource("ShaderMaterial_tqg67")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1391218887]
 zoom = Vector2(3, 3)
 script = ExtResource("3_m0y0c")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=26352463]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1931647625]
+material = SubResource("ShaderMaterial_cwnv6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
