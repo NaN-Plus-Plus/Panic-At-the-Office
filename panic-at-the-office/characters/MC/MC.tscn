@@ -10,7 +10,7 @@
 radius = 200.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udni0"]
-size = Vector2(12, 4)
+size = Vector2(12, 6)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6hu3u"]
 atlas = ExtResource("2_fccbu")
@@ -103,6 +103,7 @@ shape = SubResource("CircleShape2D_1rxyu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328361254]
 visibility_layer = 3
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_udni0")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1062908763]

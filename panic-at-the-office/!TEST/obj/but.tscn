@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://xhm8cu6ax2kn"]
+
+[ext_resource type="Texture2D" uid="uid://dl02hl4uidwxl" path="res://!TEST/assets/butterfly.png" id="1_rmyga"]
+[ext_resource type="Script" uid="uid://blha4v131epnf" path="res://!TEST/scripts/but.gd" id="1_yp8in"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yp8in"]
+atlas = ExtResource("1_rmyga")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khkcx"]
+atlas = ExtResource("1_rmyga")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssgiy"]
+atlas = ExtResource("1_rmyga")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o2av"]
+atlas = ExtResource("1_rmyga")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pojjh"]
+atlas = ExtResource("1_rmyga")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtqps"]
+atlas = ExtResource("1_rmyga")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_regru"]
+atlas = ExtResource("1_rmyga")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mwec"]
+atlas = ExtResource("1_rmyga")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_yp8in")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_khkcx")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_ssgiy")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_8o2av")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_pojjh")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_qtqps")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_regru")
+}, {
+"duration": 0.9,
+"texture": SubResource("AtlasTexture_4mwec")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="But" type="Node2D" unique_id=1992498207]
+script = ExtResource("1_yp8in")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2099171628]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"idle"
+frame_progress = 0.747056
