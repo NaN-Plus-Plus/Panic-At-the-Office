@@ -3,7 +3,6 @@ class_name Player
 
 @export var speed: float = 200.0
 @export var push_force: float = 80.0
-@export var catch_distance: float = 20.0
 
 @export var monster_area: Area2D
 @export var sprite: AnimatedSprite2D
@@ -25,12 +24,10 @@ func _ready():
 		camera.snap_to_player()
 
 	Globals.player = self
+	monster_area.body_entered.connect(_on_monster_area_body_entered)
 
 	sprite.frame_changed.connect(set_silhouette_texture)
 	sprite.animation_changed.connect(set_silhouette_texture)
-
-func _process(_delta):
-	check_monster_touch()
 
 func _physics_process(_delta):
 	var direction := Input.get_vector(
@@ -83,14 +80,9 @@ func update_animation(direction: Vector2):
 		else:
 			sprite.play("walk_b")
 
-func check_monster_touch():
-	if caught:
-		return
-
-	for body in monster_area.get_overlapping_bodies():
-		if body is WireMonster and global_position.distance_to(body.global_position) < catch_distance:
-			scene_change()
-			return
+func _on_monster_area_body_entered(body: Node2D):
+	if body is WireMonster:
+		scene_change()
 
 func scene_change():
 	if caught:

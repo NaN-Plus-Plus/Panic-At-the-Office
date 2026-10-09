@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://jeiux2h14k" path="res://audio/sfx/Backrooms monster sound.mp3" id="3_uqe0a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imf1u"]
-size = Vector2(27, 14)
+size = Vector2(13, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uqe0a"]
 atlas = ExtResource("1_gw2qr")
@@ -146,7 +146,7 @@ script = ExtResource("1_imf1u")
 nav_agent = NodePath("NavigationAgent2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=765152719]
-position = Vector2(-0.99999976, -10.5)
+position = Vector2(-0.99999994, -7.5)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_imf1u")
 

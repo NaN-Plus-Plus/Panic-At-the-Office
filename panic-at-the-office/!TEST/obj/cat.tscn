@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://m0kkv13l24o"]
+
+[ext_resource type="Script" uid="uid://kjwxenusse0h" path="res://!TEST/scripts/cat.gd" id="1_gwrgy"]
+[ext_resource type="Texture2D" uid="uid://b1cwc2fjaw3dd" path="res://!TEST/assets/cat.png" id="2_amy0t"]
+[ext_resource type="AudioStream" uid="uid://corxuis6u041i" path="res://audio/sfx/meow.mp3" id="3_amy0t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bflns"]
+atlas = ExtResource("2_amy0t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m24ay"]
+atlas = ExtResource("2_amy0t")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj4nc"]
+atlas = ExtResource("2_amy0t")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfyw8"]
+atlas = ExtResource("2_amy0t")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bflns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m24ay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj4nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfyw8")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 34.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 3.0
+
+[node name="Cat" type="CharacterBody2D" unique_id=1677509385]
+script = ExtResource("1_gwrgy")
+meow_sound = ExtResource("3_amy0t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=958280313]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"walk"
+frame_progress = 0.051223144
+
+[node name="Area2D" type="Area2D" parent="." unique_id=139873154]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=266652852]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1799391257]
+stream = ExtResource("3_amy0t")
+volume_db = 5.0
+pitch_scale = 0.3
+autoplay = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=692164588]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1072874532]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_yf5fn")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

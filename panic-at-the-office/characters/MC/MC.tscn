@@ -7,7 +7,7 @@
 [ext_resource type="Shader" uid="uid://my5oh4jpw6ky" path="res://!TEST/shaders/sortpx.gdshader" id="5_fccbu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1rxyu"]
-radius = 200.0
+radius = 17.029387
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udni0"]
 size = Vector2(12, 6)
