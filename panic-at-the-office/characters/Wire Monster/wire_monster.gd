@@ -11,6 +11,7 @@ const LOST_DETECTION_LENGTH = 800.0
 
 var speed: float = 100.0
 var is_chasing: bool = false
+var is_blocked_by_shield: bool = false
 
 func _ready() -> void:
 	match Globals.difficulty:
@@ -24,6 +25,11 @@ func _ready() -> void:
 	animated_sprite.play("idle")
 
 func _physics_process(_delta: float) -> void:
+	if is_blocked_by_shield:
+		velocity = Vector2.ZERO
+		_update_animation()
+		return
+
 	var player_position = Globals.player.global_position
 	if global_position.distance_to(player_position) > 400 and !is_chasing:
 		_update_animation()
@@ -51,6 +57,13 @@ func _update_animation() -> void:
 			animated_sprite.flip_h = velocity.x < 0.0
 	else:
 		animated_sprite.play("idle")
+
+
+func set_shield_blocked(blocked: bool) -> void:
+	is_blocked_by_shield = blocked
+	if blocked:
+		velocity = Vector2.ZERO
+		_update_animation()
 
 func push_rigid_bodies():
 	for i in get_slide_collision_count():

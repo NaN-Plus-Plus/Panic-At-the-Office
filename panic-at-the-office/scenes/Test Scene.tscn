@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b4bgh77ofnm8m" path="res://characters/MC/MC.tscn" id="1_65l47"]
 [ext_resource type="PackedScene" uid="uid://dg0thplxqd1v1" path="res://characters/Tori/Tori.tscn" id="2_8tv2w"]
 [ext_resource type="PackedScene" uid="uid://dwa2gplcaeo3o" path="res://characters/Toya/Toya.tscn" id="3_lf5dv"]
+[ext_resource type="PackedScene" uid="uid://2mrx4ulwqgfi" path="res://characters/Wire Monster/wire_monster.tscn" id="4_8tv2w"]
 
 [node name="TestScene" type="Node2D" unique_id=438249968]
 
@@ -13,3 +14,6 @@ position = Vector2(259, 182)
 
 [node name="Toya" parent="." unique_id=959609888 instance=ExtResource("3_lf5dv")]
 position = Vector2(275, -36)
+
+[node name="WireMonster" parent="." unique_id=1574792864 instance=ExtResource("4_8tv2w")]
+position = Vector2(919, 0)

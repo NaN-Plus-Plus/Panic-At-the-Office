@@ -37,5 +37,5 @@ offset_top = 152.0
 offset_right = 118.695656
 offset_bottom = 203.0
 theme_override_font_sizes/font_size = 24
-text = "[F]"
+text = "[Q]"
 horizontal_alignment = 1
