@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://p6rqkksgb6pf"]
+
+[ext_resource type="Script" uid="uid://cp5qcdb6x8fri" path="res://!TEST/scripts/3.gd" id="1_ik87x"]
+[ext_resource type="Texture2D" uid="uid://dtc4u36esgw0c" path="res://assets/Office/bg.png" id="2_xcaxm"]
+[ext_resource type="Texture2D" uid="uid://dm4gwpa0nbx27" path="res://!TEST/assets/stairs.png" id="3_o3h3j"]
+[ext_resource type="PackedScene" uid="uid://b4bgh77ofnm8m" path="res://characters/MC/MC.tscn" id="4_klmo3"]
+[ext_resource type="Script" uid="uid://cub6dwqytao2w" path="res://!TEST/scripts/exit.gd" id="6_oshii"]
+[ext_resource type="PackedScene" uid="uid://xhm8cu6ax2kn" path="res://!TEST/obj/but.tscn" id="7_o3h3j"]
+[ext_resource type="PackedScene" uid="uid://dr87waassvxh0" path="res://!TEST/obj/thing.tscn" id="8_vo3g8"]
+[ext_resource type="AudioStream" uid="uid://bp362jcoscanw" path="res://audio/Music/The Lobotomy.mp3" id="8_yicun"]
+[ext_resource type="Script" uid="uid://dykjylclxx18k" path="res://!TEST/scripts/butterflies.gd" id="9_0ueun"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5s0fj"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3h3j"]
+size = Vector2(46, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(61, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(24, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpdjg"]
+size = Vector2(20, 396.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo3g8"]
+size = Vector2(20, 365.125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gngh"]
+size = Vector2(77, 17.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcnqv"]
+size = Vector2(26.36235, 337.97397)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7numd"]
+size = Vector2(50.5, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1u0y"]
+size = Vector2(10.5, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5s0fj"]
+size = Vector2(39, 34)
+
+[node name="3" type="Node2D" unique_id=573575962]
+script = ExtResource("1_ik87x")
+
+[node name="BLACK" type="Sprite2D" parent="." unique_id=2036825272]
+z_index = -3
+position = Vector2(21, -6)
+scale = Vector2(8.369792, 5.8593745)
+texture = ExtResource("2_xcaxm")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1896335832]
+z_index = -2
+position = Vector2(2, 0)
+texture = ExtResource("3_o3h3j")
+
+[node name="Panel" type="Panel" parent="." unique_id=1338424619]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -282.0
+offset_top = -324.0
+offset_right = 161.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5s0fj")
+
+[node name="Panel2" type="Panel" parent="." unique_id=1384523381]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 161.0
+offset_top = -293.0
+offset_right = 218.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5s0fj")
+
+[node name="Mc" parent="." unique_id=978937542 instance=ExtResource("4_klmo3")]
+position = Vector2(-175, 281)
+
+[node name="EXIT" type="Area2D" parent="." unique_id=992763881]
+position = Vector2(185, -265)
+script = ExtResource("6_oshii")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EXIT" unique_id=689321953]
+shape = SubResource("RectangleShape2D_o3h3j")
+
+[node name="Node" type="StaticBody2D" parent="." unique_id=1725517819]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node" unique_id=56132696]
+position = Vector2(-174, 295)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node" unique_id=920726782]
+position = Vector2(-211.99998, 271.99997)
+rotation = 0.28986058
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node" unique_id=457825749]
+position = Vector2(-137, 271)
+rotation = 1.256376
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node" unique_id=1623984424]
+position = Vector2(-207, 68.125)
+shape = SubResource("RectangleShape2D_mpdjg")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node" unique_id=1285012578]
+position = Vector2(-141, 84.5625)
+shape = SubResource("RectangleShape2D_vo3g8")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node" unique_id=2043508849]
+position = Vector2(-179, -138.25)
+shape = SubResource("RectangleShape2D_3gngh")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node" unique_id=2143839398]
+position = Vector2(11.553787, -219.57332)
+rotation = 1.1127043
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_fcnqv")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Node" unique_id=31289687]
+position = Vector2(12.999992, -164)
+rotation = 1.1127043
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_fcnqv")
+
+[node name="Node2" type="StaticBody2D" parent="." unique_id=993258328]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2" unique_id=1162037002]
+position = Vector2(186, -246.5)
+shape = SubResource("RectangleShape2D_7numd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2" unique_id=987190527]
+position = Vector2(184, -283)
+shape = SubResource("RectangleShape2D_7numd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2" unique_id=1242947296]
+position = Vector2(213, -265)
+shape = SubResource("RectangleShape2D_p1u0y")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2" unique_id=697073564]
+position = Vector2(157, -266)
+shape = SubResource("RectangleShape2D_p1u0y")
+one_way_collision = true
+one_way_collision_margin = 5.0
+one_way_collision_direction = Vector2(-1, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=387511203]
+stream = ExtResource("8_yicun")
+volume_db = 5.0
+pitch_scale = 0.3
+autoplay = true
+parameters/looping = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=333332646]
+position = Vector2(189, -265)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2098310858]
+shape = SubResource("RectangleShape2D_5s0fj")
+
+[node name="But" parent="." unique_id=1992498207 instance=ExtResource("7_o3h3j")]
+position = Vector2(-236, -165)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1624596261]
+
+[node name="Thing" parent="CanvasLayer" unique_id=1680452274 instance=ExtResource("8_vo3g8")]
+z_index = 1
+position = Vector2(960, 1190)
+
+[node name="Butterflies" type="Node2D" parent="CanvasLayer" unique_id=904670052]
+script = ExtResource("9_0ueun")
+butterfly_scene = ExtResource("7_o3h3j")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

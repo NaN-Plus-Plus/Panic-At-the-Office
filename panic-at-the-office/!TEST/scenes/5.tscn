@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://qbtqdycrnjfr"]
+
+[ext_resource type="Script" uid="uid://0q8q5hea6tyv" path="res://!TEST/scripts/speed.gd" id="1_bxxtf"]
+[ext_resource type="Texture2D" uid="uid://dtc4u36esgw0c" path="res://assets/Office/bg.png" id="2_ml4ai"]
+[ext_resource type="PackedScene" uid="uid://b4bgh77ofnm8m" path="res://characters/MC/MC.tscn" id="3_loduu"]
+[ext_resource type="Shader" uid="uid://tjlwx54030md" path="res://!TEST/shaders/shake.gdshader" id="4_urrhv"]
+[ext_resource type="Texture2D" uid="uid://c8r2w4yq0rbhh" path="res://!TEST/assets/cm.png" id="5_2jisd"]
+[ext_resource type="Script" uid="uid://dgpr0klq2ijdr" path="res://!TEST/scripts/drops.gd" id="5_7lsop"]
+[ext_resource type="PackedScene" uid="uid://b5wwseqm5fnvu" path="res://!TEST/obj/drop.tscn" id="6_ahmrd"]
+[ext_resource type="AudioStream" uid="uid://d3o7u4i4u1pvq" path="res://audio/sfx/water.mp3" id="7_syxv4"]
+[ext_resource type="PackedScene" uid="uid://m0kkv13l24o" path="res://!TEST/obj/cat.tscn" id="10_2jisd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+shader = ExtResource("4_urrhv")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 1.0
+shader_parameter/noise_scale = 20.0
+shader_parameter/noise_speed = 10.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(350.25, 2185.75)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_g4v7s"]
+vertices = PackedVector2Array(1605.1719, -18.070313, 1632.8125, 1494.9375, 0.0390625, 1486.0469, 6.953125, -30.90625)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(1615, -28, 1643, 1505, -10, 1496, -3, -41)])
+
+[node name="5" type="Node2D" unique_id=573575962]
+script = ExtResource("1_bxxtf")
+
+[node name="BLACK" type="Sprite2D" parent="." unique_id=2036825272]
+position = Vector2(5.000061, 0.9999962)
+scale = Vector2(9.562501, 6.946429)
+texture = ExtResource("2_ml4ai")
+
+[node name="Mc" parent="." unique_id=978937542 instance=ExtResource("3_loduu")]
+position = Vector2(-29, 56)
+
+[node name="Copy" type="Sprite2D" parent="Mc" unique_id=2099057754]
+material = SubResource("ShaderMaterial_g4v7s")
+position = Vector2(0, 14)
+rotation = -3.1415927
+texture = ExtResource("5_2jisd")
+
+[node name="Drops" type="Node2D" parent="." unique_id=1182902095 node_paths=PackedStringArray("top", "bottom")]
+script = ExtResource("5_7lsop")
+drop_scene = ExtResource("6_ahmrd")
+top = NodePath("../TOP")
+bottom = NodePath("../BOTTOM")
+spawn_sound = ExtResource("7_syxv4")
+
+[node name="TOP" type="Marker2D" parent="." unique_id=236714541]
+position = Vector2(-864, -766)
+
+[node name="BOTTOM" type="Marker2D" parent="." unique_id=2095673920]
+position = Vector2(850, 802)
+
+[node name="Col" type="StaticBody2D" parent="." unique_id=1073659766]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Col" unique_id=2057125290]
+position = Vector2(-952, 27)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Col" unique_id=1684180709]
+position = Vector2(956, 30)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Col" unique_id=755369972]
+position = Vector2(6.125, -888)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Col" unique_id=916636450]
+position = Vector2(-13.999999, 901.125)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Cat" parent="." unique_id=1573854289 instance=ExtResource("10_2jisd")]
+position = Vector2(-745, -698)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1856092732]
+position = Vector2(-812, -725)
+navigation_polygon = SubResource("NavigationPolygon_g4v7s")

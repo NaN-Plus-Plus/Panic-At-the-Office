@@ -12,8 +12,6 @@ radius = 39.0
 script = ExtResource("1_h4i50")
 
 [node name="BLACK" type="Sprite2D" parent="." unique_id=2036825272]
-visible = false
-z_index = -1
 position = Vector2(21, -6)
 scale = Vector2(8.369792, 5.8593745)
 texture = ExtResource("1_rtkq1")

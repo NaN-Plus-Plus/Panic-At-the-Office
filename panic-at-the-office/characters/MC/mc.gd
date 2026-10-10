@@ -3,13 +3,13 @@ class_name Player
 
 @export var speed: float = 200.0
 @export var push_force: float = 80.0
-@export var catch_distance: float = 20.0
 
 @export var monster_area: Area2D
 @export var sprite: AnimatedSprite2D
 @export var silhouette: Sprite2D
 @export var glitch_rect: CanvasItem
 @export_dir var jumpscare_folder: String
+@export var catch_distance: float = 20.0
 
 @onready var win_scene_path: String = "res://scenes/WinScreen/win_screen.tscn"
 @onready var foxy_jumpscare_uid: String = "uid://d2isvn01qwnhg"
@@ -37,9 +37,6 @@ func _ready():
 	sprite.frame_changed.connect(set_silhouette_texture)
 	sprite.animation_changed.connect(set_silhouette_texture)
 
-func _process(_delta):
-	check_monster_touch()
-
 func _physics_process(_delta):
 	var direction := Input.get_vector(
 		"move_left",
@@ -52,6 +49,7 @@ func _physics_process(_delta):
 
 	move_and_slide()
 
+	check_monster_touch()
 	push_rigid_bodies()
 	update_animation(direction)
 	check_win_condition()
