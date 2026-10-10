@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dviv34nneo6x8" path="res://characters/MC/mc.gd" id="1_imnk3"]
 [ext_resource type="Texture2D" uid="uid://rx40jts4ojtf" path="res://assets/Characters/mc.png" id="2_fccbu"]
 [ext_resource type="Script" uid="uid://drb857tfbrbw" path="res://characters/MC/camera_2d.gd" id="3_m0y0c"]
+[ext_resource type="Script" uid="uid://ppi6nifbrvti" path="res://characters/MC/dialogichandler.gd" id="5_cwnv6"]
 [ext_resource type="Shader" uid="uid://my5oh4jpw6ky" path="res://!TEST/shaders/sortpx.gdshader" id="5_fccbu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1rxyu"]
@@ -85,6 +86,9 @@ shader_parameter/mask_softness = 1.4
 shader_parameter/mask_threshold = 0.6
 shader_parameter/sort = 0.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(42, 41)
+
 [node name="Mc" type="CharacterBody2D" unique_id=978937542 node_paths=PackedStringArray("monster_area", "sprite", "silhouette", "glitch_rect") groups=["pause_during_interaction", "player"]]
 motion_mode = 1
 script = ExtResource("1_imnk3")
@@ -101,7 +105,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterArea" unique_id=446478552]
 shape = SubResource("CircleShape2D_1rxyu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1328361254]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1328361254]
 visibility_layer = 3
 shape = SubResource("RectangleShape2D_udni0")
 
@@ -121,6 +125,10 @@ script = ExtResource("3_m0y0c")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=26352463]
 
+[node name="DialogicHandler" type="Node" parent="CanvasLayer" unique_id=1219805725]
+script = ExtResource("5_cwnv6")
+idle_time_limit = 5.0
+
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1931647625]
 material = SubResource("ShaderMaterial_cwnv6")
 anchors_preset = 15
@@ -128,3 +136,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MCPrivateArea" type="Area2D" parent="." unique_id=2132390640]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MCPrivateArea" unique_id=1255966997]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_bhunq")
+debug_color = Color(0.038010243, 0, 0.70196074, 0.41960785)

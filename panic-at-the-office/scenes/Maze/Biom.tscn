@@ -397,3 +397,5 @@ tile_map_layer = NodePath("TileMapLayer")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=858490406]
 tile_set = SubResource("TileSet_m0y0c")
+
+[node name="Npc" type="Node2D" parent="." unique_id=2030463665]

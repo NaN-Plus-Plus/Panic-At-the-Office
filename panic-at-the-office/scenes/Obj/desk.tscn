@@ -6,6 +6,7 @@
 size = Vector2(32, 14)
 
 [node name="Desk" type="RigidBody2D" unique_id=615656205]
+collision_mask = 5
 gravity_scale = 0.0
 linear_damp = 1.0
 

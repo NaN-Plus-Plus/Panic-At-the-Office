@@ -13,6 +13,7 @@ shader_parameter/bend_curve = 2.0
 size = Vector2(12, 8)
 
 [node name="Plant" type="StaticBody2D" unique_id=2080415511]
+collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=594304524]
 material = SubResource("ShaderMaterial_qlvbf")

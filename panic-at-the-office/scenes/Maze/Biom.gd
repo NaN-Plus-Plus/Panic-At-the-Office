@@ -15,6 +15,10 @@ class_name Biom
 @onready var COLS := Globals.cols
 @onready var monster_scene: PackedScene = preload("uid://2mrx4ulwqgfi")
 
+@onready var npc_parent: Node2D = $Npc
+@onready var toriScene: PackedScene = preload("res://characters/Tori/Tori.tscn")
+@onready var toyaScene: PackedScene = preload("res://characters/Toya/Toya.tscn")
+
 const TERRAIN_SET := 0
 const WALL_TERRAIN := 0
 const FLOOR_TERRAIN := 1
@@ -43,7 +47,9 @@ func generate_maze():
 	#print(maze)
 	create_exit()
 	draw_maze()
-	spawn_monsters()
+	#spawn_monsters()
+	spawn_npc_1()
+	spawn_npc_2()
 	spawn_objects()
 	spawn_deco()
 
@@ -272,3 +278,36 @@ func spawn_deco():
 		var base_pos = tile_size * (Vector2(cell)) + tile_size * 0.5
 		sprite.global_position = base_pos + random_offset_in_tile(tile_size)
 		sprite.rotation = randf_range(0.0, TAU)
+
+func spawn_npc_1() -> Node2D:
+	return spawn_npc(toriScene)
+
+
+func spawn_npc_2() -> Node2D:
+	return spawn_npc(toyaScene)
+
+
+func spawn_npc(scene: PackedScene) -> Node2D:
+	if scene == null:
+		push_warning("Nie przypisano sceny NPC!")
+		return null
+
+	var available_cells := get_available_floor_cells()
+
+	if available_cells.is_empty():
+		push_warning("Brak wolnych kafelków dla NPC!")
+		return null
+
+	var cell: Vector2i = available_cells.pick_random()
+	occupied_cells[cell] = true
+
+	var npc := scene.instantiate() as Node2D
+
+	var base_pos := tile_map_layer.to_global(
+		tile_map_layer.map_to_local(cell)
+	)
+
+	npc_parent.add_child(npc)
+	npc.global_position = base_pos
+
+	return npc

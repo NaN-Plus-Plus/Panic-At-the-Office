@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://odc53wfinlsx"]
+
+[ext_resource type="Texture2D" uid="uid://bguhyruoujljq" path="res://assets/Cutscenki/GiftBg.png" id="1_0aac4"]
+[ext_resource type="Script" uid="uid://c3mgngsh2oab6" path="res://scenes/Events/gift.gd" id="1_2ec2f"]
+[ext_resource type="Texture2D" uid="uid://o6majvs7e6sk" path="res://assets/Cutscenki/AGift.png" id="2_2ec2f"]
+
+[node name="Gift" type="CanvasLayer" unique_id=1051708739]
+script = ExtResource("1_2ec2f")
+
+[node name="Node" type="Control" parent="." unique_id=839541049]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Content" type="TextureRect" parent="Node" unique_id=1394416028]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 837.0
+offset_right = 262.0
+offset_bottom = 985.0
+texture = ExtResource("1_0aac4")
+expand_mode = 1
+
+[node name="Gift" type="TextureRect" parent="Node/Content" unique_id=1100218423]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 23.0
+offset_right = 122.0
+offset_bottom = 121.0
+texture = ExtResource("2_2ec2f")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Node/Content" unique_id=1975475341]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 152.0
+offset_right = 118.695656
+offset_bottom = 203.0
+theme_override_font_sizes/font_size = 24
+text = "[F]"
+horizontal_alignment = 1

@@ -1,0 +1,34 @@
+[style name="PanicStyle"]
+if {tori_invited} == true:
+	join Toya center
+	Tori: Huh?
+	join MC center
+	MC: I think I found Your lost friend
+	join Toya center
+	Toya: ???
+	[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
+	join Tori center
+	Tori: Thank You for helping me find him!!
+	join MC center
+	MC: Can we go now? I dont want to stay here trapped for eternity...
+	[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
+	join Tori center
+	Tori: Sure!!
+	set {toya_invited} = true
+	set {foundBoth} = true
+else:
+	if {tori_invited} == false:
+		join Toya center
+		???: ...
+		join MC center
+		MC: Hi
+		[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
+		join Toya center
+		Toya: Can I join You?
+		- Sure
+			join Toya center
+			Toya: Okay
+			set {toya_invited} = true
+		- No
+			join Toya center
+			Toya: Ok

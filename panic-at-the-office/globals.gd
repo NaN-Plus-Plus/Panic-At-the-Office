@@ -8,6 +8,8 @@ var cols := 25
 var pending_dialogue := ""
 var is_story := false
 var return_scene_path: String = ""
+var whereAmI: String = ""
+var isHavingGift := false
 
 enum difficulty_enum {
 	EASY,
@@ -37,3 +39,13 @@ func start_dialogue(timeline: String):
 	Dialogic.start(timeline)
 	await Dialogic.timeline_ended
 	InteractionManager.unfreeze_world()
+	
+	
+func play_idle_dialogue(timeline: String) -> void:
+	Dialogic.Inputs.auto_advance.enabled_forced = true
+
+	Dialogic.Inputs.auto_advance.fixed_delay = 1.5
+	Dialogic.Inputs.auto_advance.per_word_delay = 0.1
+	Dialogic.Inputs.auto_advance.per_character_delay = 0.0
+	
+	Dialogic.start(timeline)

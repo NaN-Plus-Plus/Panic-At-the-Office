@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dg0thplxqd1v1"]
+
+[ext_resource type="Script" uid="uid://ceye2wi54hlsv" path="res://characters/Tori/tori.gd" id="1_mkwnu"]
+[ext_resource type="Texture2D" uid="uid://84ucxishie02" path="res://assets/Characters/Tori/CharacterProfileTori.png" id="1_xreyq"]
+[ext_resource type="PackedScene" uid="uid://dqmuu5hs5khjl" path="res://scripts/Interactions/InteractionArea.tscn" id="3_ta7nt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(42, 40.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
+size = Vector2(32, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sn0t7"]
+size = Vector2(42, 41)
+
+[node name="Tori" type="CharacterBody2D" unique_id=989006329]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_mkwnu")
+speed = 190.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1701903169]
+position = Vector2(3.8146973e-06, 0)
+scale = Vector2(0.016163837, 0.016163837)
+texture = ExtResource("1_xreyq")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=10079865]
+radius = 20.0
+
+[node name="InteractionArea" parent="." unique_id=1549464501 instance=ExtResource("3_ta7nt")]
+action_name = "Talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1630590492]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_bhunq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156840917]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_riqys")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=998726861]
+collision_layer = 8
+collision_mask = 8
+
+[node name="TorisPrivateArea" type="CollisionShape2D" parent="Area2D" unique_id=322182322]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_sn0t7")
+debug_color = Color(0, 0.04625576, 0.70196074, 0.41960785)
