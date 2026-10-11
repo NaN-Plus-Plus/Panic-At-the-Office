@@ -37,8 +37,20 @@ directories/dch_directory={
 directories/dtl_directory={
 "Ending": "res://timelines/Ending.dtl",
 "FoundBoth": "res://timelines/MeetingNPC/FoundBoth.dtl",
-"IdleGoingMC": "res://timelines/Idle/IdleGoingMC.dtl",
-"IdleMC": "res://timelines/Idle/IdleMC.dtl",
+"IdleGoingMC": "res://timelines/Idle/Going/IdleGoingMC.dtl",
+"IdleGoingMC_Tori": "res://timelines/Idle/Going/IdleGoingMC_Tori.dtl",
+"IdleGoingMC_Tori_Toya": "res://timelines/Idle/Going/IdleGoingMC_Tori_Toya.dtl",
+"IdleGoingMC_Toya": "res://timelines/Idle/Going/IdleGoingMC_Toya.dtl",
+"IdleGoingTori": "res://timelines/Idle/Going/IdleGoingTori.dtl",
+"IdleGoingTori_Toya": "res://timelines/Idle/Going/IdleGoingTori_Toya.dtl",
+"IdleGoingToya": "res://timelines/Idle/Going/IdleGoingToya.dtl",
+"IdleMC": "res://timelines/Idle/Standing/IdleMC.dtl",
+"IdleMC_Tori": "res://timelines/Idle/Standing/IdleMC_Tori.dtl",
+"IdleMC_Tori_Toya": "res://timelines/Idle/Standing/IdleMC_Tori_Toya.dtl",
+"IdleMC_Toya": "res://timelines/Idle/Standing/IdleMC_Toya.dtl",
+"IdleTori": "res://timelines/Idle/Standing/IdleTori.dtl",
+"IdleTori_Toya": "res://timelines/Idle/Standing/IdleTori_Toya.dtl",
+"IdleToya": "res://timelines/Idle/Standing/IdleToya.dtl",
 "IntoBackrooms": "res://timelines/IntoBackrooms.dtl",
 "Prolog": "res://timelines/Prolog.dtl",
 "Telephone": "res://timelines/Telephone.dtl",
@@ -90,8 +102,13 @@ audio/channel_defaults={
 }
 variables={
 "foundBoth": false,
+"isSecondTime": false,
 "tori_invited": false,
-"toya_invited": false
+"tori_met": false,
+"tori_met_previous_cycle": false,
+"toya_invited": false,
+"toya_met": false,
+"toya_met_previous_cycle": false
 }
 animations/leave_default="Fade Out Down"
 animations/join_default="Instant In"

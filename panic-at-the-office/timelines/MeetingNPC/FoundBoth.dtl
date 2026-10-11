@@ -5,13 +5,13 @@ join MC center
 MC: ??
 [clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
 join Tori center
-Tori: As a token of our graditue we wanted to give you an small token of our graditue!
+Tori: As a token of our gratitude, we wanted to give you a little something!
 join Toya center
-Toya: As Tori mentioned before, we got a little something that can help You out there~
+Toya: As Tori mentioned before, we have something that might help you out there~
 [background scene="res://scenes/Cutscenes/AGift.tscn" fade="1.0" wait="true"]
-Toya: We hope tho You would never use it but better safe than sorry, right?
+Toya: We hope you never have to use it, though. But better safe than sorry, right?
 [clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
 join MC center
-MC: Thank You...
+MC: Thank you...
 join Tori center
-Tori: You welcome!!
+Tori: You're welcome!!

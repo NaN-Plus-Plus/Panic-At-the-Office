@@ -1,0 +1,15 @@
+[style name="PanicPoPUp"]
+join MC rightmost
+MC: So, how did you end up here, anyway?
+join Tori rightmost
+Tori: Well, it's part of our-
+Tori: !!!
+[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+join MC rightmost
+MC: ???
+join Toya rightmost
+Toya: Adventure!
+Toya: Tori meant to say adventure.
+join Tori rightmost
+Tori: Yeah!!
+Tori: (That was a close one...)

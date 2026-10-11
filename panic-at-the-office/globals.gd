@@ -10,6 +10,7 @@ var is_story := false
 var return_scene_path: String = ""
 var whereAmI: String = ""
 var isHavingGift := false
+var isFirstTime := 0
 
 enum difficulty_enum {
 	EASY,
@@ -25,6 +26,15 @@ func _preload_dialogue_resources() -> void:
 	Dialogic.preload_timeline("Prolog")
 	Dialogic.preload_timeline("Telephone")
 	Dialogic.preload_timeline("IntoBackrooms")
+
+
+func start_new_maze_run() -> void:
+	isFirstTime = 0
+	Dialogic.VAR.isSecondTime = false
+	Dialogic.VAR.tori_met = false
+	Dialogic.VAR.toya_met = false
+	Dialogic.VAR.tori_met_previous_cycle = false
+	Dialogic.VAR.toya_met_previous_cycle = false
 
 func freeze_group(group_name: String):
 	for body in get_tree().get_nodes_in_group(group_name):

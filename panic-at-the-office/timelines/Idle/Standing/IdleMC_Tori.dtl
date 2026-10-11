@@ -1,0 +1,8 @@
+[style name="PanicPoPUp"]
+join MC rightmost
+MC: ...
+join Tori rightmost
+Tori: Is everything okay? You look spaced out...
+[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+join MC rightmost
+MC: I'm fine... Let's keep going.

@@ -3,15 +3,15 @@ if {tori_invited} == true:
 	join Toya center
 	Toya: ?
 	join MC center
-	MC: I think I found Your lost friend
+	MC: I think I found your lost friend.
 	join Tori center
-	Tori: Hiii Foxy!!
-	Tori: Thank You for helping me find him!!
+	Tori: Hiii, Foxy!!
+	Tori: Thank you for helping me find him!!
 	join MC center
-	MC: Would You now go with us?
+	MC: Would you like to come with us now?
 	[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
 	join Toya center
-	Toya: Sure
+	Toya: Sure!
 	set {toya_invited} = true
 	set {foundBoth} = true
 else:

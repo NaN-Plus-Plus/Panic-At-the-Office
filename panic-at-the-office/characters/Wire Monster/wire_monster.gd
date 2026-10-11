@@ -30,7 +30,17 @@ func _physics_process(_delta: float) -> void:
 		_update_animation()
 		return
 
+	if Globals.player == null or not is_instance_valid(Globals.player):
+		velocity = Vector2.ZERO
+		_update_animation()
+		return
+
 	var player_position = Globals.player.global_position
+	if _is_in_npc_safe_zone(player_position) or _is_in_npc_safe_zone(global_position):
+		is_chasing = false
+		velocity = Vector2.ZERO
+		_update_animation()
+		return
 	if global_position.distance_to(player_position) > 400 and !is_chasing:
 		_update_animation()
 		return
@@ -49,6 +59,14 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	_update_animation()
 	push_rigid_bodies()
+
+
+func _is_in_npc_safe_zone(position: Vector2) -> bool:
+	for npc in get_tree().get_nodes_in_group("npc_safe_zone"):
+		if npc is Node2D and npc.has_method("provides_safe_zone") and npc.call("provides_safe_zone"):
+			if position.distance_to(npc.global_position) <= npc.call("get_safe_zone_radius"):
+				return true
+	return false
 
 func _update_animation() -> void:
 	if velocity.length() > 1.0:

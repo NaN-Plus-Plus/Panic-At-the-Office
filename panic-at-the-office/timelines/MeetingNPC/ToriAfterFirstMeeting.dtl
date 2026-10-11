@@ -3,14 +3,14 @@ if {toya_invited} == true:
 	join Tori center
 	Tori: !!!
 	join MC center
-	MC: I think I found Your lost friend
+	MC: I think I found your lost friend.
 	join Toya center
-	Toya: Huh? I was never lost at the first place...
+	Toya: Huh? I was never lost in the first place...
 	[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
 	join Tori center
-	Tori: Thank You for helping me!!
+	Tori: Thank you for helping me!!
 	join Toya center
-	Toya: Would You now go with us?
+	Toya: Would you like to come with us now?
 	[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
 	join Tori center
 	Tori: Sure!!

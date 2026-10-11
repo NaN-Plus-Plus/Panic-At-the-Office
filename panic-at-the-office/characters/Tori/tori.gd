@@ -3,6 +3,7 @@ extends  CharacterBody2D
 @export var speed: float = 100.0
 @export var follow_distance: float = 52.0
 @export var formation_side: float = -18.0
+@export var safe_zone_radius: float = 160.0
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var interactionArea: Area2D = $InteractionArea
@@ -16,6 +17,7 @@ var _last_navigation_target := Vector2.INF
 
 
 func _ready() -> void: 
+	add_to_group("npc_safe_zone")
 	player = get_tree().get_first_node_in_group("player") as CharacterBody2D
 	
 	if player == null:
@@ -25,6 +27,14 @@ func _ready() -> void:
 		
 	nav_agent.path_desired_distance = 12.0
 	nav_agent.target_desired_distance = 12.0
+
+
+func provides_safe_zone() -> bool:
+	return not isFollowing
+
+
+func get_safe_zone_radius() -> float:
+	return safe_zone_radius
 	
 
 func _physics_process(delta: float) -> void:
@@ -94,6 +104,7 @@ func _interact() -> void:
 		Dialogic.VAR.tori_invited = false
 		await Globals.start_dialogue("ToriFirstMeeting")
 		met = true
+		Dialogic.VAR.tori_met = true
 		if Dialogic.VAR.tori_invited:
 			isFollowing = true
 			met = true

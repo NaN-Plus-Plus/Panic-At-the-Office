@@ -1,34 +1,89 @@
 [style name="PanicStyle"]
-if {toya_invited} == false:
-	join Tori center
-	???: ...
-	join MC center
-	MC: Hi
-	[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
-	join Tori center
-	Tori: Can I join You?
-	- Sure
+if {isSecondTime} == false:
+	if {toya_invited} == false:
 		join Tori center
-		Tori: Yippie
+		???: ...
+		join MC center
+		MC: Hi.
+		[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+		join Tori center
+		Tori: Can I join you?
+		- Sure
+			join Tori center
+			Tori: Yippie!
+			set {tori_invited} = true
+		- No
+			join Tori center
+			Tori: Okie!
+	else:
+		join Toya center
+		Toya: !!
+		Toya: Oh my, my~ I can't believe I finally found ya!
+		[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+		join Tori center
+		Tori: Toya! I'm so glad I'm not alone here anymore...
+		[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+		join Toya center
+		Toya: It'll be alrighty~! Also, look who I've befriended~
+		join MC center
+		MC: Hi.
+		MC: Shall we get going?
+		[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+		join Tori center
+		Tori: Sure!!
 		set {tori_invited} = true
-	- No
-		join Tori center
-		Tori: Okie
+		set {foundBoth} = true
 else:
-	join Toya center
-	Toya: !!
-	Toya: Oh my, my~ I cant believe I finaly found ya
-	[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
-	join Tori center
-	Tori: Toya! Im so glad that Im no longer alone here...
-	[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
-	join Toya center
-	Toya: It will be alrighty~! Also look who I befriended~
-	join MC center
-	MC: Hi
-	MC: Shall we go now?
-	[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
-	join Tori center
-	Tori: Sure!!
-	set {tori_invited} = true
-	set {foundBoth} = true
+	if {toya_invited} == false:
+		if {tori_met_previous_cycle} == true:
+			join Tori center
+			???: ...
+			join MC center
+			MC: Uh...
+			MC: Have we met before?
+			MC: I don't think so, but hello!
+			MC: It's nice to **meet** you.
+			[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+			join Tori center
+			Tori: Hello! Can I join you?
+			- Sure
+				join Tori center
+				Tori: Yippie!
+				set {tori_invited} = true
+			- No
+				join Tori center
+				Tori: Okie!
+		else:
+			join Tori center
+			???: ...
+			join MC center
+			MC: Uh...
+			MC: Hello?
+			[clear time="0.0" text="false" music="false" positions="false" style="false"]
+			join Tori center
+			Tori: Hello! Can I join you?
+			- Sure
+				join Tori center
+				Tori: Yippie!
+				set {tori_invited} = true
+			- No
+				join Tori center
+				Tori: Okie!
+	else:
+		join Toya center
+		Toya: !!
+		Toya: Oh my, my~ I can't believe I finally found ya!
+		[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+		join Tori center
+		Tori: Toya! I'm so glad I'm not alone here anymore...
+		[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+		join Toya center
+		Toya: It'll be alrighty~! Also, look who I've befriended~
+		join MC center
+		MC: Hi.
+		MC: Shall we get going?
+		[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+		join Tori center
+		Tori: Sure!!
+		set {tori_invited} = true
+		set {foundBoth} = true

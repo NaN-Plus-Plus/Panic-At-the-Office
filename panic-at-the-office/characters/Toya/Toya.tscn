@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dwa2gplcaeo3o"]
 
-[ext_resource type="Texture2D" uid="uid://6dml0cd5rhgi" path="res://assets/Characters/Toya/CharacterProfileToya.png" id="1_ck6ll"]
 [ext_resource type="Script" uid="uid://ca7e5kobfebie" path="res://characters/Toya/Toya.gd" id="1_uq7b6"]
+[ext_resource type="Texture2D" uid="uid://knnppv4it08w" path="res://assets/Characters/Toya/Toya.png" id="2_uq7b6"]
 [ext_resource type="PackedScene" uid="uid://dqmuu5hs5khjl" path="res://scripts/Interactions/InteractionArea.tscn" id="3_0kj2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(42, 40.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
-size = Vector2(32, 15)
+size = Vector2(18, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uq7b6"]
 size = Vector2(42, 41)
@@ -21,8 +21,7 @@ speed = 185.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1701903169]
 position = Vector2(3.8146973e-06, 0)
-scale = Vector2(0.016163837, 0.016163837)
-texture = ExtResource("1_ck6ll")
+texture = ExtResource("2_uq7b6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=10079865]
 radius = 20.0
@@ -35,7 +34,7 @@ position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_bhunq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156840917]
-position = Vector2(0, 11.5)
+position = Vector2(0, 13.5)
 shape = SubResource("RectangleShape2D_riqys")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1935849602]

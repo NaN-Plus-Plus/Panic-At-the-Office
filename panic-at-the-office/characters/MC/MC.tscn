@@ -8,7 +8,6 @@
 [ext_resource type="Shader" uid="uid://my5oh4jpw6ky" path="res://!TEST/shaders/sortpx.gdshader" id="5_fccbu"]
 [ext_resource type="Texture2D" uid="uid://c2nj57c8ugak4" path="res://assets/Characters/MC/shield.png" id="7_ejv0t"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_udni0"]
 size = Vector2(12, 6)
 
@@ -158,10 +157,10 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="TextureRect" type="TextureRect" parent="Shield" unique_id=898103096]
-offset_left = -19.0
-offset_top = -29.0
-offset_right = 19.0
-offset_bottom = 8.0
+offset_left = -25.0
+offset_top = -35.0
+offset_right = 25.324326
+offset_bottom = 14.0
 texture = ExtResource("7_ejv0t")
 expand_mode = 1
 
