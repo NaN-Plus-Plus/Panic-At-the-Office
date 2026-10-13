@@ -1,0 +1,17 @@
+[style name="PanicStyle"]
+join Tori center
+Tori: MC!
+join MC center
+MC: ??
+[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
+join Tori center
+Tori: As a token of our gratitude, we wanted to give you a little something!
+join Toya center
+Toya: As Tori mentioned before, we have something that might help you out there~
+[background scene="res://scenes/Cutscenes/AGift.tscn" fade="1.0" wait="true"]
+Toya: We hope you never have to use it, though. But better safe than sorry, right?
+[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
+join MC center
+MC: Thank you...
+join Tori center
+Tori: You're welcome!!

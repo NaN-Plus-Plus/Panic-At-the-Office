@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://qbtqdycrnjfr"]
 
-[ext_resource type="Script" uid="uid://b2t1b23hu7bq6" path="res://!TEST/scripts/5.gd" id="1_urrhv"]
+[ext_resource type="Script" uid="uid://b33p7nuqb3abq" path="res://!TEST/scripts/5.gd" id="1_urrhv"]
 [ext_resource type="Texture2D" uid="uid://dtc4u36esgw0c" path="res://assets/Office/bg.png" id="2_ml4ai"]
 [ext_resource type="PackedScene" uid="uid://b4bgh77ofnm8m" path="res://characters/MC/MC.tscn" id="3_loduu"]
 [ext_resource type="Shader" uid="uid://tjlwx54030md" path="res://!TEST/shaders/shake.gdshader" id="4_urrhv"]

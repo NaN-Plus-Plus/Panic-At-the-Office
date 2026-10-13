@@ -140,8 +140,7 @@ animations = [{
 }]
 
 [node name="WireMonster" type="CharacterBody2D" unique_id=1574792864 node_paths=PackedStringArray("nav_agent") groups=["pause_during_interaction"]]
-collision_layer = 3
-collision_mask = 0
+collision_layer = 19
 script = ExtResource("1_imf1u")
 nav_agent = NodePath("NavigationAgent2D")
 
@@ -164,4 +163,4 @@ stream = ExtResource("3_uqe0a")
 volume_db = 10.0
 autoplay = true
 max_distance = 500.0
-parameters/looping = false
+parameters/looping = true

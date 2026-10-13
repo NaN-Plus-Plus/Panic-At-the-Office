@@ -8,6 +8,9 @@ var cols := 25
 var pending_dialogue := ""
 var is_story := false
 var return_scene_path: String = ""
+var whereAmI: String = ""
+var isHavingGift := false
+var isFirstTime := 0
 
 enum difficulty_enum {
 	EASY,
@@ -24,6 +27,15 @@ func _preload_dialogue_resources() -> void:
 	Dialogic.preload_timeline("Telephone")
 	Dialogic.preload_timeline("IntoBackrooms")
 
+
+func start_new_maze_run() -> void:
+	isFirstTime = 0
+	Dialogic.VAR.isSecondTime = false
+	Dialogic.VAR.tori_met = false
+	Dialogic.VAR.toya_met = false
+	Dialogic.VAR.tori_met_previous_cycle = false
+	Dialogic.VAR.toya_met_previous_cycle = false
+
 func freeze_group(group_name: String):
 	for body in get_tree().get_nodes_in_group(group_name):
 		body.process_mode = Node.PROCESS_MODE_DISABLED
@@ -37,3 +49,13 @@ func start_dialogue(timeline: String):
 	Dialogic.start(timeline)
 	await Dialogic.timeline_ended
 	InteractionManager.unfreeze_world()
+	
+	
+func play_idle_dialogue(timeline: String) -> void:
+	Dialogic.Inputs.auto_advance.enabled_forced = true
+
+	Dialogic.Inputs.auto_advance.fixed_delay = 1.5
+	Dialogic.Inputs.auto_advance.per_word_delay = 0.1
+	Dialogic.Inputs.auto_advance.per_character_delay = 0.0
+	
+	Dialogic.start(timeline)

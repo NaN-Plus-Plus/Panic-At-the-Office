@@ -1,0 +1,74 @@
+[style name="PanicStyle"]
+if {isSecondTime} == false:
+	if {tori_invited} == true:
+		join Toya center
+		Tori: Huh?
+		join MC center
+		MC: I think I found your lost friend.
+		join Toya center
+		Toya: ???
+		[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
+		join Tori center
+		Tori: Thank you for helping me find him!!
+		join MC center
+		MC: Can we get going now? I don't want to be trapped here for eternity...
+		[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
+		join Tori center
+		Tori: Sure!!
+		set {toya_invited} = true
+		set {foundBoth} = true
+	else:
+		join Toya center
+		???: ...
+		join MC center
+		MC: Hi.
+		[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
+		join Toya center
+		Toya: Can I join you?
+		- Sure
+			join Toya center
+			Toya: Okay!
+			set {toya_invited} = true
+		- No
+			join Toya center
+			Toya: Okie!
+else:
+	if {tori_invited} == true:
+		join Toya center
+		Tori: Huh?
+		join MC center
+		MC: I think I found your lost friend.
+		join Toya center
+		Toya: ???
+		[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
+		join Tori center
+		Tori: Thank you for helping me find him!!
+		join MC center
+		MC: Can we get going now? I don't want to be trapped here for eternity...
+		[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
+		join Tori center
+		Tori: Sure!!
+		set {toya_invited} = true
+		set {foundBoth} = true
+	else:
+		if {toya_met_previous_cycle} == true:
+			join Toya center
+			???: Did we meet before?
+			join MC center
+			MC: I think we have. It's nice to see you again.
+			[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
+		else:
+			join Toya center
+			???: ...
+			join MC center
+			MC: Hi.
+			[clear time="0.0" step="false" text="false" music="false" background="false" positions="false" style="false"]
+		join Toya center
+		Toya: Can I join you?
+		- Sure
+			join Toya center
+			Toya: Okay!
+			set {toya_invited} = true
+		- No
+			join Toya center
+			Toya: Okie!

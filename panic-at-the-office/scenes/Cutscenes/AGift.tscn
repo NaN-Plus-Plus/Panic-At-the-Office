@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bquvsd8godi7f"]
+
+[ext_resource type="Script" uid="uid://c0r5u7n21v7xm" path="res://scenes/Cutscenes/cutscene.gd" id="1_173tg"]
+[ext_resource type="Texture2D" uid="uid://k24glblib8wl" path="res://assets/Cutscenki/Bg.png" id="2_gwnel"]
+[ext_resource type="Texture2D" uid="uid://o6majvs7e6sk" path="res://assets/Cutscenki/AGift.png" id="3_xyomr"]
+
+[node name="AGift" type="Control" unique_id=1530982423]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_173tg")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=968446884]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_gwnel")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1330805048]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 265.0
+offset_right = 1205.0
+offset_bottom = 720.0
+texture = ExtResource("3_xyomr")

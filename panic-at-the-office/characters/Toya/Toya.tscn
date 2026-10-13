@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dwa2gplcaeo3o"]
+
+[ext_resource type="Script" uid="uid://ca7e5kobfebie" path="res://characters/Toya/Toya.gd" id="1_uq7b6"]
+[ext_resource type="Texture2D" uid="uid://knnppv4it08w" path="res://assets/Characters/Toya/Toya.png" id="2_uq7b6"]
+[ext_resource type="PackedScene" uid="uid://dqmuu5hs5khjl" path="res://scripts/Interactions/InteractionArea.tscn" id="3_0kj2j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
+size = Vector2(42, 40.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
+size = Vector2(18, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq7b6"]
+size = Vector2(42, 41)
+
+[node name="Toya" type="CharacterBody2D" unique_id=989006329]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_uq7b6")
+speed = 185.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1701903169]
+position = Vector2(3.8146973e-06, 0)
+texture = ExtResource("2_uq7b6")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=10079865]
+radius = 20.0
+
+[node name="InteractionArea" parent="." unique_id=1549464501 instance=ExtResource("3_0kj2j")]
+action_name = "Talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1630590492]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_bhunq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156840917]
+position = Vector2(0, 13.5)
+shape = SubResource("RectangleShape2D_riqys")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1935849602]
+collision_layer = 8
+collision_mask = 8
+
+[node name="ToyaPrivateArea" type="CollisionShape2D" parent="Area2D" unique_id=1784246570]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_uq7b6")
+debug_color = Color(0, 0.04625576, 0.70196074, 0.41960785)

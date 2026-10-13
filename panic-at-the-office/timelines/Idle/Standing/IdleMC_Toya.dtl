@@ -1,0 +1,21 @@
+[style name="PanicPoPUp"]
+join Toya rightmost
+Toya: Have you noticed that these monsters smell like strawberry cake?
+join MC rightmost
+MC: Huh?
+MC: I never noticed that.
+[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+join Toya rightmost
+Toya: If only they were as yummy as they smell...
+join MC rightmost
+MC: ..!
+MC: Have you tasted them before...???????
+[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+join Toya rightmost
+Toya: Huh??
+Toya: No, no, no!
+Toya: But I have a feeling that, beneath that wonderful smell, there's something sinister...
+Toya: I just can't shake this feeling.
+[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+join MC rightmost
+MC: ...

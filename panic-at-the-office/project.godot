@@ -23,6 +23,7 @@ Globals="*uid://3h0xag12jmyj"
 LoadingScreen="*uid://b8lpsos7f6x0y"
 Dialogic="*uid://ds2q0uclmolvu"
 InteractionManager="*uid://clvey7d5hnutt"
+GiftHUD="*uid://odc53wfinlsx"
 
 [dialogic]
 
@@ -35,9 +36,28 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "Ending": "res://timelines/Ending.dtl",
+"FoundBoth": "res://timelines/MeetingNPC/FoundBoth.dtl",
+"IdleGoingMC": "res://timelines/Idle/Going/IdleGoingMC.dtl",
+"IdleGoingMC_Tori": "res://timelines/Idle/Going/IdleGoingMC_Tori.dtl",
+"IdleGoingMC_Tori_Toya": "res://timelines/Idle/Going/IdleGoingMC_Tori_Toya.dtl",
+"IdleGoingMC_Toya": "res://timelines/Idle/Going/IdleGoingMC_Toya.dtl",
+"IdleGoingTori": "res://timelines/Idle/Going/IdleGoingTori.dtl",
+"IdleGoingTori_Toya": "res://timelines/Idle/Going/IdleGoingTori_Toya.dtl",
+"IdleGoingToya": "res://timelines/Idle/Going/IdleGoingToya.dtl",
+"IdleMC": "res://timelines/Idle/Standing/IdleMC.dtl",
+"IdleMC_Tori": "res://timelines/Idle/Standing/IdleMC_Tori.dtl",
+"IdleMC_Tori_Toya": "res://timelines/Idle/Standing/IdleMC_Tori_Toya.dtl",
+"IdleMC_Toya": "res://timelines/Idle/Standing/IdleMC_Toya.dtl",
+"IdleTori": "res://timelines/Idle/Standing/IdleTori.dtl",
+"IdleTori_Toya": "res://timelines/Idle/Standing/IdleTori_Toya.dtl",
+"IdleToya": "res://timelines/Idle/Standing/IdleToya.dtl",
 "IntoBackrooms": "res://timelines/IntoBackrooms.dtl",
 "Prolog": "res://timelines/Prolog.dtl",
-"Telephone": "res://timelines/Telephone.dtl"
+"Telephone": "res://timelines/Telephone.dtl",
+"ToriAfterFirstMeeting": "res://timelines/MeetingNPC/ToriAfterFirstMeeting.dtl",
+"ToriFirstMeeting": "res://timelines/MeetingNPC/ToriFirstMeeting.dtl",
+"ToyaAfterFirstMeeting": "res://timelines/MeetingNPC/ToyaAfterFirstMeeting.dtl",
+"ToyaFirstMeeting": "res://timelines/MeetingNPC/ToyaFirstMeeting.dtl"
 }
 layout/style_directory={
 "": "res://addons/dialogic/MyStyles/PanicStyle.tres",
@@ -55,9 +75,9 @@ text/advance_delay=0.1
 text/autoadvance_per_character_delay=0.1
 text/autoadvance_ignored_characters_enabled=true
 animations/join_default_length=0.5
-animations/join_default_wait=true
+animations/join_default_wait=false
 animations/leave_default_length=0.5
-animations/leave_default_wait=true
+animations/leave_default_wait=false
 animations/cross_fade_default_length=0.5
 choices/autofocus_first=true
 choices/delay=0.2
@@ -80,7 +100,16 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
-variables={}
+variables={
+"foundBoth": false,
+"isSecondTime": false,
+"tori_invited": false,
+"tori_met": false,
+"tori_met_previous_cycle": false,
+"toya_invited": false,
+"toya_met": false,
+"toya_met_previous_cycle": false
+}
 animations/leave_default="Fade Out Down"
 animations/join_default="Instant In"
 animations/cross_fade_default="Fade Cross"

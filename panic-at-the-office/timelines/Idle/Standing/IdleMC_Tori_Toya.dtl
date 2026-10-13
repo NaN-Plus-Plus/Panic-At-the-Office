@@ -1,0 +1,23 @@
+[style name="PanicPoPUp"]
+join Toya rightmost
+Toya: Little miss, can you tell me what's on your mind?
+join Tori rightmost
+Tori: Hmmm...
+Tori: I wonder! I juuuust wonder!
+Tori: How did an average-looking salesman like MC get dragged into the Backrooms?
+[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+join MC rightmost
+MC: Are you suggesting that I'm just average?
+join Tori rightmost
+Tori: NONONO!
+Tori: I'm just bad at speaking my mind.
+Tori: Sorry...
+[clear time="0.0" text="false" music="false" background="false" positions="false" style="false"]
+join MC rightmost
+MC: It's fine, don't worry.
+MC: But, well...
+MC: ...
+MC: I don't really remember...
+join Toya rightmost
+Toya: ...
+Toya: Maybe we'll find out at the end of this maze?

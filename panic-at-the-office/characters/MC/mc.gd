@@ -9,22 +9,30 @@ class_name Player
 @export var silhouette: Sprite2D
 @export var glitch_rect: CanvasItem
 @export_dir var jumpscare_folder: String
+@export var catch_distance: float = 20.0
 
 @onready var win_scene_path: String = "res://scenes/WinScreen/win_screen.tscn"
 @onready var foxy_jumpscare_uid: String = "uid://d2isvn01qwnhg"
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 
+@onready var shield: Area2D = $Shield
+@onready var shield_col: CollisionShape2D = $Shield/CollisionShape2D
+
 var game_won: bool = false
 var caught: bool = false
+var shield_active: bool = false
+var shield_activation_id: int = 0
+var shielded_monsters: Array[WireMonster] = []
 
 func _ready():
 	canvas_layer.hide()
+	shield_col.disabled = true
+	shield.body_entered.connect(_on_shield_body_entered)
 	var camera := get_node_or_null("Camera2D") as Camera2D
 	if camera and camera.has_method("snap_to_player"):
 		camera.snap_to_player()
 
 	Globals.player = self
-	monster_area.body_entered.connect(_on_monster_area_body_entered)
 
 	sprite.frame_changed.connect(set_silhouette_texture)
 	sprite.animation_changed.connect(set_silhouette_texture)
@@ -41,6 +49,7 @@ func _physics_process(_delta):
 
 	move_and_slide()
 
+	check_monster_touch()
 	push_rigid_bodies()
 	update_animation(direction)
 	check_win_condition()
@@ -80,9 +89,14 @@ func update_animation(direction: Vector2):
 		else:
 			sprite.play("walk_b")
 
-func _on_monster_area_body_entered(body: Node2D):
-	if body is WireMonster:
-		scene_change()
+func check_monster_touch():
+	if caught or shield_active:
+		return
+
+	for body in monster_area.get_overlapping_bodies():
+		if body is WireMonster and global_position.distance_to(body.global_position) < catch_distance:
+			scene_change()
+			return
 
 func scene_change():
 	if caught:
@@ -130,3 +144,39 @@ func run_catch_sequence() -> void:
 
 func set_silhouette_texture():
 	silhouette.texture = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame)
+
+
+func activate_shield():
+	shield_activation_id += 1
+	var activation_id := shield_activation_id
+	shield_active = true
+	shield.visible = true
+	shield_col.set_deferred("disabled", false)
+
+	await get_tree().physics_frame
+	if activation_id != shield_activation_id:
+		return
+	for body in shield.get_overlapping_bodies():
+		_on_shield_body_entered(body)
+
+	await get_tree().create_timer(15.0).timeout
+	if activation_id != shield_activation_id:
+		return
+
+	shield_active = false
+	shield.visible = false
+	shield_col.set_deferred("disabled", true)
+	for monster in shielded_monsters:
+		if is_instance_valid(monster):
+			monster.set_shield_blocked(false)
+	shielded_monsters.clear()
+
+
+func _on_shield_body_entered(body: Node2D) -> void:
+	if not shield_active or not (body is WireMonster):
+		return
+
+	var monster := body as WireMonster
+	monster.set_shield_blocked(true)
+	if not shielded_monsters.has(monster):
+		shielded_monsters.append(monster)

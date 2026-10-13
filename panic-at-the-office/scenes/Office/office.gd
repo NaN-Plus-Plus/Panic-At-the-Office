@@ -27,11 +27,13 @@ func _exit_tree():
 func _on_backrooms_body_entered(body: Node2D) -> void:
 	if Globals.is_story:
 		if body.is_in_group("player"):
+			Globals.whereAmI = "Backrooms"
 			Globals.pending_dialogue = "IntoBackrooms"
 			await LoadingScreen.show_loading("Main")
 			get_tree().call_deferred("change_scene_to_file", "res://scenes/Maze/Main.tscn")
 	else:
 		if body.is_in_group("player"):
+			Globals.whereAmI = "Backrooms"
 			await LoadingScreen.show_loading("???")
 			get_tree().call_deferred("change_scene_to_file", "res://scenes/Maze/Main.tscn")
 			await LoadingScreen.hide_loading()

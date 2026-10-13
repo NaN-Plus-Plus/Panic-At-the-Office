@@ -15,10 +15,15 @@ class_name Biom
 @onready var COLS := Globals.cols
 @onready var monster_scene: PackedScene = preload("uid://2mrx4ulwqgfi")
 
+@onready var npc_parent: Node2D = $Npc
+@onready var toriScene: PackedScene = preload("res://characters/Tori/Tori.tscn")
+@onready var toyaScene: PackedScene = preload("res://characters/Toya/Toya.tscn")
+
 const TERRAIN_SET := 0
 const WALL_TERRAIN := 0
 const FLOOR_TERRAIN := 1
 const EXIT_TERRAIN := 2
+const NPC_SAFE_SPAWN_CLEARANCE := 100.0
 
 var maze := []
 var exit_cell: Vector2i
@@ -28,7 +33,24 @@ var deco_textures: Array[Texture2D] = []
 var occupied_cells: Dictionary = {}
 
 func _ready() -> void:
+	if Globals.isFirstTime > 0:
+		Dialogic.VAR.tori_met_previous_cycle = Dialogic.VAR.tori_met
+		Dialogic.VAR.toya_met_previous_cycle = Dialogic.VAR.toya_met
+	else:
+		Dialogic.VAR.tori_met_previous_cycle = false
+		Dialogic.VAR.toya_met_previous_cycle = false
+
+	Dialogic.VAR.tori_met = false
+	Dialogic.VAR.toya_met = false
+	Dialogic.VAR.tori_invited = false
+	Dialogic.VAR.toya_invited = false
+	GiftHUD.count = 1
+	Dialogic.VAR.foundBoth = false
+	GiftHUD.isVisible = false
+	GiftHUD.node.visible = false
 	Globals.biom = self
+	Globals.isFirstTime += 1
+	Dialogic.VAR.isSecondTime = Globals.isFirstTime > 1
 	generate_maze()
 
 
@@ -43,6 +65,8 @@ func generate_maze():
 	#print(maze)
 	create_exit()
 	draw_maze()
+	spawn_npc_1()
+	spawn_npc_2()
 	spawn_monsters()
 	spawn_objects()
 	spawn_deco()
@@ -170,13 +194,27 @@ func spawn_monsters():
 			monster_proportional_amount = 0.13
 	monster_amount = ceil(monster_proportional_amount * spawn_cells.size())
 	
-	spawn_cells.sort_custom(func (a, b): return a[1] < b[1])
-	spawn_cells = spawn_cells.slice(0, monster_amount)
+	var available_spawn_cells: Array = []
 	for cell in spawn_cells:
+		var map_cell := cell[0] as Vector2i
+		if not occupied_cells.has(map_cell) and not _is_npc_safe_spawn_cell(map_cell, tile_size):
+			available_spawn_cells.append(cell)
+
+	available_spawn_cells.sort_custom(func (a, b): return a[1] < b[1])
+	for cell in available_spawn_cells.slice(0, monster_amount):
 		var monster: WireMonster = monster_scene.instantiate()
 		get_parent().add_child.call_deferred(monster)
 		monster.global_position = tile_size * (cell[0] as Vector2) + tile_size * Vector2(randf_range(0.1, 0.9), randf_range(0.1, 0.9))
 		occupied_cells[cell[0]] = true
+
+
+func _is_npc_safe_spawn_cell(cell: Vector2i, tile_size: Vector2) -> bool:
+	var cell_position := tile_map_layer.to_global(tile_map_layer.map_to_local(cell))
+	var max_offset := tile_size.length() * 0.5
+	for npc in get_tree().get_nodes_in_group("npc_safe_zone"):
+		if npc is Node2D and npc.has_method("get_safe_zone_radius") and npc.global_position.distance_to(cell_position) <= npc.call("get_safe_zone_radius") + max_offset + NPC_SAFE_SPAWN_CLEARANCE:
+			return true
+	return false
 
 
 func get_available_floor_cells() -> Array[Vector2i]:
@@ -272,3 +310,36 @@ func spawn_deco():
 		var base_pos = tile_size * (Vector2(cell)) + tile_size * 0.5
 		sprite.global_position = base_pos + random_offset_in_tile(tile_size)
 		sprite.rotation = randf_range(0.0, TAU)
+
+func spawn_npc_1() -> Node2D:
+	return spawn_npc(toriScene)
+
+
+func spawn_npc_2() -> Node2D:
+	return spawn_npc(toyaScene)
+
+
+func spawn_npc(scene: PackedScene) -> Node2D:
+	if scene == null:
+		push_warning("Nie przypisano sceny NPC!")
+		return null
+
+	var available_cells := get_available_floor_cells()
+
+	if available_cells.is_empty():
+		push_warning("Brak wolnych kafelków dla NPC!")
+		return null
+
+	var cell: Vector2i = available_cells.pick_random()
+	occupied_cells[cell] = true
+
+	var npc := scene.instantiate() as Node2D
+
+	var base_pos := tile_map_layer.to_global(
+		tile_map_layer.map_to_local(cell)
+	)
+
+	npc_parent.add_child(npc)
+	npc.global_position = base_pos
+
+	return npc
