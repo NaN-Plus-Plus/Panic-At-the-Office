@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://qbtqdycrnjfr"]
 
-[ext_resource type="Script" uid="uid://0q8q5hea6tyv" path="res://!TEST/scripts/speed.gd" id="1_bxxtf"]
+[ext_resource type="Script" uid="uid://b2t1b23hu7bq6" path="res://!TEST/scripts/5.gd" id="1_urrhv"]
 [ext_resource type="Texture2D" uid="uid://dtc4u36esgw0c" path="res://assets/Office/bg.png" id="2_ml4ai"]
 [ext_resource type="PackedScene" uid="uid://b4bgh77ofnm8m" path="res://characters/MC/MC.tscn" id="3_loduu"]
 [ext_resource type="Shader" uid="uid://tjlwx54030md" path="res://!TEST/shaders/shake.gdshader" id="4_urrhv"]
@@ -26,7 +26,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(1615, -28, 1643, 1505, -10, 1496, -3, -41)])
 
 [node name="5" type="Node2D" unique_id=573575962]
-script = ExtResource("1_bxxtf")
+script = ExtResource("1_urrhv")
 
 [node name="BLACK" type="Sprite2D" parent="." unique_id=2036825272]
 position = Vector2(5.000061, 0.9999962)
