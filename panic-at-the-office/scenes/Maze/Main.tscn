@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bwkeh60b4q1ih" path="res://scenes/Maze/Biom.tscn" id="1_10rdu"]
 [ext_resource type="Script" uid="uid://t2lwibb76jpx" path="res://scenes/Maze/main.gd" id="1_mgnkh"]
 [ext_resource type="PackedScene" uid="uid://b4bgh77ofnm8m" path="res://characters/MC/MC.tscn" id="2_gsqt7"]
+[ext_resource type="Script" uid="uid://dfk7p1a35yj0u" path="res://scenes/Maze/label.gd" id="3_milb3"]
 [ext_resource type="Shader" uid="uid://c086iyqf7ufbp" path="res://shaders/crt.gdshader" id="6_maeye"]
 [ext_resource type="AudioStream" uid="uid://ct7svhod48dgb" path="res://audio/Music/backrooms level0 ambience for 1030 mins.mp3" id="6_milb3"]
 
@@ -38,12 +39,19 @@ deco_parent = NodePath("../Deco")
 deco_folder = "res://assets/Obj/Deco"
 npc_parent = NodePath("../Y Sort Obj/Npc")
 
-[node name="Label" type="Label" parent="Biom" unique_id=687480927]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=735453278]
 layer = 10
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=757619670]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 185.0
+offset_bottom = 273.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "- ??? -"
+horizontal_alignment = 1
+script = ExtResource("3_milb3")
 
 [node name="CRT" type="ColorRect" parent="CanvasLayer" unique_id=996962646]
 material = SubResource("ShaderMaterial_g4v7s")
