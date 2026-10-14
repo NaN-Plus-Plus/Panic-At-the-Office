@@ -1,14 +1,76 @@
 [gd_scene format=3 uid="uid://dwa2gplcaeo3o"]
 
 [ext_resource type="Script" uid="uid://ca7e5kobfebie" path="res://characters/Toya/Toya.gd" id="1_uq7b6"]
-[ext_resource type="Texture2D" uid="uid://knnppv4it08w" path="res://assets/Characters/Toya/Toya.png" id="2_uq7b6"]
+[ext_resource type="Texture2D" uid="uid://dacx7e1ml8swl" path="res://!TEST/assets/Toya-Sheet.png" id="2_uq7b6"]
 [ext_resource type="PackedScene" uid="uid://dqmuu5hs5khjl" path="res://scripts/Interactions/InteractionArea.tscn" id="3_0kj2j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kj2j"]
+atlas = ExtResource("2_uq7b6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpc2x"]
+atlas = ExtResource("2_uq7b6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3r8u"]
+atlas = ExtResource("2_uq7b6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uevl6"]
+atlas = ExtResource("2_uq7b6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r7gh"]
+atlas = ExtResource("2_uq7b6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_217h6"]
+atlas = ExtResource("2_uq7b6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paoln"]
+atlas = ExtResource("2_uq7b6")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kj2j")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpc2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3r8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uevl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r7gh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_217h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paoln")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhunq"]
 size = Vector2(42, 40.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_riqys"]
-size = Vector2(18, 5)
+size = Vector2(18, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uq7b6"]
 size = Vector2(42, 41)
@@ -18,9 +80,10 @@ collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_uq7b6")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1701903169]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1011445717]
 position = Vector2(3.8146973e-06, 0)
-texture = ExtResource("2_uq7b6")
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"idle"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=10079865]
 radius = 20.0
@@ -33,7 +96,7 @@ position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_bhunq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156840917]
-position = Vector2(0, 13.5)
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_riqys")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1935849602]

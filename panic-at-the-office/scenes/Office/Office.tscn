@@ -45,7 +45,7 @@ size = Vector2(8, 423)
 size = Vector2(177, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ixpye"]
-size = Vector2(8, 192)
+size = Vector2(8, 252)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmuxq"]
 size = Vector2(108, 8)
@@ -57,7 +57,7 @@ size = Vector2(8, 42)
 size = Vector2(53, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dt3gn"]
-size = Vector2(8, 111)
+size = Vector2(8, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgqwj"]
 size = Vector2(53, 8)
@@ -88,7 +88,7 @@ size = Vector2(70, 8)
 size = Vector2(30, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_is2gq"]
-size = Vector2(68, 6)
+size = Vector2(14, 9)
 
 [sub_resource type="Curve" id="Curve_gmykp"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -133,6 +133,18 @@ size = Vector2(32, 23)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_riqys"]
 radius = 33.01515
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(194, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3xc0r"]
+size = Vector2(224.375, 65.4375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnmvl"]
+size = Vector2(49, 64.71875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(121.125, 9.625)
 
 [node name="Office" type="Sprite2D" unique_id=1351877308]
 texture = ExtResource("4_sh7h7")
@@ -280,7 +292,7 @@ patch_margin_right = 4
 patch_margin_bottom = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall4" unique_id=1365650239]
-position = Vector2(0, -92)
+position = Vector2(0, -120)
 shape = SubResource("RectangleShape2D_ixpye")
 
 [node name="OfficeWall5" type="StaticBody2D" parent="YSort/Walls" unique_id=2146004864]
@@ -362,7 +374,7 @@ patch_margin_right = 4
 patch_margin_bottom = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Walls/OfficeWall8" unique_id=536502487]
-position = Vector2(0, -51.5)
+position = Vector2(0, -57)
 shape = SubResource("RectangleShape2D_dt3gn")
 
 [node name="OfficeWall9" type="StaticBody2D" parent="YSort/Walls" unique_id=922971992]
@@ -742,7 +754,7 @@ texture = ExtResource("21_dnde4")
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Trashcan" unique_id=1837368902]
-position = Vector2(0, -3)
+position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_is2gq")
 
 [node name="Shelf" type="StaticBody2D" parent="YSort" unique_id=1763542454]
@@ -788,6 +800,7 @@ shape = SubResource("CircleShape2D_g4v7s")
 texture = ExtResource("23_is2gq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1039870703]
+visible = false
 
 [node name="Sign" type="Panel" parent="CanvasLayer" unique_id=312320154]
 anchors_preset = 15
@@ -860,6 +873,33 @@ text = "The laptop is connected to the office Wi-Fi. The office Wi-Fi is not con
 [node name="Interact7" parent="Interactables" unique_id=2062996189 instance=ExtResource("34_ixpye")]
 position = Vector2(-48, -34)
 text = "You see no mouse on this desk. Wait... is that Vim?"
+
+[node name="More collisions bc of certain someone___" type="StaticBody2D" parent="." unique_id=1382672721]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="More collisions bc of certain someone___" unique_id=1551455267]
+position = Vector2(-84, 185)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="More collisions bc of certain someone___" unique_id=856112679]
+position = Vector2(13.1875, 23.28125)
+shape = SubResource("RectangleShape2D_3xc0r")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="More collisions bc of certain someone___" unique_id=355363360]
+position = Vector2(-155.5, 23.359375)
+shape = SubResource("RectangleShape2D_gnmvl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="More collisions bc of certain someone___" unique_id=657535396]
+position = Vector2(110.5625, -9.25)
+shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="More collisions bc of certain someone___" unique_id=1598431572]
+position = Vector2(179.125, -38)
+shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="More collisions bc of certain someone___" unique_id=413620603]
+position = Vector2(122.8125, 18)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_57qmd")
 
 [connection signal="body_entered" from="YSort/SonicMeal (japidi pojebie mnie)/Area2D" to="YSort/SonicMeal (japidi pojebie mnie)/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="YSort/SonicMeal (japidi pojebie mnie)/Area2D" to="YSort/SonicMeal (japidi pojebie mnie)/Area2D" method="_on_body_exited"]

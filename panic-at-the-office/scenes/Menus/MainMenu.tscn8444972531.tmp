@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://ct74rp67mvud3"]
+
+[ext_resource type="Texture2D" uid="uid://55ljpl2rmra5" path="res://assets/MainMenu.png" id="1_6p30y"]
+[ext_resource type="Script" uid="uid://cxlbmotxcyeq1" path="res://scenes/Menus/main_menu.gd" id="1_faaac"]
+[ext_resource type="PackedScene" uid="uid://pbdm53r44fri" path="res://scenes/PopUpWindow/QuitPopUpWindow.tscn" id="3_pl1hl"]
+[ext_resource type="PackedScene" uid="uid://cjmr1ix08blf" path="res://scenes/StartingGameScene/StartingGameScene.tscn" id="4_pl1hl"]
+[ext_resource type="AudioStream" uid="uid://b8sredc7m7ck6" path="res://audio/Music/Panic!At The Disco- GirlsGirlsBoys (Official Instrumental).mp3" id="5_a24ew"]
+[ext_resource type="Texture2D" uid="uid://bb4uxdvotpvvm" path="res://assets/UI/nan.png" id="6_5mffo"]
+[ext_resource type="AudioStream" uid="uid://behx22ffcbqry" path="res://audio/sfx/Aughhhhh.mp3" id="6_j08g8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+texture = ExtResource("6_5mffo")
+
+[node name="MainMenu" type="Control" unique_id=2013596162 node_paths=PackedStringArray("popUpWindow", "startingGameWindow")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_faaac")
+popUpWindow = NodePath("QuitPopUpWindow")
+startingGameWindow = NodePath("StartingGameScene")
+
+[node name="Bg2" type="ColorRect" parent="." unique_id=1912624127]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6255971, 0.6255971, 0.6255971, 1)
+
+[node name="Bg" type="ColorRect" parent="." unique_id=686441540]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -940.0
+offset_top = -520.0
+offset_right = 940.0
+offset_bottom = 520.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pics" type="TextureRect" parent="." unique_id=637103722]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 581.0
+offset_top = 34.0
+offset_right = 581.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6p30y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Play" type="Button" parent="." unique_id=654894815]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 365.0
+offset_right = 964.0
+offset_bottom = 550.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 46
+text = "PLAY"
+
+[node name="Quit" type="Button" parent="." unique_id=717696706]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 605.0
+offset_right = 726.0
+offset_bottom = 785.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 46
+text = "QUIT"
+
+[node name="QuitPopUpWindow" parent="." unique_id=1818528751 instance=ExtResource("3_pl1hl")]
+visible = false
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="StartingGameScene" parent="." unique_id=1590376725 instance=ExtResource("4_pl1hl")]
+visible = false
+layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=751558010]
+stream = ExtResource("5_a24ew")
+autoplay = true
+parameters/looping = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=915213863]
+stream = ExtResource("6_j08g8")
+autoplay = true
+parameters/looping = true
+
+[node name="Panel" type="Panel" parent="." unique_id=1209898858]
+layout_mode = 0
+offset_left = 831.0
+offset_top = -100.0
+offset_right = 1073.0
+offset_bottom = -19.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

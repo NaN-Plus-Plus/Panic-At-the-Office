@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var npc_id: String = "tori"          
-@export var dialogue_prefix: String = "Tori"  
+@export var npc_id: String = "tori"
+@export var dialogue_prefix: String = "Tori"
 
 @export var push_force: float = 80.0
 @export var speed: float = 200.0
@@ -9,14 +9,16 @@ extends CharacterBody2D
 @export var acceleration: float = 600.0
 @export var follow_distance: float = 52.0
 @export var formation_side: float = -18.0
-@export var turn_smoothing: float = 2.0     
-@export var slow_radius: float = 10.0        
+@export var turn_smoothing: float = 2.0
+@export var slow_radius: float = 10.0
 @export var catch_up_distance: float = 120.0
 @export var repath_distance: float = 16.0
-@export var safe_zone_radius: float = 160.0
+@export var safe_zone_radius: float = 100.0
+@export var stop_distance: float = 40.0
 
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var interaction_area: Area2D = $InteractionArea
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 
 var is_following := false
 var is_talking := false
@@ -35,8 +37,10 @@ func _ready() -> void:
 		set_physics_process(false)
 		return
 
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	nav_agent.path_desired_distance = 12.0
 	nav_agent.target_desired_distance = 12.0
+	sprite.play("idle")
 
 
 func provides_safe_zone() -> bool:
@@ -54,6 +58,8 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, acceleration * delta)
 		_last_nav_target = Vector2.INF
 		move_and_slide()
+		_stop_pushing_player()
+		_update_animation()
 		return
 
 	var target := _get_follow_target(delta)
@@ -62,9 +68,12 @@ func _physics_process(delta: float) -> void:
 		_last_nav_target = target
 
 	var distance := global_position.distance_to(target)
+	var dist_to_player := global_position.distance_to(_player.global_position)
 	var desired := Vector2.ZERO
 
-	if distance > nav_agent.target_desired_distance and not nav_agent.is_navigation_finished():
+	if dist_to_player > stop_distance \
+			and distance > nav_agent.target_desired_distance \
+			and not nav_agent.is_navigation_finished():
 		var dir := global_position.direction_to(nav_agent.get_next_path_position())
 		var max_speed := catch_up_speed if distance > catch_up_distance else speed
 		var ease_factor := clampf(distance / slow_radius, 0.15, 1.0)
@@ -72,10 +81,31 @@ func _physics_process(delta: float) -> void:
 
 	velocity = velocity.move_toward(desired, acceleration * delta)
 	move_and_slide()
+	_stop_pushing_player()
+	_update_animation()
+
+
+func _update_animation() -> void:
+	var moving := velocity.length() > 5.0
+
+	if moving:
+		if absf(velocity.x) > 1.0:
+			sprite.flip_h = velocity.x < 0.0
+		if sprite.animation != "walk":
+			sprite.play("walk")
+	else:
+		if sprite.animation != "idle":
+			sprite.play("idle")
+
+
+func _stop_pushing_player() -> void:
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		if collision.get_collider() == _player:
+			velocity = velocity.slide(collision.get_normal())
 
 
 func _get_follow_target(delta: float) -> Vector2:
-	# Smoothly rotate the "behind" direction instead of snapping it
 	if _player.velocity.length_squared() > 1.0:
 		var weight := 1.0 - exp(-turn_smoothing * delta)
 		_follow_angle = lerp_angle(_follow_angle, _player.velocity.angle(), weight)
@@ -83,7 +113,13 @@ func _get_follow_target(delta: float) -> Vector2:
 	var dir := Vector2.from_angle(_follow_angle)
 	var behind := -dir * follow_distance
 	var side := dir.orthogonal() * formation_side
-	return _player.global_position + behind + side
+	var target := _player.global_position + behind + side
+
+	var from_player := target - _player.global_position
+	if from_player.length() < stop_distance:
+		target = _player.global_position + from_player.normalized() * stop_distance
+
+	return target
 
 
 func _interact() -> void:
@@ -115,8 +151,9 @@ func _first_meeting() -> void:
 	is_following = Dialogic.VAR.get_variable(npc_id + "_invited")
 	if is_following:
 		interaction_area.set_deferred("monitoring", false)
-		
-func push_rigid_bodies():
+
+
+func push_rigid_bodies() -> void:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
 		var collider := collision.get_collider()

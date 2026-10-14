@@ -218,7 +218,7 @@ position = Vector2(-517, -86)
 texture = ExtResource("3_rlnco")
 
 [node name="Mc" parent="." unique_id=978937542 instance=ExtResource("3_mpq2l")]
-position = Vector2(-763, -264)
+position = Vector2(-763, -254)
 
 [node name="EXIT" type="Area2D" parent="." unique_id=992763881]
 position = Vector2(-127, 12)
@@ -248,7 +248,7 @@ position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_yf5fn")
 animation = &"move"
 
-[node name="Col" type="Node2D" parent="." unique_id=912928348]
+[node name="Col" type="StaticBody2D" parent="." unique_id=184341058]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Col" unique_id=1672691270]
 position = Vector2(-844, -118.5)

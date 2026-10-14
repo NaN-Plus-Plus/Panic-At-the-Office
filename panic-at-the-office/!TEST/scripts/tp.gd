@@ -9,7 +9,7 @@ func _ready():
 	body_entered.connect(on_body_entered)
 
 func on_body_entered(body: Node2D):
-	if triggered:
+	if triggered or not body is Player:
 		return
 	triggered = true
 

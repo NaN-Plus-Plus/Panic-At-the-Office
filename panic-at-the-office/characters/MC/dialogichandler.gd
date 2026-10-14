@@ -1,8 +1,8 @@
 extends Node
 
-@export var idle_time_limit: float = 10.0
-@export var going_time_limit: float = 15.0
-@export_range(0.0, 1.0) var going_chance: float = 0.4
+@export var idle_time_limit: float = 15.0
+@export var going_time_limit: float = 10.0
+@export_range(0.0, 1.0) var going_chance: float = 0.8
 
 var idle_timer: float = 0.0
 var going_timer: float = 0.0

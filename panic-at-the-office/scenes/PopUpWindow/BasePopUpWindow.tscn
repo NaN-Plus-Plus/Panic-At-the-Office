@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://c75p4fry2607y"]
 
 [ext_resource type="Script" uid="uid://ctmcpgg010hr1" path="res://scenes/PopUpWindow/base_pop_up_window.gd" id="1_ajcpd"]
-[ext_resource type="Texture2D" uid="uid://ddtbbr4c3offh" path="res://assets/PlaceHolder3.jpg" id="2_4v27n"]
-[ext_resource type="Texture2D" uid="uid://bt6rq2pt0g86v" path="res://assets/PlaceHolder4.jpg" id="3_nximp"]
 
 [node name="BasePopUpWindow" type="Control" unique_id=1818528751]
 custom_minimum_size = Vector2(600, 400)
@@ -71,19 +69,15 @@ layout_mode = 2
 theme_override_constants/separation = 250
 alignment = 1
 
-[node name="Ok" type="TextureButton" parent="MarginContainer/VBoxContainer/Buttons" unique_id=2008072049]
+[node name="Ok" type="Button" parent="MarginContainer/VBoxContainer/Buttons" unique_id=1983295956]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("2_4v27n")
-ignore_texture_size = true
-stretch_mode = 0
+text = "YES"
 
-[node name="Cancer" type="TextureButton" parent="MarginContainer/VBoxContainer/Buttons" unique_id=315837054]
+[node name="Cancer" type="Button" parent="MarginContainer/VBoxContainer/Buttons" unique_id=2059901560]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture_normal = ExtResource("3_nximp")
-ignore_texture_size = true
-stretch_mode = 0
+text = "NO"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/Ok" to="." method="_on_ok_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/Cancer" to="." method="_on_cancer_pressed"]

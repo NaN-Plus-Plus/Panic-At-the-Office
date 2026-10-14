@@ -15,7 +15,7 @@ class_name Biom
 @onready var COLS := Globals.cols
 @onready var monster_scene: PackedScene = preload("uid://2mrx4ulwqgfi")
 
-@onready var npc_parent: Node2D = $Npc
+@export var npc_parent: Node
 @onready var toriScene: PackedScene = preload("res://characters/Tori/Tori.tscn")
 @onready var toyaScene: PackedScene = preload("res://characters/Toya/Toya.tscn")
 

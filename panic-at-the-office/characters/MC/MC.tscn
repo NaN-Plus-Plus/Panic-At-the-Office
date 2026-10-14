@@ -114,7 +114,6 @@ sprite_frames = SubResource("SpriteFrames_haubp")
 animation = &"idle"
 
 [node name="Silhouette" type="Sprite2D" parent="Sprite2D" unique_id=940852070]
-z_index = 100
 material = SubResource("ShaderMaterial_tqg67")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1391218887]

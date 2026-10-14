@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b1j7f4af7wc3d" path="res://scenes/WinScreen/label.gd" id="2_dot82"]
 [ext_resource type="Texture2D" uid="uid://db0to03vq2ghb" path="res://assets/UI/Icons/Basil_Square.jpg" id="3_dot82"]
 [ext_resource type="Texture2D" uid="uid://0vqg1326p8f2" path="res://assets/UI/Icons/yaoo.jpg" id="5_oflqx"]
+[ext_resource type="AudioStream" uid="uid://b8sredc7m7ck6" path="res://audio/Music/Panic!At The Disco- GirlsGirlsBoys (Official Instrumental).mp3" id="6_uyvf4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
 bg_color = Color(0.8500505, 0.85005057, 0.85005045, 1)
@@ -205,5 +206,10 @@ text = "Sparrow = coder"
 horizontal_alignment = 1
 
 [node name="Confetti" type="Node2D" parent="." unique_id=217260146]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=229737954]
+stream = ExtResource("6_uyvf4")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

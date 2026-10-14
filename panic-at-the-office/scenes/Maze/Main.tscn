@@ -18,11 +18,12 @@ shader_parameter/trim_color = Vector4(1, 1, 1, 1)
 [node name="Main" type="Node2D" unique_id=786101504]
 script = ExtResource("1_mgnkh")
 
-[node name="Biom" parent="." unique_id=1919071673 node_paths=PackedStringArray("object_parent", "deco_parent") instance=ExtResource("1_10rdu")]
+[node name="Biom" parent="." unique_id=1919071673 node_paths=PackedStringArray("object_parent", "deco_parent", "npc_parent") instance=ExtResource("1_10rdu")]
 object_parent = NodePath("../Y Sort Obj")
 objects_folder = "res://scenes/Obj"
 deco_parent = NodePath("../Deco")
 deco_folder = "res://assets/Obj/Deco"
+npc_parent = NodePath("../Y Sort Obj/Npc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=735453278]
 layer = 10
@@ -48,3 +49,6 @@ y_sort_enabled = true
 
 [node name="Mc" parent="Y Sort Obj" unique_id=978937542 instance=ExtResource("2_gsqt7")]
 position = Vector2(186, 158)
+
+[node name="Npc" type="Node2D" parent="Y Sort Obj" unique_id=1910528822]
+y_sort_enabled = true

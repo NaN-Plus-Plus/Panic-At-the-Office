@@ -12,13 +12,17 @@ func _ready() -> void:
 	visible = false
 	root.modulate.a = 0.0
 	progress_bar.value = 0
+	
+	await get_tree().process_frame
+	var layout = Dialogic.Styles.load_style()
+	if layout:
+		layout.hide()
 
-
-func show_loading(scene_name: String) -> void:
+func show_loading(_scene_name: String) -> void:
 	get_tree().paused = true
 	visible = true
 	progress_bar.value = 0
-	set_status("Loading %s..." % (scene_name if not scene_name.is_empty() else "..."))
+	set_status("Loading the Game...")
 	await get_tree().process_frame
 	var tween := create_tween()
 	root.modulate.a = 0.0
