@@ -18,12 +18,29 @@ shader_parameter/trim_color = Vector4(1, 1, 1, 1)
 [node name="Main" type="Node2D" unique_id=786101504]
 script = ExtResource("1_mgnkh")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1101721301]
+custom_minimum_size = Vector2(2222, 2222)
+offset_left = -4641.0
+offset_top = -3847.0
+offset_right = 6064.0
+offset_bottom = 4657.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.5764706, 0.5176471, 0.33333334, 1)
+metadata/_edit_use_anchors_ = true
+
 [node name="Biom" parent="." unique_id=1919071673 node_paths=PackedStringArray("object_parent", "deco_parent", "npc_parent") instance=ExtResource("1_10rdu")]
 object_parent = NodePath("../Y Sort Obj")
 objects_folder = "res://scenes/Obj"
 deco_parent = NodePath("../Deco")
 deco_folder = "res://assets/Obj/Deco"
 npc_parent = NodePath("../Y Sort Obj/Npc")
+
+[node name="Label" type="Label" parent="Biom" unique_id=687480927]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=735453278]
 layer = 10
