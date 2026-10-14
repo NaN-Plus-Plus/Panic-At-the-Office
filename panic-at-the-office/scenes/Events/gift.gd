@@ -6,16 +6,13 @@ var count: int = 1
 var player: CharacterBody2D
 var isVisible := false
 
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("gift") and not event.is_echo() and isVisible:
 		use_gift()
 
-
 func show_gift():
 	node.visible = true
 	isVisible = true
-
 
 func use_gift():
 	if count > 0 and isVisible:

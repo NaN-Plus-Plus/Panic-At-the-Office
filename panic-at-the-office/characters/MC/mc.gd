@@ -145,7 +145,6 @@ func run_catch_sequence() -> void:
 func set_silhouette_texture():
 	silhouette.texture = sprite.sprite_frames.get_frame_texture(sprite.animation, sprite.frame)
 
-
 func activate_shield():
 	shield_activation_id += 1
 	var activation_id := shield_activation_id
@@ -170,7 +169,6 @@ func activate_shield():
 		if is_instance_valid(monster):
 			monster.set_shield_blocked(false)
 	shielded_monsters.clear()
-
 
 func _on_shield_body_entered(body: Node2D) -> void:
 	if not shield_active or not (body is WireMonster):

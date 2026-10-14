@@ -1,12 +1,31 @@
 [gd_scene format=3 uid="uid://c2u608dnc50ry"]
 
 [ext_resource type="Script" uid="uid://dmqepli52xm5r" path="res://scenes/WinScreen/win_screen.gd" id="1_8st62"]
+[ext_resource type="Texture2D" uid="uid://0jge2no1duv0" path="res://assets/UI/Icons/nana.png" id="2_866r2"]
+[ext_resource type="Script" uid="uid://b1j7f4af7wc3d" path="res://scenes/WinScreen/label.gd" id="2_dot82"]
+[ext_resource type="Texture2D" uid="uid://db0to03vq2ghb" path="res://assets/UI/Icons/Basil_Square.jpg" id="3_dot82"]
+[ext_resource type="Texture2D" uid="uid://0vqg1326p8f2" path="res://assets/UI/Icons/yaoo.jpg" id="5_oflqx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
 bg_color = Color(0.8500505, 0.85005057, 0.85005045, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oflqx"]
+bg_color = Color(1, 1, 1, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8st62"]
 bg_color = Color(0.4014601, 0.40146014, 0.40146002, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixpye"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
+texture = ExtResource("2_866r2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oflqx"]
+texture = ExtResource("3_dot82")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uyvf4"]
+texture = ExtResource("5_oflqx")
 
 [node name="Win" type="Control" unique_id=342179851 node_paths=PackedStringArray("confetti_parent")]
 layout_mode = 3
@@ -27,6 +46,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_g4v7s")
+
+[node name="Panel3" type="Panel" parent="." unique_id=820843912]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -915.0
+offset_top = -515.0
+offset_right = 915.0
+offset_bottom = 515.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oflqx")
 
 [node name="Panel2" type="Panel" parent="." unique_id=323290262]
 layout_mode = 1
@@ -51,13 +85,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -169.0
-offset_top = -49.5
+offset_top = -201.0
 offset_right = 169.0
-offset_bottom = 49.5
+offset_bottom = -102.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 72
 text = "YOU WIN!"
+script = ExtResource("2_dot82")
 
 [node name="Button" type="Button" parent="." unique_id=151310685]
 layout_mode = 1
@@ -66,13 +101,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = 86.0
-offset_right = 58.0
-offset_bottom = 141.0
+offset_left = -76.0
+offset_top = -65.5
+offset_right = 68.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 34
+theme_override_styles/normal = SubResource("StyleBoxFlat_ixpye")
 text = "Again?"
 
 [node name="Label2" type="Label" parent="." unique_id=1715337323]
@@ -82,14 +119,90 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -98.0
-offset_right = 101.0
-offset_bottom = -64.0
+offset_left = -106.0
+offset_top = -355.0
+offset_right = 95.0
+offset_bottom = -308.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 34
+text = "Made by:"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1771916237]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 815.0
+offset_right = 1479.0
+offset_bottom = 965.0
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Panel" type="Panel" parent="HBoxContainer" unique_id=775868149]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
+
+[node name="Panel2" type="Panel" parent="HBoxContainer" unique_id=465028254]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_oflqx")
+
+[node name="Panel3" type="Panel" parent="HBoxContainer" unique_id=547910906]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_uyvf4")
+
+[node name="Label3" type="Label" parent="." unique_id=391635199]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -429.0
+offset_top = -104.0
+offset_right = -185.0
+offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 24
-text = "Made by: Nan++"
+text = "Tinao = coder + artist"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="." unique_id=1309128085]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 170.0
+offset_top = -104.0
+offset_right = 414.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Yao = coder + artist"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="." unique_id=378185918]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -105.0
+offset_right = 117.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Sparrow = coder"
+horizontal_alignment = 1
 
 [node name="Confetti" type="Node2D" parent="." unique_id=217260146]
 

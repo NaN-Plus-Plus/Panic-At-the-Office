@@ -13,6 +13,7 @@ var confetti_sprites: Array[Sprite2D] = []
 var confetti_speeds: Array[float] = []
 
 func _ready():
+	GiftHUD.node.visible = false
 	if Globals.is_story:
 		await Globals.start_dialogue("Ending")
 	spawn_confetti()

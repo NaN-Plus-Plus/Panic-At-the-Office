@@ -33,6 +33,7 @@
 [ext_resource type="Script" uid="uid://bw3h381vumgt" path="res://scenes/Office/sonicmeal.gd" id="27_ixpye"]
 [ext_resource type="PackedScene" uid="uid://l5877e1o7y3g" path="res://scenes/Office/telephone.tscn" id="30_enwj8"]
 [ext_resource type="AudioStream" uid="uid://ctt5gy7woexw2" path="res://audio/Music/𝙲𝚛𝚘𝚘𝚔𝚎𝚍  𝚆𝚘𝚛𝚕𝚍. - 𝙾𝚍𝚍  𝙱𝚎𝚑𝚊𝚟𝚒𝚘𝚛.mp3" id="31_ciwrq"]
+[ext_resource type="PackedScene" uid="uid://cgik7sei5i3eg" path="res://scenes/Office/interact.tscn" id="34_ixpye"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ciwrq"]
 size = Vector2(291, 8)
@@ -834,6 +835,31 @@ stream = ExtResource("31_ciwrq")
 volume_db = 10.0
 autoplay = true
 parameters/looping = true
+
+[node name="Interactables" type="Node2D" parent="." unique_id=121546632]
+
+[node name="Interact" parent="Interactables" unique_id=417570266 instance=ExtResource("34_ixpye")]
+position = Vector2(-152, 66)
+text = "The printer is jammed again. You don't know what you expected."
+
+[node name="Interact2" parent="Interactables" unique_id=449013183 instance=ExtResource("34_ixpye")]
+position = Vector2(-26, 76)
+
+[node name="Interact3" parent="Interactables" unique_id=116352336 instance=ExtResource("34_ixpye")]
+position = Vector2(-64, 108)
+text = "The lock screen is a picture of a cat. At least someone in this office is happy."
+
+[node name="Interact4" parent="Interactables" unique_id=926689383 instance=ExtResource("34_ixpye")]
+position = Vector2(-44, 122)
+text = "The label of the bottle is facing away from you. You get the feeling that's intentional."
+
+[node name="Interact6" parent="Interactables" unique_id=997294914 instance=ExtResource("34_ixpye")]
+position = Vector2(-130, -114)
+text = "The laptop is connected to the office Wi-Fi. The office Wi-Fi is not connected to the internet."
+
+[node name="Interact7" parent="Interactables" unique_id=2062996189 instance=ExtResource("34_ixpye")]
+position = Vector2(-48, -34)
+text = "You see no mouse on this desk. Wait... is that Vim?"
 
 [connection signal="body_entered" from="YSort/SonicMeal (japidi pojebie mnie)/Area2D" to="YSort/SonicMeal (japidi pojebie mnie)/Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="YSort/SonicMeal (japidi pojebie mnie)/Area2D" to="YSort/SonicMeal (japidi pojebie mnie)/Area2D" method="_on_body_exited"]

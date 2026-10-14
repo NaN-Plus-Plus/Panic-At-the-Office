@@ -27,7 +27,6 @@ func _preload_dialogue_resources() -> void:
 	Dialogic.preload_timeline("Telephone")
 	Dialogic.preload_timeline("IntoBackrooms")
 
-
 func start_new_maze_run() -> void:
 	isFirstTime = 0
 	Dialogic.VAR.isSecondTime = false
@@ -49,7 +48,6 @@ func start_dialogue(timeline: String):
 	Dialogic.start(timeline)
 	await Dialogic.timeline_ended
 	InteractionManager.unfreeze_world()
-	
 	
 func play_idle_dialogue(timeline: String) -> void:
 	Dialogic.Inputs.auto_advance.enabled_forced = true
