@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dacx7e1ml8swl"
-path="res://.godot/imported/Toya-Sheet.png-4dc6e2fe0dfbaca7d5b24561ca23190f.ctex"
+uid="uid://knnppv4it08w"
+path="res://.godot/imported/Toya.png-28f02b2439031aebfeae03ae9cf62ca7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://!TEST/assets/Toya-Sheet.png"
-dest_files=["res://.godot/imported/Toya-Sheet.png-4dc6e2fe0dfbaca7d5b24561ca23190f.ctex"]
+source_file="res://assets/Characters/Toya/Toya.png"
+dest_files=["res://.godot/imported/Toya.png-28f02b2439031aebfeae03ae9cf62ca7.ctex"]
 
 [params]
 

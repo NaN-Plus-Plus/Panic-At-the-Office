@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dwa2gplcaeo3o"]
 
 [ext_resource type="Script" uid="uid://ca7e5kobfebie" path="res://characters/Toya/Toya.gd" id="1_uq7b6"]
-[ext_resource type="Texture2D" uid="uid://dacx7e1ml8swl" path="res://!TEST/assets/Toya-Sheet.png" id="2_uq7b6"]
+[ext_resource type="Texture2D" uid="uid://dacx7e1ml8swl" path="res://assets/Characters/Toya/Toya-Sheet.png" id="2_uq7b6"]
 [ext_resource type="PackedScene" uid="uid://dqmuu5hs5khjl" path="res://scripts/Interactions/InteractionArea.tscn" id="3_0kj2j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0kj2j"]
