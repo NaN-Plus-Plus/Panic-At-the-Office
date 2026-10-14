@@ -57,3 +57,14 @@ func play_idle_dialogue(timeline: String) -> void:
 	Dialogic.Inputs.auto_advance.per_character_delay = 0.0
 	
 	Dialogic.start(timeline)
+
+
+func stop_dialogue() -> void:
+	if Dialogic.current_timeline != null:
+		await Dialogic.end_timeline(true)
+
+	Dialogic.Inputs.auto_advance.enabled_forced = false
+	Dialogic.Inputs.auto_advance.enabled_until_user_input = false
+	Dialogic.Portraits.leave_all_characters("", 0.0, false)
+	Dialogic.Text.hide_textbox()
+	InteractionManager.unfreeze_world()

@@ -71,6 +71,7 @@ func check_win_condition():
 
 	if player_cell == Globals.biom.exit_cell:
 		game_won = true
+		await Globals.stop_dialogue()
 		get_tree().change_scene_to_file(win_scene_path)
 
 func update_animation(direction: Vector2):

@@ -251,8 +251,7 @@ shape = SubResource("RectangleShape2D_udni0")
 texture_filter = 1
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_haubp")
-animation = &"walk_r"
-frame_progress = 0.45228282
+animation = &"idle"
 
 [node name="Silhouette" type="Sprite2D" parent="Sprite2D" unique_id=940852070]
 material = SubResource("ShaderMaterial_tqg67")

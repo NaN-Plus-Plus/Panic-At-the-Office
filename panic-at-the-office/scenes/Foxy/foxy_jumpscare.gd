@@ -10,4 +10,5 @@ func _ready() -> void:
 	fnaf2_jumpscare_audio.play(0.26)
 
 func back_to_main_menu():
-	get_tree().change_scene_to_file(main_menu_uid)
+	var target: String = Globals.return_scene_path
+	get_tree().change_scene_to_file.call_deferred(target)

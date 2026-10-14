@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://db0to03vq2ghb" path="res://assets/UI/Icons/Basil_Square.jpg" id="3_dot82"]
 [ext_resource type="Texture2D" uid="uid://0vqg1326p8f2" path="res://assets/UI/Icons/yaoo.jpg" id="5_oflqx"]
 [ext_resource type="AudioStream" uid="uid://b8sredc7m7ck6" path="res://audio/Music/Panic!At The Disco- GirlsGirlsBoys (Official Instrumental).mp3" id="6_uyvf4"]
+[ext_resource type="Script" uid="uid://mjjv38hvoayb" path="res://scenes/WinScreen/button.gd" id="7_prank"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4v7s"]
 bg_color = Color(0.8500505, 0.85005057, 0.85005045, 1)
@@ -95,17 +96,27 @@ theme_override_font_sizes/font_size = 72
 text = "YOU WIN!"
 script = ExtResource("2_dot82")
 
-[node name="Button" type="Button" parent="." unique_id=151310685]
+[node name="Buttonn" type="Control" parent="." unique_id=814812795]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_prank")
+
+[node name="Button" type="Button" parent="Buttonn" unique_id=151310685]
+z_index = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -76.0
-offset_top = -65.5
-offset_right = 68.0
-offset_bottom = 7.0
+offset_left = -54.0
+offset_top = -23.5
+offset_right = 54.0
+offset_bottom = 23.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -209,7 +220,8 @@ horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=229737954]
 stream = ExtResource("6_uyvf4")
+volume_db = 5.0
 autoplay = true
 parameters/looping = true
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Buttonn/Button" to="." method="_on_button_pressed"]

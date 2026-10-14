@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://gl5tssqs6sf7"]
+
+[ext_resource type="PackedScene" uid="uid://bngoq4xbhsr7s" path="res://scenes/Foxy/foxy_jumpscare.tscn" id="2_de85n"]
+[ext_resource type="Texture2D" uid="uid://dtc4u36esgw0c" path="res://assets/Office/bg.png" id="2_oma4u"]
+
+[node name="7" type="Node2D" unique_id=573575962]
+
+[node name="BLACK" type="Sprite2D" parent="." unique_id=2036825272]
+z_index = 1
+position = Vector2(3172.5, 501.49988)
+scale = Vector2(24.783852, 12.453126)
+texture = ExtResource("2_oma4u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1936720124]
+
+[node name="FoxyJumpscare" parent="CanvasLayer" unique_id=1740459509 instance=ExtResource("2_de85n")]
+position = Vector2(960, 540)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1566619099]
+visible = false
