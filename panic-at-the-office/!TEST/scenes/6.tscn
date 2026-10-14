@@ -8,6 +8,10 @@
 [ext_resource type="Script" uid="uid://b2i375fyklgar" path="res://!TEST/scripts/tp.gd" id="5_54jux"]
 [ext_resource type="Texture2D" uid="uid://cgs1pk24y2wqi" path="res://!TEST/assets/set.png" id="6_1tne8"]
 [ext_resource type="Texture2D" uid="uid://brdktii5oc0by" path="res://!TEST/assets/thing.png" id="8_rlnco"]
+[ext_resource type="Shader" uid="uid://c086iyqf7ufbp" path="res://shaders/crt.gdshader" id="9_54jux"]
+[ext_resource type="Shader" uid="uid://tjlwx54030md" path="res://!TEST/shaders/shake.gdshader" id="10_5o7ee"]
+[ext_resource type="Texture2D" uid="uid://bpfvgabtgiq45" path="res://!TEST/assets/texture.png" id="11_trjd5"]
+[ext_resource type="Texture2D" uid="uid://cyoxet7s2xgep" path="res://!TEST/assets/thing2.png" id="12_uksdw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlnco"]
 size = Vector2(20, 99)
@@ -204,6 +208,61 @@ size = Vector2(70, 591.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
 size = Vector2(251, 70)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5o7ee"]
+shader = ExtResource("9_54jux")
+shader_parameter/curvature = true
+shader_parameter/mask = true
+shader_parameter/scan_line = true
+shader_parameter/transparency = false
+shader_parameter/mode2 = false
+shader_parameter/trim_color = Vector4(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+shader = ExtResource("10_5o7ee")
+shader_parameter/shaking = true
+shader_parameter/amplitude = 2.0
+shader_parameter/noise_scale = 20.0
+shader_parameter/noise_speed = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5o7ee"]
+texture = ExtResource("11_trjd5")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_610ek"]
+atlas = ExtResource("12_uksdw")
+region = Rect2(0, 0, 47, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhfhi"]
+atlas = ExtResource("12_uksdw")
+region = Rect2(47, 0, 47, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go4g1"]
+atlas = ExtResource("12_uksdw")
+region = Rect2(94, 0, 47, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7w0b2"]
+atlas = ExtResource("12_uksdw")
+region = Rect2(141, 0, 47, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_610ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhfhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go4g1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7w0b2")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 5.0
+}]
+
 [node name="6" type="Node2D" unique_id=573575962]
 script = ExtResource("1_f6xly")
 
@@ -219,9 +278,10 @@ texture = ExtResource("3_rlnco")
 
 [node name="Mc" parent="." unique_id=978937542 instance=ExtResource("3_mpq2l")]
 position = Vector2(-763, -254)
+jumpscare_folder = ""
 
 [node name="EXIT" type="Area2D" parent="." unique_id=992763881]
-position = Vector2(-127, 12)
+position = Vector2(-158, 12)
 script = ExtResource("5_54jux")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EXIT" unique_id=689321953]
@@ -234,7 +294,7 @@ volume_db = 5.0
 autoplay = true
 
 [node name="Set" type="StaticBody2D" parent="." unique_id=1577304256]
-position = Vector2(0, 4)
+position = Vector2(-18, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="Set" unique_id=1320527591]
 texture = ExtResource("6_1tne8")
@@ -244,7 +304,7 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="Thing" type="AnimatedSprite2D" parent="." unique_id=958280313]
-position = Vector2(0, -6)
+position = Vector2(-18, -6)
 sprite_frames = SubResource("SpriteFrames_yf5fn")
 animation = &"move"
 
@@ -290,3 +350,31 @@ shape = SubResource("RectangleShape2D_57qmd")
 position = Vector2(100, 14)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1669390050]
+layer = 10
+
+[node name="CRT" type="ColorRect" parent="CanvasLayer" unique_id=1486622966]
+material = SubResource("ShaderMaterial_5o7ee")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1044340548]
+material = SubResource("ShaderMaterial_g4v7s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5o7ee")
+
+[node name="ThingCon" type="AnimatedSprite2D" parent="." unique_id=411105716]
+visible = false
+position = Vector2(-161, 44)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"move"
+frame_progress = 0.17500445
