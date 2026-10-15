@@ -3,6 +3,7 @@ extends Node2D
 @onready var video_stream_player: VideoStreamPlayer = $CanvasLayer/Control/VideoStreamPlayer
 
 func _ready() -> void:
+	GiftHUD.hide_gift()
 	video_stream_player.finished.connect(_on_video_finished)
 
 func _on_video_finished() -> void:
