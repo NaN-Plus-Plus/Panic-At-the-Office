@@ -2,10 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dgpkx7egvc377" path="res://scenes/StartingGameScene/starting_game_scene.gd" id="1_ws8n3"]
 [ext_resource type="Texture2D" uid="uid://bt6rq2pt0g86v" path="res://assets/PlaceHolder4.jpg" id="2_11stp"]
+[ext_resource type="Texture2D" uid="uid://bb4uxdvotpvvm" path="res://assets/UI/nan.png" id="2_fo2j8"]
 [ext_resource type="PackedScene" uid="uid://c75p4fry2607y" path="res://scenes/PopUpWindow/BasePopUpWindow.tscn" id="2_n5ry4"]
 [ext_resource type="Shader" uid="uid://bty55qsbduxxf" path="res://shaders/Retrooo.gdshader" id="3_11stp"]
 [ext_resource type="PackedScene" uid="uid://dc2axg4nj4q4g" path="res://scenes/PopUpWindow/PlayPopUpWindow.tscn" id="3_n5ry4"]
 [ext_resource type="PackedScene" uid="uid://ds0nghphhjocs" path="res://scenes/PopUpWindow/StoryPopUpWindow.tscn" id="5_2lw16"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_chg7n"]
+texture = ExtResource("2_fo2j8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fo2j8"]
 shader = ExtResource("3_11stp")
@@ -15,6 +19,7 @@ shader_parameter/smear = 0.4790000227525
 shader_parameter/blur_samples = 3
 
 [node name="StartingGameScene" type="Control" unique_id=1590376725 node_paths=PackedStringArray("popUpWindow")]
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +36,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.23693937, 0.17705932, 0.17705932, 1)
+color = Color(0.60784316, 0.57254905, 0.40784314, 1)
+
+[node name="Panel" type="Panel" parent="ColorRect" unique_id=1084064752]
+layout_mode = 0
+offset_left = 848.0
+offset_top = 46.0
+offset_right = 1090.0
+offset_bottom = 127.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_chg7n")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1541957288]
 visible = false

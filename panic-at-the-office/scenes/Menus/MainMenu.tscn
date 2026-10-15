@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://55ljpl2rmra5" path="res://assets/MainMenu.png" id="1_6p30y"]
 [ext_resource type="Script" uid="uid://cxlbmotxcyeq1" path="res://scenes/Menus/main_menu.gd" id="1_faaac"]
+[ext_resource type="Texture2D" uid="uid://cvhtlskhgnnho" path="res://assets/UI/MainMenu/MainMenu.png" id="2_j8imo"]
 [ext_resource type="PackedScene" uid="uid://pbdm53r44fri" path="res://scenes/PopUpWindow/QuitPopUpWindow.tscn" id="3_pl1hl"]
 [ext_resource type="PackedScene" uid="uid://cjmr1ix08blf" path="res://scenes/StartingGameScene/StartingGameScene.tscn" id="4_pl1hl"]
 [ext_resource type="AudioStream" uid="uid://b8sredc7m7ck6" path="res://audio/Music/Panic!At The Disco- GirlsGirlsBoys (Official Instrumental).mp3" id="5_a24ew"]
@@ -47,7 +48,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=495566014]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("2_j8imo")
+
 [node name="Pics" type="TextureRect" parent="." unique_id=637103722]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,26 +69,6 @@ grow_vertical = 2
 texture = ExtResource("1_6p30y")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="Play" type="Button" parent="." unique_id=654894815]
-layout_mode = 0
-offset_left = 434.0
-offset_top = 365.0
-offset_right = 964.0
-offset_bottom = 550.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 46
-text = "PLAY"
-
-[node name="Quit" type="Button" parent="." unique_id=717696706]
-layout_mode = 0
-offset_left = 196.0
-offset_top = 605.0
-offset_right = 726.0
-offset_bottom = 785.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 46
-text = "QUIT"
 
 [node name="QuitPopUpWindow" parent="." unique_id=1818528751 instance=ExtResource("3_pl1hl")]
 visible = false
@@ -105,13 +93,35 @@ volume_db = 5.0
 parameters/looping = true
 
 [node name="Panel" type="Panel" parent="." unique_id=1209898858]
+visible = false
 layout_mode = 0
-offset_left = 831.0
+offset_left = 833.0
 offset_top = -100.0
-offset_right = 1073.0
+offset_right = 1075.0
 offset_bottom = -19.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
 
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2135917184]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 384.0
+offset_right = 514.0
+offset_bottom = 601.0
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Play" type="Button" parent="VBoxContainer" unique_id=654894815]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "PLAY"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=717696706]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "QUIT"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
