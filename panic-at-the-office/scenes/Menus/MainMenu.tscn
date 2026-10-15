@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cjmr1ix08blf" path="res://scenes/StartingGameScene/StartingGameScene.tscn" id="4_pl1hl"]
 [ext_resource type="AudioStream" uid="uid://b8sredc7m7ck6" path="res://audio/Music/Panic!At The Disco- GirlsGirlsBoys (Official Instrumental).mp3" id="5_a24ew"]
 [ext_resource type="Texture2D" uid="uid://bb4uxdvotpvvm" path="res://assets/UI/nan.png" id="6_5mffo"]
-[ext_resource type="AudioStream" uid="uid://behx22ffcbqry" path="res://audio/sfx/Aughhhhh.mp3" id="6_j08g8"]
+[ext_resource type="AudioStream" uid="uid://n5wn3s7pfvcx" path="res://audio/sfx/Cat Laughing.mp3" id="7_j8imo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
 texture = ExtResource("6_5mffo")
@@ -88,7 +88,7 @@ autoplay = true
 parameters/looping = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=915213863]
-stream = ExtResource("6_j08g8")
+stream = ExtResource("7_j8imo")
 volume_db = 5.0
 parameters/looping = true
 
