@@ -11,6 +11,7 @@ extends Node2D
 var triggered: bool = false
 
 func _ready():
+	GiftHUD.hide_gift()
 	Globals.player.speed = 100
 	canvas_layer.hide()
 	panel.hide()

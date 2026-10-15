@@ -5,6 +5,7 @@ extends Node2D
 @onready var mc_sprite: Sprite2D = $Mc/Copy
 
 func _ready() -> void:
+	GiftHUD.hide_gift()
 	Globals.player.speed = 100
 	drops.start_spawning()
 

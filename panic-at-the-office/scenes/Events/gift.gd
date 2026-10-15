@@ -14,6 +14,10 @@ func show_gift():
 	node.visible = true
 	isVisible = true
 
+func hide_gift() -> void:
+	node.visible = false
+	isVisible = false
+
 func use_gift():
 	if count > 0 and isVisible:
 		count -= 1
