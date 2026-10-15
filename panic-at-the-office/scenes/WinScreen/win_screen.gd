@@ -8,11 +8,16 @@ extends Control
 
 @export var main_scene_path: String = "res://scenes/Menus/MainMenu.tscn"
 
-var confetti_textures: Array[Texture2D] = []
+var confetti_textures: Array[Texture2D] = [
+	preload("res://assets/UI/Confetti/1.png"),
+	preload("res://assets/UI/Confetti/2.png"),
+	preload("res://assets/UI/Confetti/3.png")
+]
 var confetti_sprites: Array[Sprite2D] = []
 var confetti_speeds: Array[float] = []
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	GiftHUD.node.visible = false
 	if Globals.is_story:
 		await Globals.start_dialogue("Ending")
@@ -27,24 +32,24 @@ func _process(delta: float) -> void:
 			sprite.position.y = -50
 			sprite.position.x = randf_range(0.0, get_viewport_rect().size.x)
 
-func load_confetti_textures():
-	confetti_textures.clear()
-	
-	var dir := DirAccess.open(confetti_folder)
-	
-	dir.list_dir_begin()
-	var file_name := dir.get_next()
-	while file_name != "":
-		if not dir.current_is_dir() and file_name.get_extension().to_lower() == "png":
-			var path := confetti_folder.path_join(file_name)
-			var tex: Texture2D = load(path)
-			if tex:
-				confetti_textures.append(tex)
-		file_name = dir.get_next()
-	dir.list_dir_end()
+#func load_confetti_textures():
+	#confetti_textures.clear()
+	#
+	#var dir := DirAccess.open(confetti_folder)
+	#
+	#dir.list_dir_begin()
+	#var file_name := dir.get_next()
+	#while file_name != "":
+		#if not dir.current_is_dir() and file_name.get_extension().to_lower() == "png":
+			#var path := confetti_folder.path_join(file_name)
+			#var tex: Texture2D = load(path)
+			#if tex:
+				#confetti_textures.append(tex)
+		#file_name = dir.get_next()
+	#dir.list_dir_end()
 
 func spawn_confetti():
-	load_confetti_textures()
+	# load_confetti_textures()
 	
 	var viewport_size := get_viewport_rect().size
 	

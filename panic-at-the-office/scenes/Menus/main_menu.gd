@@ -9,4 +9,5 @@ func _on_play_pressed() -> void:
 	startingGameWindow.visible = true
 
 func _on_quit_pressed() -> void:
-	quitSound.play()
+	#quitSound.play()
+	get_tree().quit()

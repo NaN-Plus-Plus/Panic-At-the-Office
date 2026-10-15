@@ -120,7 +120,6 @@ theme_override_font_sizes/font_size = 64
 text = "PLAY"
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=717696706]
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 64

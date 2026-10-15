@@ -1,7 +1,4 @@
 extends Node2D
 
-# func _ready() -> void:
-	#var dialogue := Globals.pending_dialogue
-	#Globals.pending_dialogue = ""
-	#await LoadingScreen.hide_loading()
-	#await Globals.start_dialogue(dialogue)
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
