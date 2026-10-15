@@ -17,6 +17,8 @@ func on_body_entered(body: Node2D):
 
 	mc.set_physics_process(false)
 	mc.velocity = Vector2.ZERO
+	mc.sprite.stop()
+	mc.sprite.set_frame_and_progress(0, 0.0)
 
 	thing.sprite_frames.set_animation_loop("move", false)
 	thing.play("move")

@@ -1,4 +1,3 @@
-
 extends CanvasLayer
 
 @onready var root: Control = $root
@@ -11,8 +10,6 @@ extends CanvasLayer
 
 var progress_tween: Tween
 
-
-
 func _ready() -> void:
 	sprite.play("default")
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -24,7 +21,6 @@ func _ready() -> void:
 	var layout = Dialogic.Styles.load_style()
 	if layout:
 		layout.hide()
-
 
 func show_loading(_scene_name: String) -> void:
 	get_tree().paused = true
