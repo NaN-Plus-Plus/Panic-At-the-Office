@@ -55,6 +55,11 @@ func show_loading(_scene_name: String) -> void:
 		loading_duration
 	)
 
+	set_status("Preparing dialogue...")
+	await DialogicHandler.preload_idles()
+	await DialogicHandler.warm_up()
+	set_status("Loading the Game...")
+
 
 func set_progress(value: float) -> void:
 	progress_bar.value = clampf(value, 0.0, 1.0) * 100.0
@@ -65,12 +70,19 @@ func set_status(status: String) -> void:
 
 
 func hide_loading() -> void:
-	if progress_tween and progress_tween.is_running():
-		await progress_tween.finished
+	await get_tree().create_timer(2.5).timeout
 
-	var fade_tween := create_tween()
-	fade_tween.tween_property(root, "modulate:a", 0.0, 0.3)
-	await fade_tween.finished
+	var frames := 0
+	while Dialogic.current_timeline != null and frames < 30:
+		await get_tree().process_frame
+		frames += 1
 
+	for i in 3:
+		DialogicHandler.hide_popup()
+		await get_tree().process_frame
+
+	var tween := create_tween()
+	tween.tween_property(root, "modulate:a", 0.0, 0.3)
+	await tween.finished
 	get_tree().paused = false
 	visible = false
