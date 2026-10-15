@@ -24,6 +24,9 @@ var shield_active: bool = false
 var shield_activation_id: int = 0
 var shielded_monsters: Array[WireMonster] = []
 
+static var _remaining_scenes: Array[String] = []
+static var _remaining_folder: String = ""
+
 func _ready():
 	canvas_layer.hide()
 	shield_col.disabled = true
@@ -105,16 +108,32 @@ func scene_change():
 	caught = true
 	run_catch_sequence()
 
-func pick_random_scene() -> String:
+func _collect_jumpscare_scenes() -> Array[String]:
 	var scenes: Array[String] = []
-	if jumpscare_folder != "":
-		for file_name in DirAccess.get_files_at(jumpscare_folder):
-			file_name = file_name.trim_suffix(".remap")
-			if file_name.ends_with(".tscn"):
-				scenes.append(jumpscare_folder.path_join(file_name))
-	if scenes.is_empty():
+	for file_name in DirAccess.get_files_at(jumpscare_folder):
+		file_name = file_name.trim_suffix(".remap")
+		if file_name.ends_with(".tscn"):
+			scenes.append(jumpscare_folder.path_join(file_name))
+	return scenes
+
+func pick_random_scene() -> String:
+	if jumpscare_folder == "":
 		return foxy_jumpscare_uid
-	return scenes.pick_random()
+
+	if _remaining_folder != jumpscare_folder:
+		_remaining_scenes.clear()
+		_remaining_folder = jumpscare_folder
+
+	if _remaining_scenes.is_empty():
+		_remaining_scenes = _collect_jumpscare_scenes()
+
+	if _remaining_scenes.is_empty():
+		return foxy_jumpscare_uid
+
+	var index := randi() % _remaining_scenes.size()
+	var chosen := _remaining_scenes[index]
+	_remaining_scenes.remove_at(index)
+	return chosen
 
 func run_catch_sequence() -> void:
 	var target_scene := pick_random_scene()

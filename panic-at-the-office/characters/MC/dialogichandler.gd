@@ -1,14 +1,9 @@
+class_name DialogicHandler
 extends Node
 
-@export var idle_time_limit: float = 15.0
-@export var going_time_limit: float = 10.0
-@export_range(0.0, 1.0) var going_chance: float = 0.8
+const WARMUP_TIMELINE := "IdleMC"
 
-var idle_timer: float = 0.0
-var going_timer: float = 0.0
-var _idle_running := false
-
-var idle_dialogues = [
+const IDLE_DIALOGUES := [
 	{"timeline": "IdleMC", "required": ["MC"], "type": "Idle"},
 	{"timeline": "IdleMC_Tori", "required": ["MC", "Tori"], "type": "Idle"},
 	{"timeline": "IdleMC_Tori_Toya", "required": ["MC", "Tori", "Toya"], "type": "Idle"},
@@ -24,6 +19,64 @@ var idle_dialogues = [
 	{"timeline": "IdleGoingTori_Toya", "required": ["Tori", "Toya"], "type": "Going"},
 	{"timeline": "IdleGoingToya", "required": ["Toya"], "type": "Going"},
 ]
+
+static var _preloaded: Dictionary = {}
+static var _warmed_up: bool = false
+
+@export var idle_time_limit: float = 15.0
+@export var going_time_limit: float = 10.0
+@export_range(0.0, 1.0) var going_chance: float = 0.8
+
+var idle_timer: float = 0.0
+var going_timer: float = 0.0
+var _idle_running := false
+
+
+static func preload_idles() -> void:
+	var tree := Engine.get_main_loop() as SceneTree
+	for dialogue in IDLE_DIALOGUES:
+		var timeline_name: String = dialogue["timeline"]
+		if _preloaded.has(timeline_name):
+			continue
+		var timeline = Dialogic.preload_timeline(timeline_name)
+		if timeline != null:
+			_preloaded[timeline_name] = timeline
+		await tree.process_frame
+
+
+static func warm_up() -> void:
+	if _warmed_up:
+		return
+	_warmed_up = true
+
+	var tree := Engine.get_main_loop() as SceneTree
+	var master := AudioServer.get_bus_index("Master")
+	var was_muted := AudioServer.is_bus_mute(master)
+	AudioServer.set_bus_mute(master, true)
+
+	Dialogic.start(_preloaded.get(WARMUP_TIMELINE, WARMUP_TIMELINE))
+	for i in 3:
+		await tree.process_frame
+
+	hide_popup()
+	Dialogic.end_timeline()
+
+	var frames := 0
+	while Dialogic.current_timeline != null and frames < 30:
+		await tree.process_frame
+		frames += 1
+
+	for i in 3:
+		hide_popup()
+		await tree.process_frame
+
+	AudioServer.set_bus_mute(master, was_muted)
+
+
+static func hide_popup() -> void:
+	var layout = Dialogic.Styles.get_layout_node()
+	if is_instance_valid(layout):
+		layout.hide()
 
 
 func _ready() -> void:
@@ -74,7 +127,7 @@ func _on_timeline_ended() -> void:
 func get_available_idles(dialog_type: String) -> Array:
 	var available: Array = []
 
-	for dialogue in idle_dialogues:
+	for dialogue in IDLE_DIALOGUES:
 		if dialogue["type"] != dialog_type:
 			continue
 
@@ -106,4 +159,12 @@ func play_random_idle(dialog_type: String) -> void:
 	Dialogic.Inputs.auto_advance.per_character_delay = 0.0
 
 	_idle_running = true
-	Dialogic.start(chosen["timeline"])
+	Dialogic.start(_preloaded.get(chosen["timeline"], chosen["timeline"]))
+
+func _exit_tree() -> void:
+	if not _idle_running:
+		return
+	_idle_running = false
+	if Dialogic.current_timeline != null:
+		Dialogic.end_timeline()
+	hide_popup()

@@ -13,8 +13,13 @@ texture = ExtResource("2_oma4u")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1936720124]
 
-[node name="FoxyJumpscare" parent="CanvasLayer" unique_id=1740459509 instance=ExtResource("2_de85n")]
-position = Vector2(960, 540)
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1328992006]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1566619099]
-visible = false
+[node name="FoxyJumpscare" parent="CanvasLayer/Control" unique_id=1740459509 instance=ExtResource("2_de85n")]
+position = Vector2(960, 540)
+scale = Vector2(4, 4)
