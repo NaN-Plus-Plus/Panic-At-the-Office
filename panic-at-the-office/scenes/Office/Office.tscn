@@ -844,7 +844,7 @@ shape = SubResource("CircleShape2D_riqys")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1846779365]
 stream = ExtResource("31_ciwrq")
-volume_db = 10.0
+volume_db = 4.5
 autoplay = true
 parameters/looping = true
 
