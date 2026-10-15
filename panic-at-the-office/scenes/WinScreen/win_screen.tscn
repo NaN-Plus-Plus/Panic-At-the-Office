@@ -153,16 +153,19 @@ alignment = 1
 [node name="Panel" type="Panel" parent="HBoxContainer" unique_id=775868149]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
 
 [node name="Panel2" type="Panel" parent="HBoxContainer" unique_id=465028254]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_oflqx")
 
 [node name="Panel3" type="Panel" parent="HBoxContainer" unique_id=547910906]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_uyvf4")
 
 [node name="Label3" type="Label" parent="." unique_id=391635199]
