@@ -106,10 +106,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2135917184]
 layout_mode = 0
-offset_left = 164.0
-offset_top = 384.0
-offset_right = 514.0
-offset_bottom = 601.0
+offset_left = 36.0
+offset_top = 350.0
+offset_right = 386.0
+offset_bottom = 567.0
 theme_override_constants/separation = 25
 alignment = 1
 
@@ -124,6 +124,20 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 64
 text = "QUIT"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2105512140]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1931779715]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Feedback"
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=448487450]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Bug Report"
 
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=1566221452]
 layout_mode = 0
@@ -165,3 +179,5 @@ expand_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
