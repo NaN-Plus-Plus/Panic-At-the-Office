@@ -4,8 +4,8 @@ extends Node
 @export var updateWindow: PackedScene
 
 
-const VERSION_URL = "https://raw.githubusercontent.com/NaN-Plus-Plus/Panic-At-The-Disco-Updates/refs/heads/main/version.json"
-const CURRENT_VERSION = "0.1.0"
+const VERSION_URL = "https://raw.githubusercontent.com/NaN-Plus-Plus/Panic-At-The-Office-Updates/refs/heads/main/version.json"
+const CURRENT_VERSION = "0.2.0"
 
 var latest_version: String = ""
 var download_url: String = ""
