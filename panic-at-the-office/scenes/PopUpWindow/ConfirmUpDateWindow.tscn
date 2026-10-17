@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://rjovfo5pegur"]
+
+[ext_resource type="PackedScene" uid="uid://c75p4fry2607y" path="res://scenes/PopUpWindow/BasePopUpWindow.tscn" id="1_nxivo"]
+[ext_resource type="Script" uid="uid://dm3ojl1rgh6ac" path="res://scenes/PopUpWindow/confirm_up_date_window.gd" id="2_7fi3h"]
+
+[node name="BasePopUpWindow" unique_id=1818528751 instance=ExtResource("1_nxivo")]
+script = ExtResource("2_7fi3h")
+
+[node name="Panel" type="Panel" parent="." index="0" unique_id=1418748705]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -656.0
+offset_top = -338.0
+offset_right = 664.0
+offset_bottom = 342.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Info" parent="MarginContainer/VBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(105624605) index="0" unique_id=1141652186]
+text = "Update Game"
+
+[node name="Text" parent="MarginContainer/VBoxContainer/VBoxContainer" parent_id_path=PackedInt32Array(105624605) index="2" unique_id=747866859]
+text = "New Version was found, Do You want to update it?"

@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://n5wn3s7pfvcx" path="res://audio/sfx/Cat Laughing.mp3" id="7_j8imo"]
 [ext_resource type="Texture2D" uid="uid://dtt0en33wnfoh" path="res://assets/UI/Order.png" id="9_pwcwb"]
 [ext_resource type="Texture2D" uid="uid://duq2rrcox1wqk" path="res://assets/UI/HardTopPlayer.jpg" id="10_3ukl8"]
+[ext_resource type="Script" uid="uid://d2hvow86kqni7" path="res://UpdateManager.gd" id="11_cl3d6"]
+[ext_resource type="PackedScene" uid="uid://rjovfo5pegur" path="res://scenes/PopUpWindow/ConfirmUpDateWindow.tscn" id="11_hg7kr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
 texture = ExtResource("6_5mffo")
@@ -176,6 +178,10 @@ offset_right = 150.57654
 offset_bottom = 863.0
 texture = ExtResource("10_3ukl8")
 expand_mode = 1
+
+[node name="Node" type="Node" parent="." unique_id=1626383908]
+script = ExtResource("11_cl3d6")
+updateWindow = ExtResource("11_hg7kr")
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
