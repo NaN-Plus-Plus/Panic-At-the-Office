@@ -25,6 +25,8 @@ func _ready() -> void:
 	http.request_completed.connect(_on_download_completed)
 
 func _on_ok_pressed() -> void:
+	$MarginContainer/VBoxContainer/Buttons/Ok.visible = false
+	$MarginContainer/VBoxContainer/Buttons/Cancer.visible = false
 	if download_url.is_empty():
 		info.text = "Ni ma linku! "
 		print("Nie zwrócono linku!")
@@ -247,14 +249,20 @@ func clean_directory(path: String) -> bool:
 
 
 func lauch_updater() -> void:
-	var updater_path := OS.get_executable_path().get_base_dir().path_join("PanicUpdater.exe")
+	var updater_path := ""
+
+	if OS.get_name() == "Windows":
+		updater_path = OS.get_executable_path().get_base_dir().path_join("PanicUpdater.exe")
+	else:
+		updater_path = OS.get_executable_path().get_base_dir().path_join("PanicUpdater.x86_64")
+
 	var staging_path := ProjectSettings.globalize_path("user://update_staging")
 	var game_path := OS.get_executable_path().get_base_dir()
 	var game_pid := OS.get_process_id()
 	
 	if not FileAccess.file_exists(updater_path):
-		info.text = "Nie znaleziono PanicUpdater.exe"
-		push_error("Nie znaleziono PanicUpdater.exe: " + updater_path)
+		info.text = "Nie znaleziono PanicUpdater"
+		push_error("Nie znaleziono PanicUpdater: " + updater_path)
 		return
 		
 	if not DirAccess.dir_exists_absolute(staging_path):
@@ -272,8 +280,8 @@ func lauch_updater() -> void:
 	var updater_pid := OS.create_process(updater_path, args)
 	
 	if updater_pid == -1:
-		info.text = "Nie udało się uruchomić PanicUpdater.exe"
-		push_error("Nie udało się uruchomić PanicUpdater.exe ...")
+		info.text = "Nie udało się uruchomić PanicUpdater"
+		push_error("Nie udało się uruchomić PanicUpdater ...")
 		return
 		
 	info.text = "Updater uruchomiony!"
