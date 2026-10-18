@@ -27,7 +27,7 @@ func show_loading(_scene_name: String) -> void:
 	visible = true
 
 	progress_bar.value = 0
-	set_status("Loading the Game...")
+	set_status("Go forth and never look back.")
 
 	if progress_tween and progress_tween.is_running():
 		progress_tween.kill()
@@ -51,10 +51,10 @@ func show_loading(_scene_name: String) -> void:
 		loading_duration
 	)
 
-	set_status("Preparing dialogue...")
+	#set_status("Preparing dialogue...")
 	await DialogicHandler.preload_idles()
 	await DialogicHandler.warm_up()
-	set_status("Loading the Game...")
+	#set_status("Loading the Game...")
 
 
 func set_progress(value: float) -> void:

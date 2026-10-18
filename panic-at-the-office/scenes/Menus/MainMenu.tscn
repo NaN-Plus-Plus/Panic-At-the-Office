@@ -8,6 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://b8sredc7m7ck6" path="res://audio/Music/Panic!At The Disco- GirlsGirlsBoys (Official Instrumental).mp3" id="5_a24ew"]
 [ext_resource type="Texture2D" uid="uid://bb4uxdvotpvvm" path="res://assets/UI/nan.png" id="6_5mffo"]
 [ext_resource type="AudioStream" uid="uid://n5wn3s7pfvcx" path="res://audio/sfx/Cat Laughing.mp3" id="7_j8imo"]
+[ext_resource type="Texture2D" uid="uid://dtt0en33wnfoh" path="res://assets/UI/Order.png" id="9_pwcwb"]
+[ext_resource type="Texture2D" uid="uid://duq2rrcox1wqk" path="res://assets/UI/HardTopPlayer.jpg" id="10_3ukl8"]
+[ext_resource type="Script" uid="uid://d2hvow86kqni7" path="res://UpdateManager.gd" id="11_cl3d6"]
+[ext_resource type="PackedScene" uid="uid://rjovfo5pegur" path="res://scenes/PopUpWindow/ConfirmUpDateWindow.tscn" id="11_hg7kr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g4v7s"]
 texture = ExtResource("6_5mffo")
@@ -104,10 +108,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_g4v7s")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2135917184]
 layout_mode = 0
-offset_left = 164.0
-offset_top = 384.0
-offset_right = 514.0
-offset_bottom = 601.0
+offset_left = 36.0
+offset_top = 350.0
+offset_right = 386.0
+offset_bottom = 567.0
 theme_override_constants/separation = 25
 alignment = 1
 
@@ -118,11 +122,68 @@ theme_override_font_sizes/font_size = 64
 text = "PLAY"
 
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=717696706]
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 64
 text = "QUIT"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2105512140]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1931779715]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Feedback"
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=448487450]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Bug Report"
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1566221452]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 915.0
+offset_right = 166.0
+offset_bottom = 1080.0
+texture = ExtResource("9_pwcwb")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=402088393]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 981.0
+offset_right = 734.8227
+offset_bottom = 1237.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 36
+text = "10/10 no notes!! ~Jonathan Snek"
+
+[node name="Label2" type="Label" parent="." unique_id=988242693]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 859.0
+offset_right = 1141.0
+offset_bottom = 909.0
+theme_override_font_sizes/font_size = 36
+text = "Top Player First to beat Hard Mode: Wamil Kilmowicz time: 1:40h"
+
+[node name="TextureRect3" type="TextureRect" parent="." unique_id=253363450]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 788.0
+offset_right = 150.57654
+offset_bottom = 863.0
+texture = ExtResource("10_3ukl8")
+expand_mode = 1
+
+[node name="Node" type="Node" parent="." unique_id=1626383908]
+script = ExtResource("11_cl3d6")
+updateWindow = ExtResource("11_hg7kr")
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]

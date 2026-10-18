@@ -28,9 +28,21 @@ const NPC_SAFE_SPAWN_CLEARANCE := 100.0
 var maze := []
 var exit_cell: Vector2i
 var spawn_cells: Array
-var object_scenes: Array[PackedScene] = []
-var deco_textures: Array[Texture2D] = []
 var occupied_cells: Dictionary = {}
+
+var object_scenes: Array[PackedScene] = [
+	preload("res://scenes/Obj/bin.tscn"),
+	preload("res://scenes/Obj/chair.tscn"),
+	preload("res://scenes/Obj/desk.tscn"),
+	preload("res://scenes/Obj/paper.tscn"),
+	preload("res://scenes/Obj/plant.tscn")
+]
+
+var deco_textures: Array[Texture2D] = [
+	preload("res://assets/Obj/Deco/1.png"),
+	preload("res://assets/Obj/Deco/2.png"),
+	preload("res://assets/Obj/Deco/3.png")
+]
 
 func _ready() -> void:
 	if Globals.isFirstTime > 0:
@@ -52,6 +64,8 @@ func _ready() -> void:
 	Globals.isFirstTime += 1
 	Dialogic.VAR.isSecondTime = Globals.isFirstTime > 1
 	generate_maze()
+	
+	GiftHUD.reset_gift()
 
 
 func generate_maze():
@@ -235,26 +249,26 @@ func random_offset_in_tile(tile_size: Vector2) -> Vector2:
 	return Vector2(rx * tile_size.x, ry * tile_size.y)
 
 
-func load_object_scenes():
-	object_scenes.clear()
-	
-	var dir := DirAccess.open(objects_folder)
-
-	dir.list_dir_begin()
-	var file_name := dir.get_next()
-	while file_name != "":
-		if not dir.current_is_dir() and file_name.ends_with(".tscn"):
-			var path := objects_folder.path_join(file_name)
-			var scene: PackedScene = load(path)
-			if scene:
-				object_scenes.append(scene)
-		file_name = dir.get_next()
-	dir.list_dir_end()
+#func load_object_scenes():
+	#object_scenes.clear()
+	#
+	#var dir := DirAccess.open(objects_folder)
+#
+	#dir.list_dir_begin()
+	#var file_name := dir.get_next()
+	#while file_name != "":
+		#if not dir.current_is_dir() and file_name.ends_with(".tscn"):
+			#var path := objects_folder.path_join(file_name)
+			#var scene: PackedScene = load(path)
+			#if scene:
+				#object_scenes.append(scene)
+		#file_name = dir.get_next()
+	#dir.list_dir_end()
 
 
 func spawn_objects():
 
-	load_object_scenes()
+	#load_object_scenes()
 	
 	var tile_size: Vector2 = tile_map_layer.tile_set.tile_size
 	var available_cells := get_available_floor_cells()
@@ -274,25 +288,25 @@ func spawn_objects():
 			obj.rotation = randf_range(0.0, TAU)
 
 
-func load_deco_textures():
-	deco_textures.clear()
-	
-	var dir := DirAccess.open(deco_folder)
-	
-	dir.list_dir_begin()
-	var file_name := dir.get_next()
-	while file_name != "":
-		if not dir.current_is_dir() and file_name.get_extension().to_lower() == "png":
-			var path := deco_folder.path_join(file_name)
-			var tex: Texture2D = load(path)
-			if tex:
-				deco_textures.append(tex)
-		file_name = dir.get_next()
-	dir.list_dir_end()
+#func load_deco_textures():
+	#deco_textures.clear()
+	#
+	#var dir := DirAccess.open(deco_folder)
+	#
+	#dir.list_dir_begin()
+	#var file_name := dir.get_next()
+	#while file_name != "":
+		#if not dir.current_is_dir() and file_name.get_extension().to_lower() == "png":
+			#var path := deco_folder.path_join(file_name)
+			#var tex: Texture2D = load(path)
+			#if tex:
+				#deco_textures.append(tex)
+		#file_name = dir.get_next()
+	#dir.list_dir_end()
 
 
 func spawn_deco():
-	load_deco_textures()
+	#load_deco_textures()
 	
 	var tile_size: Vector2 = tile_map_layer.tile_set.tile_size
 	var available_cells := get_available_floor_cells()

@@ -6,6 +6,11 @@ var count: int = 1
 var player: CharacterBody2D
 var isVisible := false
 
+func _ready() -> void:
+	$Node/Content/Gift.visible = true
+	isVisible = false
+	
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("gift") and not event.is_echo() and isVisible:
 		use_gift()
@@ -27,3 +32,9 @@ func use_gift():
 			$Node/Content/Gift.visible = false
 	else:
 		pass
+
+func reset_gift() -> void:
+	count = 1
+	$Node/Content/Gift.visible = true
+	node.visible = false
+	isVisible = false

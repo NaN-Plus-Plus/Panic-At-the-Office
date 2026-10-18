@@ -106,7 +106,7 @@ grow_vertical = 2
 script = ExtResource("7_prank")
 
 [node name="Button" type="Button" parent="Buttonn" unique_id=151310685]
-z_index = 2
+z_index = 10
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -147,6 +147,7 @@ offset_left = 429.0
 offset_top = 815.0
 offset_right = 1479.0
 offset_bottom = 965.0
+mouse_filter = 2
 theme_override_constants/separation = 150
 alignment = 1
 
